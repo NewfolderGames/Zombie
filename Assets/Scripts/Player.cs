@@ -19,6 +19,9 @@ public class Player : MonoBehaviour {
 	float inputHorizontal;
 	float inputVertical;
 
+	public Vector3 mousePosition;
+	public Quaternion mouseRotation;
+
 	// COMPONENT
 
 	Rigidbody componentRigidbody;
@@ -50,7 +53,8 @@ public class Player : MonoBehaviour {
 
 		PlayerMove (inputHorizontal, inputVertical);
 
-		PlayerPoint ();
+		MouseRotation ();
+
 
 	}
 
@@ -65,7 +69,9 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void PlayerPoint ( ) {
+	// MOUSE FUNCTION
+
+	void MouseRotation () {
 
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit rayHit;
@@ -78,7 +84,10 @@ public class Player : MonoBehaviour {
 			mouse.y = 0f;
 
 			Quaternion rotation = Quaternion.LookRotation( mouse );
-			componentRigidbody.MoveRotation( rotation );
+
+			mousePosition = mouse;
+			mouseRotation = rotation;
+			componentRigidbody.MoveRotation (rotation);
 
 		}
 	

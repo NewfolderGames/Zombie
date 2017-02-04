@@ -461,8 +461,12 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
   cloudServicesEnabled:
-    UNet: 1
-  cloudProjectId: 2a7af4f4-a065-4c1b-bcd3-b3171427791a
-  projectName: Zombie
-  organizationId: newfoldergames
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
+    UNet: 0
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
