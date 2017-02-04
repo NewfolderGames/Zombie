@@ -4,13 +4,59 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	// PLAYER INFO
+
+	public float playerHealth;
+
+	// MOVEMENT
+
+	Vector3 playerMovment;
+
+	public float playerSpeed;
+
+	// INPUT
+
+	float inputHorizontal;
+	float inputVertical;
+
+	// COMPONENT
+
+	Rigidbody componentRigidbody;
+
+	//====================================================\\
+
+	void Awake () {
+
+		componentRigidbody = GetComponent<Rigidbody> ();
+
+
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-		
+
+
+
 	}
+
+	void FixedUpdate() {
+
+		inputHorizontal = Input.GetAxisRaw ("Horizontal");
+		inputVertical = Input.GetAxisRaw ("Vertical");
+
+		Move (inputHorizontal, inputVertical);
+
+	}
+
+	//====================================================\\
+
+	void Move ( float h, float v ) {
+
+		playerMovment.Set (h + v, 0, v - h);
+		playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;
+
+		componentRigidbody.MovePosition (transform.position + playerMovment);
+
+	}
+
 }
