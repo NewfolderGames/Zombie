@@ -44,13 +44,13 @@ public class Player : MonoBehaviour {
 		inputHorizontal = Input.GetAxisRaw ("Horizontal");
 		inputVertical = Input.GetAxisRaw ("Vertical");
 
-		Move (inputHorizontal, inputVertical);
+		PlayerMove (inputHorizontal, inputVertical);
 
 	}
 
 	//====================================================\\
 
-	void Move ( float h, float v ) {
+	void PlayerMove ( float h, float v ) {
 
 		playerMovment.Set (h + v, 0, v - h);
 		playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;

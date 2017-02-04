@@ -19,6 +19,12 @@ public class PlayerCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		playerCameraPosition.x = transform.position.x + PlayerCameraOffsetX;
+		playerCameraPosition.y = transform.position.y + PlayerCameraOffsetY;
+		playerCameraPosition.z = transform.position.z + PlayerCameraOffsetZ;
+
+		playerCamera.transform.position = playerCameraPosition;
 		
 	}
 	
