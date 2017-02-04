@@ -23,6 +23,10 @@ public class Player : MonoBehaviour {
 
 	Rigidbody componentRigidbody;
 
+	// CAMERA
+
+	public GameObject playerCameraMain;
+
 	//====================================================\\
 
 	void Awake () {
@@ -46,6 +50,8 @@ public class Player : MonoBehaviour {
 
 		PlayerMove (inputHorizontal, inputVertical);
 
+		PlayerPoint ();
+
 	}
 
 	//====================================================\\
@@ -57,6 +63,25 @@ public class Player : MonoBehaviour {
 
 		componentRigidbody.MovePosition (transform.position + playerMovment);
 
+	}
+
+	void PlayerPoint ( ) {
+
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+		RaycastHit rayHit;
+
+		float rayLenght = 500f;
+
+		if( Physics.Raycast( ray, out rayHit, rayLenght ) ) {
+
+			Vector3 mouse = rayHit.point - transform.position;
+			mouse.y = 0f;
+
+			Quaternion rotation = Quaternion.LookRotation( mouse );
+			componentRigidbody.MoveRotation( rotation );
+
+		}
+	
 	}
 
 }
