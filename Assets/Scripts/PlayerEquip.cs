@@ -19,7 +19,7 @@ public class PlayerEquip : ItemWeapon {
 	public Player playerInfo;
 
 	// MOUSE
-		
+
 	Vector3 mousePosition;
 	Vector3 mouseTarget;
 
@@ -30,6 +30,7 @@ public class PlayerEquip : ItemWeapon {
 	void Awake() {
 
 		playerInfo = player.GetComponent<Player> ();
+		WeaponSelect (itemWeaponList.Block47);
 
 	}
 
@@ -40,10 +41,12 @@ public class PlayerEquip : ItemWeapon {
 		bool mouse = Input.GetMouseButton (0);
 
 		if (mouse)
-			WeaponFire ();
+			StartCoroutine (weaponFire (weaponTimeShoot));
 
-		mousePosition = playerInfo.mousePosition;
+		mousePosition = playerInfo.mousePosition - transform.position;
 		transform.rotation = Quaternion.LookRotation (mousePosition);
+
+		WeaponSpreadHeal ();
 
 
 	}
@@ -57,24 +60,82 @@ public class PlayerEquip : ItemWeapon {
 		GameObject[] weapons = GameObject.FindGameObjectsWithTag ("PlayerWeapon");
 		for (int i = 0; i < weapons.Length; i++) {
 
-			if( weapons [i].GetComponent<ItemWeapon>().weaponNumber != (int)weapon ) weapons [i].SetActive (false);
-			else weapons [i].SetActive (true);
+			if (weapons [i].GetComponent<ItemWeapon> ().weaponNumber != (int)weapon) weapons [i].SetActive (false);
+			else {
+				
+				weapons [i].SetActive (true);
+				overrideInfo (weapons [i].GetComponent<ItemWeapon>());
+
+			}
 
 		}
 			
 	}
+		
+	void WeaponSpreadHeal() {
 
-	void WeaponFire() {
+		if (weaponSpread > weaponSpreadMin) {
 
-		GameObject bullet = Instantiate (bulletObject,transform.position,transform.rotation);
-		ProjectileBullet bulletInfo = bullet.GetComponent<ProjectileBullet> ();
-		Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody> ();
+			weaponSpread -= weaponSpreadHeal;
+			weaponSpread = Mathf.Clamp (weaponSpread, weaponSpreadMin, weaponSpreadMax);
 
-		bulletInfo.damage = weaponDamage;
-		bulletInfo.range = 10f;
-		//bulletInfo.range = weaponRange;
+		} else return;
 
-		bulletRigidbody.AddForce (mousePosition * 2.5f, ForceMode.Impulse);
+	}
+
+	IEnumerator weaponFire( float time ) {
+
+		// FIRE BULLET
+
+		weaponAvailableShoot = false;
+
+		for (int i = 0; i < weaponPallet; i++) {
+
+			GameObject bullet = Instantiate (bulletObject, transform.position, transform.rotation);
+			ProjectileBullet bulletInfo = bullet.GetComponent<ProjectileBullet> ();
+			Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody> ();
+
+			bulletInfo.damage = weaponDamage;
+			bulletInfo.range = weaponRange;
+
+			bulletRigidbody.AddForce (mousePosition * 5f, ForceMode.Impulse);
+
+		}
+
+		weaponSpread += weaponRecoil;
+		weaponBullet--;
+
+		// AFTER FIRE
+
+		yield return new WaitForSeconds (time);
+
+		weaponAvailableShoot = true;
+
+	}
+
+	void overrideInfo (ItemWeapon weapon) {
+
+		weaponNumber = weapon.weaponNumber;
+		weaponName = weapon.weaponName;
+
+		weaponType = weapon.weaponType;
+
+		weaponPallet = weapon.weaponPallet;
+		weaponDamage = weapon.weaponDamage;
+
+		weaponBullet = weapon.weaponBullet;
+		weaponClip = weapon.weaponClip;
+
+		weaponRange = weapon.weaponRange;
+
+		weaponRecoil = weapon.weaponRecoil;
+		weaponSpread = weapon.weaponSpread;
+		weaponSpreadMin = weapon.weaponSpreadMin;
+		weaponSpreadMax = weapon.weaponSpreadMax;
+		weaponSpreadHeal = weapon.weaponSpreadHeal;
+
+		weaponTimeShoot = weapon.weaponTimeShoot;
+		weaponTimeReload = weapon.weaponTimeReload;
 
 	}
 

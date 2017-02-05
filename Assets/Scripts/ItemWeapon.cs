@@ -35,41 +35,7 @@ public class ItemWeapon : MonoBehaviour {
 	public float weaponTimeShoot;
 	public float weaponTimeReload;
 
-	void overrideInfo (ItemWeapon weapon) {
-
-		weaponNumber = weapon.weaponNumber;
-		weaponName = weapon.weaponName;
-
-		weaponType = weapon.weaponType;
-
-		weaponPallet = weapon.weaponPallet;
-		weaponDamage = weapon.weaponDamage;
-
-		weaponBullet = weapon.weaponBullet;
-		weaponClip = weapon.weaponClip;
-
-		weaponRange = weapon.weaponRange;
-
-		weaponRecoil = weapon.weaponRecoil;
-		weaponSpread = weapon.weaponSpread;
-		weaponSpreadMin = weapon.weaponSpreadMin;
-		weaponSpreadMax = weapon.weaponSpreadMax;
-		weaponSpreadHeal = weapon.weaponSpreadHeal;
-
-		weaponTimeShoot = weapon.weaponTimeShoot;
-		weaponTimeReload = weapon.weaponTimeReload;
-
-	}
-
-	void WeaponSpreadHeal() {
-
-		if (weaponSpread > weaponSpreadMin) {
-
-			weaponSpread -= weaponSpreadHeal;
-			weaponSpread = Mathf.Clamp (weaponSpread, weaponSpreadMin, weaponSpreadMax);
-
-		} else return;
-
-	}
-
+	public bool weaponAvailableShoot;
+	public bool weaponAvailableReload;
+		
 }

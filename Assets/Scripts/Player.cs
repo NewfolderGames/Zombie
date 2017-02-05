@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
 
 		componentRigidbody = GetComponent<Rigidbody> ();
 
+		componentRigidbody.freezeRotation = true;
 
 	}
 	
@@ -78,14 +79,16 @@ public class Player : MonoBehaviour {
 
 		float rayLenght = 500f;
 
-		if( Physics.Raycast( ray, out rayHit, rayLenght ) ) {
+		int layerMask = LayerMask.GetMask ("Map", "Enemy");
+
+		if( Physics.Raycast( ray, out rayHit, rayLenght, layerMask ) ) {
 
 			Vector3 mouse = rayHit.point - transform.position;
 			mouse.y = 0f;
 
 			Quaternion rotation = Quaternion.LookRotation( mouse );
 
-			mousePosition = mouse;
+			mousePosition = rayHit.point;
 			mouseRotation = rotation;
 			componentRigidbody.MoveRotation (rotation);
 
