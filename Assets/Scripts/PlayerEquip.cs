@@ -2,35 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEquip : ItemWeapon {
+public class PlayerEquip : MonoBehaviour {
 
-	//  WEAPON SETTING
+	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
+
+	// WEAPON LIST
 
 	public itemWeaponList weaponSelect;
 	public enum itemWeaponList {
 
-		Block47
+		Player_Weapon_Test47
 
 	}
 
-	// PLAYER
+	public ItemWeapon[] itemWeapon = new ItemWeapon[1];
+	public Transform[] itemWeaponTransform;
+
+	// PLAYER INFO 
 
 	public GameObject player;
 	public Player playerInfo;
 
-	// MOUSE
+	// MOUSE INFO
 
 	Vector3 mousePosition;
 	Vector3 mouseTarget;
 
-	// Bullet
+	// BULLET INFO
 
 	public GameObject bulletObject;
+
+	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
 
 		playerInfo = player.GetComponent<Player> ();
-		WeaponSelect (itemWeaponList.Block47);
+
+		// WEAPON LIST 
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), ItemWeapon.weaponTypeList.ranged, 1, 10f, 0.1f, 30, 10f, 0.1f, 1f, 0.1f, 1f );
+
+		itemWeaponTransform = GetComponentsInChildren<Transform>();
 
 	}
 
@@ -38,104 +49,74 @@ public class PlayerEquip : ItemWeapon {
 
 		// MOUSE
 
-		bool mouse = Input.GetMouseButton (0);
-
-		if (mouse)
-			StartCoroutine (weaponFire (weaponTimeShoot));
-
 		mousePosition = playerInfo.mousePosition - transform.position;
+		mousePosition.y = 0f;
 		transform.rotation = Quaternion.LookRotation (mousePosition);
 
-		WeaponSpreadHeal ();
-
+		bool mouse = Input.GetMouseButton (0);
+		if (mouse)
+			WeaponAttack (itemWeapon [(int)weaponSelect]);
 
 	}
 
+	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
-	// FUNCTION
+	// Weapon Info
 
-	void WeaponSelect ( itemWeaponList weapon ) {
+	void WeaponSelect ( itemWeaponList weapon ) {  // Select Weapon
 
 		weaponSelect = weapon;
 		GameObject[] weapons = GameObject.FindGameObjectsWithTag ("PlayerWeapon");
 		for (int i = 0; i < weapons.Length; i++) {
 
-			if (weapons [i].GetComponent<ItemWeapon> ().weaponNumber != (int)weapon) weapons [i].SetActive (false);
-			else {
-				
-				weapons [i].SetActive (true);
-				overrideInfo (weapons [i].GetComponent<ItemWeapon>());
-
-			}
-
-		}
-			
-	}
-		
-	void WeaponSpreadHeal() {
-
-		if (weaponSpread > weaponSpreadMin) {
-
-			weaponSpread -= weaponSpreadHeal;
-			weaponSpread = Mathf.Clamp (weaponSpread, weaponSpreadMin, weaponSpreadMax);
-
-		} else return;
-
-	}
-
-	IEnumerator weaponFire( float time ) {
-
-		// FIRE BULLET
-
-		weaponAvailableShoot = false;
-
-		for (int i = 0; i < weaponPallet; i++) {
-
-			GameObject bullet = Instantiate (bulletObject, transform.position, transform.rotation);
-			ProjectileBullet bulletInfo = bullet.GetComponent<ProjectileBullet> ();
-			Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody> ();
-
-			bulletInfo.damage = weaponDamage;
-			bulletInfo.range = weaponRange;
-
-			bulletRigidbody.AddForce (mousePosition * 5f, ForceMode.Impulse);
+			if ( i != (int)weapon ) weapons [i].SetActive (false);
+			else weapons [i].SetActive (true);
 
 		}
 
-		weaponSpread += weaponRecoil;
-		weaponBullet--;
-
-		// AFTER FIRE
-
-		yield return new WaitForSeconds (time);
-
-		weaponAvailableShoot = true;
-
 	}
 
-	void overrideInfo (ItemWeapon weapon) {
+	// Attack
 
-		weaponNumber = weapon.weaponNumber;
-		weaponName = weapon.weaponName;
+	public void WeaponAttack(ItemWeapon weapon) {
 
-		weaponType = weapon.weaponType;
+		if ( weapon.weaponAvailableAttack && (weapon.weaponType == ItemWeapon.weaponTypeList.melee || weapon.weaponBullet-1 >= 0)) {
 
-		weaponPallet = weapon.weaponPallet;
-		weaponDamage = weapon.weaponDamage;
+			StartCoroutine (WeaponSpawnProjectile (weapon));
 
-		weaponBullet = weapon.weaponBullet;
-		weaponClip = weapon.weaponClip;
+		}
 
-		weaponRange = weapon.weaponRange;
+	}
+	IEnumerator WeaponSpawnProjectile(ItemWeapon weapon) {
 
-		weaponRecoil = weapon.weaponRecoil;
-		weaponSpread = weapon.weaponSpread;
-		weaponSpreadMin = weapon.weaponSpreadMin;
-		weaponSpreadMax = weapon.weaponSpreadMax;
-		weaponSpreadHeal = weapon.weaponSpreadHeal;
+		// Before Fire
 
-		weaponTimeShoot = weapon.weaponTimeShoot;
-		weaponTimeReload = weapon.weaponTimeReload;
+		weapon.weaponAvailableAttack = false;
+
+		for (int i = 0; i < weapon.weaponPallet; i++) {
+
+			weapon.WeaponRecoilCalculate ();
+
+			GameObject projectileClone = Instantiate (bulletObject, transform.position, transform.rotation * Quaternion.Euler (itemWeapon [(int)weaponSelect].weaponSpreadCircle));
+			Projectile projectileInfo = projectileClone.GetComponent<Projectile> ();
+			Rigidbody projectileRigidbody = projectileClone.GetComponent<Rigidbody> ();
+
+			projectileInfo.range = weapon.weaponRange;
+			projectileInfo.damage = weapon.weaponDamage * projectileInfo.damageMultiply;
+			projectileInfo.knockback = weapon.weaponKnockback * projectileInfo.knockbackMultiply;
+
+			projectileRigidbody.AddForce ( projectileInfo.transform.forward * projectileInfo.speed, ForceMode.Impulse);
+
+		}
+
+		if (weapon.weaponType != ItemWeapon.weaponTypeList.melee)
+			weapon.weaponBullet--;
+
+		yield return new WaitForSeconds (weapon.weaponTimeAttack);
+
+		// After Fire
+
+		weapon.weaponAvailableAttack = true;
 
 	}
 

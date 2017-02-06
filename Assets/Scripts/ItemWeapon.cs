@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemWeapon : MonoBehaviour {
+public class ItemWeapon {
 
-	// WEAPON INFO
+	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
 
 	public int weaponNumber;
 	public string weaponName;
+	public GameObject weaponModel; 
 
 	public weaponTypeList weaponType;
 	public enum weaponTypeList {
@@ -20,6 +21,7 @@ public class ItemWeapon : MonoBehaviour {
 
 	public int weaponPallet;
 	public float weaponDamage;
+	public float weaponKnockback;
 
 	public int weaponBullet;
 	public int weaponClip;
@@ -27,15 +29,69 @@ public class ItemWeapon : MonoBehaviour {
 	public float weaponRange;
 
 	public float weaponRecoil;
-	public float weaponSpread;
+
 	public float weaponSpreadMin;
 	public float weaponSpreadMax;
-	public float weaponSpreadHeal;
+	public float weaponSpreadPercent;
 
-	public float weaponTimeShoot;
+	public float weaponTimeAttack;
 	public float weaponTimeReload;
 
-	public bool weaponAvailableShoot;
+	public bool weaponAvailableAttack;
 	public bool weaponAvailableReload;
+
+	public bool weaponIsReload;
+
+	public float weaponSpreadAngle;
+	public Vector3 weaponSpreadCircle;
+
+	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
+
+	public ItemWeapon ( int number, string name, GameObject model, weaponTypeList type, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, float timeReload ) {
+
+		weaponNumber = number;
+		weaponName = name;
+		weaponModel = model;
+
+		weaponType = type;
+
+		weaponPallet = pallet;
+		weaponDamage = damage;
+		weaponKnockback = knockback;
+
+		weaponBullet = clip;
+		weaponClip = clip;
+
+		weaponRange = range;
+
+		weaponSpreadMin = spreadMin;
+		weaponSpreadMax = spreadMax;
+
+		weaponTimeAttack = timeAttack;
+		weaponTimeReload = timeReload;
+
+		weaponAvailableAttack = true;
+		weaponAvailableReload = true;
+
+		weaponIsReload = false;
+
+		WeaponRecoilCalculate ();
+
+	}
+
+	// ========== ========== ========== FUNCTION ========== ========== ========== \\
+
+	// Recoil / Spread
+
+	public void WeaponRecoilCalculate() {  // Calculate Recoil
+
+		weaponSpreadAngle = Random.Range (0, 360);
+		weaponSpreadPercent = Mathf.Clamp(weaponSpreadMin, weaponSpreadMax, Random.Range( weaponSpreadMin, weaponSpreadMax ));
+
+		weaponSpreadCircle.x = Mathf.Cos (weaponSpreadAngle) * weaponSpreadPercent;
+		weaponSpreadCircle.y = Mathf.Sin (weaponSpreadAngle) * weaponSpreadPercent;
+		weaponSpreadCircle.z = 0;
+
+	}
 		
 }

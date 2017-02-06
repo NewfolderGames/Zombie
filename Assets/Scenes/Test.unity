@@ -102,9 +102,8 @@ GameObject:
   - component: {fileID: 195530151}
   - component: {fileID: 195530150}
   - component: {fileID: 195530149}
-  - component: {fileID: 195530152}
   m_Layer: 10
-  m_Name: Block47
+  m_Name: Player_Weapon_Test47
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,34 +172,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 195530147}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &195530152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195530147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d632acce2c97f044c93a7f5f512f955b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponNumber: 0
-  weaponName: Block47
-  weaponType: 1
-  weaponPallet: 1
-  weaponDamage: 10
-  weaponBullet: 10
-  weaponClip: 10
-  weaponRange: 1000
-  weaponRecoil: 1
-  weaponSpread: 0
-  weaponSpreadMin: 0.1
-  weaponSpreadMax: 5
-  weaponSpreadHeal: 0.1
-  weaponTimeShoot: 0.5
-  weaponTimeReload: 0
-  weaponAvailableShoot: 0
-  weaponAvailableReload: 0
 --- !u!1001 &195539365
 Prefab:
   m_ObjectHideFlags: 0
@@ -396,7 +367,7 @@ MonoBehaviour:
   PlayerCameraOffsetY: 10
   PlayerCameraOffsetZ: -10
   playerCameraSpeed: 2.5
-  playerCameraZoom: 5
+  playerCameraZoom: 10
 --- !u!1 &901929878
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,27 +490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7587b51603ac24ab6eca61a5557c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponNumber: 0
-  weaponName: 
-  weaponType: 1
-  weaponPallet: 0
-  weaponDamage: 0
-  weaponBullet: 0
-  weaponClip: 0
-  weaponRange: 10
-  weaponRecoil: 0
-  weaponSpread: 0
-  weaponSpreadMin: 0
-  weaponSpreadMax: 0
-  weaponSpreadHeal: 0
-  weaponTimeShoot: 0
-  weaponTimeReload: 0
-  weaponAvailableShoot: 0
-  weaponAvailableReload: 0
   weaponSelect: 0
+  itemWeaponTransform: []
   player: {fileID: 776392043}
   playerInfo: {fileID: 776392045}
-  bulletObject: {fileID: 1784312105609200, guid: a670e0de28052834c8fcb8f760cea6f0,
+  bulletObject: {fileID: 1816357730341680, guid: a670e0de28052834c8fcb8f760cea6f0,
     type: 2}
 --- !u!1 &1316679878 stripped
 GameObject:
