@@ -10,15 +10,6 @@ public class ItemWeapon {
 	public string weaponName;
 	public GameObject weaponModel; 
 
-	public weaponTypeList weaponType;
-	public enum weaponTypeList {
-
-		melee,
-		ranged,
-		throwable
-
-	}
-
 	public int weaponPallet;
 	public float weaponDamage;
 	public float weaponKnockback;
@@ -47,13 +38,11 @@ public class ItemWeapon {
 
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, weaponTypeList type, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, float timeReload ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, float timeReload ) {
 
 		weaponNumber = number;
 		weaponName = name;
 		weaponModel = model;
-
-		weaponType = type;
 
 		weaponPallet = pallet;
 		weaponDamage = damage;

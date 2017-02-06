@@ -15,12 +15,12 @@ public class PlayerEquip : MonoBehaviour {
 	public itemWeaponList weaponSelect;
 	public enum itemWeaponList {
 
-		Player_Weapon_Test47
+		Player_Weapon_Test47,
+		Player_Weapon_Test12
 
 	}
 
-	public ItemWeapon[] itemWeapon = new ItemWeapon[1];
-	public Transform[] itemWeaponTransform;
+	public ItemWeapon[] itemWeapon = new ItemWeapon[2];
 
 	// PLAYER INFO 
 
@@ -43,9 +43,10 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), ItemWeapon.weaponTypeList.ranged, 1, 10f, 1f, 30, 10f, 0.1f, 1f, 0.1f, 1f );
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 30, 10f, 0.1f, 1f, 0.1f, 5f );
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 5, 8f, 0.3f, 3f, 0.5f, 1f );
 
-		itemWeaponTransform = GetComponentsInChildren<Transform>();
+		WeaponSelect ();
 
 	}
 
@@ -57,9 +58,16 @@ public class PlayerEquip : MonoBehaviour {
 		mousePosition.y = 0f;
 		transform.rotation = Quaternion.LookRotation (mousePosition);
 
-		bool mouse = Input.GetMouseButton (0);
-		if (mouse)
+		if (Input.GetMouseButton (0))
 			WeaponAttack (itemWeapon [(int)weaponSelect]);
+
+		if (Input.GetKeyDown (KeyCode.R))
+			WeaponReload (itemWeapon [(int)weaponSelect]);
+
+		WeaponScroll ();
+		WeaponSelect ();
+
+
 
 	}
 
@@ -67,16 +75,29 @@ public class PlayerEquip : MonoBehaviour {
 
 	// Weapon Info
 
-	void WeaponSelect ( itemWeaponList weapon ) {  // Select Weapon
+	void WeaponSelect () {  // Select Weapon
 
-		weaponSelect = weapon;
 		GameObject[] weapons = GameObject.FindGameObjectsWithTag ("PlayerWeapon");
-		for (int i = 0; i < weapons.Length; i++) {
+		for (int i = 0; i < weapons.Length; i++) weapons [i].SetActive (false);
+		itemWeapon [(int)weaponSelect].weaponModel.SetActive (true);
 
-			if ( i != (int)weapon ) weapons [i].SetActive (false);
-			else weapons [i].SetActive (true);
+	}
+
+	void WeaponScroll () {
+
+		if (Input.GetAxis ("Mouse ScrollWheel") > 0){
+			
+			weaponSelect++;
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
 
 		}
+		else if (Input.GetAxis ("Mouse ScrollWheel") < 0){
+
+			weaponSelect--;
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
+
+		}
+
 
 	}
 
@@ -84,7 +105,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	public void WeaponAttack(ItemWeapon weapon) {
 
-		if ( weapon.weaponAvailableAttack && (weapon.weaponType == ItemWeapon.weaponTypeList.melee || weapon.weaponBullet-1 >= 0)) {
+		if ( weapon.weaponAvailableAttack && !weapon.weaponIsReload && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 
@@ -111,17 +132,45 @@ public class PlayerEquip : MonoBehaviour {
 
 			projectileRigidbody.AddForce ( projectileInfo.transform.forward * projectileInfo.speed, ForceMode.Impulse);
 
+			playerCameraInfo.playerCameraShake += weapon.weaponKnockback * playerCameraInfo.playerCameraShakeMultiply;
+
 		}
 
-		playerCameraInfo.playerCameraShake += weapon.weaponKnockback * playerCameraInfo.playerCameraShakeMultiply;
+		weapon.weaponAvailableReload = true;
+		weapon.weaponBullet--;
 
-		if (weapon.weaponType != ItemWeapon.weaponTypeList.melee)
-			weapon.weaponBullet--;
 
 		yield return new WaitForSeconds (weapon.weaponTimeAttack);
 
 		// After Fire
 
+		weapon.weaponAvailableAttack = true;
+
+	}
+
+	// Reload
+
+	public void WeaponReload(ItemWeapon weapon) {
+	
+		if (weapon.weaponAvailableAttack && weapon.weaponAvailableReload && !weapon.weaponIsReload) {
+			StartCoroutine (WeaponBulletReload (weapon));
+		}
+	
+	}
+	IEnumerator WeaponBulletReload(ItemWeapon weapon) {
+
+		weapon.weaponIsReload = true;
+		weapon.weaponAvailableAttack = false;
+		weapon.weaponAvailableReload = false;
+
+		yield return new WaitForSeconds (weapon.weaponTimeReload);
+
+		if (weapon.weaponBullet > 0)
+			weapon.weaponBullet = weapon.weaponClip + 1;
+		else
+			weapon.weaponBullet = weapon.weaponClip;
+		
+		weapon.weaponIsReload = false;
 		weapon.weaponAvailableAttack = true;
 
 	}
