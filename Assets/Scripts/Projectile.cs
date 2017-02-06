@@ -22,4 +22,10 @@ public class Projectile : MonoBehaviour {
 
 	}
 
+	void OnCollisionEnter( Collision other ) {
+
+		if (other.gameObject.tag == "Map")
+			Destroy (gameObject);
+	}
+
 }

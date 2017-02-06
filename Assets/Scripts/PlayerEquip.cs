@@ -6,6 +6,10 @@ public class PlayerEquip : MonoBehaviour {
 
 	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
 
+	// CAMRTA
+
+	public PlayerCamera playerCameraInfo;
+
 	// WEAPON LIST
 
 	public itemWeaponList weaponSelect;
@@ -39,7 +43,7 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), ItemWeapon.weaponTypeList.ranged, 1, 10f, 0.1f, 30, 10f, 0.1f, 1f, 0.1f, 1f );
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), ItemWeapon.weaponTypeList.ranged, 1, 10f, 1f, 30, 10f, 0.1f, 1f, 0.1f, 1f );
 
 		itemWeaponTransform = GetComponentsInChildren<Transform>();
 
@@ -108,6 +112,8 @@ public class PlayerEquip : MonoBehaviour {
 			projectileRigidbody.AddForce ( projectileInfo.transform.forward * projectileInfo.speed, ForceMode.Impulse);
 
 		}
+
+		playerCameraInfo.playerCameraShake += weapon.weaponKnockback * playerCameraInfo.playerCameraShakeMultiply;
 
 		if (weapon.weaponType != ItemWeapon.weaponTypeList.melee)
 			weapon.weaponBullet--;

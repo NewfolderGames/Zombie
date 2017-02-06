@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerWeapon
   - PlayerProjectile
+  - Map
   layers:
   - Default
   - TransparentFX
