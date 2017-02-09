@@ -16,11 +16,12 @@ public class PlayerEquip : MonoBehaviour {
 	public enum itemWeaponList {
 
 		Player_Weapon_Test47,
-		Player_Weapon_Test12
+		Player_Weapon_Test12,
+		Player_Weapon_Test18
 
 	}
 
-	public ItemWeapon[] itemWeapon = new ItemWeapon[2];
+	public ItemWeapon[] itemWeapon = new ItemWeapon[4];
 
 	// PLAYER INFO 
 
@@ -47,6 +48,8 @@ public class PlayerEquip : MonoBehaviour {
 		// WEAPON LIST 
 		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false);
 		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true);
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellRifle,true);
+		itemWeapon [3] = new ItemWeapon (0, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false);
 
 		WeaponSelect ();
 
@@ -90,13 +93,13 @@ public class PlayerEquip : MonoBehaviour {
 		if (Input.GetAxis ("Mouse ScrollWheel") > 0){
 			
 			weaponSelect--;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length);
 
 		}
 		else if (Input.GetAxis ("Mouse ScrollWheel") < 0){
 
 			weaponSelect++;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length);
 
 		}
 

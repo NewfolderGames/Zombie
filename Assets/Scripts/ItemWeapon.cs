@@ -81,7 +81,7 @@ public class ItemWeapon {
 	public void WeaponRecoilCalculate() {  // Calculate Recoil
 
 		weaponSpreadAngle = Random.Range (0, 360);
-		weaponSpreadPercent = Mathf.Clamp(weaponSpreadMin, weaponSpreadMax, Random.Range( weaponSpreadMin, weaponSpreadMax ));
+		weaponSpreadPercent = Mathf.Lerp(weaponSpreadMin, weaponSpreadMax, Random.Range( 0f, 1f ));
 
 		weaponSpreadCircle.x = Mathf.Cos (weaponSpreadAngle) * weaponSpreadPercent;
 		weaponSpreadCircle.y = Mathf.Sin (weaponSpreadAngle) * weaponSpreadPercent;
