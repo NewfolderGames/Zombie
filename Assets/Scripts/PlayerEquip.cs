@@ -39,6 +39,13 @@ public class PlayerEquip : MonoBehaviour {
 
 	public GameObject[] bulletShell;
 
+	// LIGHT
+
+	public GameObject weaponFlash;
+	public GameObject weaponFlashlight;
+
+	public bool weaponFlashlightOn;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
@@ -72,7 +79,12 @@ public class PlayerEquip : MonoBehaviour {
 		WeaponScroll ();
 		WeaponSelect ();
 
+		if (Input.GetKeyDown (KeyCode.F)) {
 
+			weaponFlashlightOn = !weaponFlashlightOn;
+			weaponFlashlight.SetActive (weaponFlashlightOn);
+
+		}
 
 	}
 
@@ -113,6 +125,7 @@ public class PlayerEquip : MonoBehaviour {
 		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
+			StartCoroutine (WeaponSpawnLight (0.05f));
 			WeaponSpawnShell ();
 
 		}
@@ -150,6 +163,13 @@ public class PlayerEquip : MonoBehaviour {
 		// After Fire
 
 		weapon.weaponAvailableAttack = true;
+
+	}
+	IEnumerator WeaponSpawnLight(float time) {
+
+		weaponFlash.SetActive (true);
+		yield return new WaitForSeconds (time);
+		weaponFlash.SetActive (false);
 
 	}
 	void WeaponSpawnShell() {
