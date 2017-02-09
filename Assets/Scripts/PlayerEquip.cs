@@ -43,8 +43,8 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 30, 10f, 0.1f, 1f, 0.1f, 5f );
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 5, 8f, 0.3f, 3f, 0.5f, 1f );
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f);
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f);
 
 		WeaponSelect ();
 
@@ -60,9 +60,6 @@ public class PlayerEquip : MonoBehaviour {
 
 		if (Input.GetMouseButton (0))
 			WeaponAttack (itemWeapon [(int)weaponSelect]);
-
-		if (Input.GetKeyDown (KeyCode.R))
-			WeaponReload (itemWeapon [(int)weaponSelect]);
 
 		WeaponScroll ();
 		WeaponSelect ();
@@ -105,7 +102,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	public void WeaponAttack(ItemWeapon weapon) {
 
-		if ( weapon.weaponAvailableAttack && !weapon.weaponIsReload && weapon.weaponBullet-1 >= 0) {
+		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 
@@ -135,8 +132,7 @@ public class PlayerEquip : MonoBehaviour {
 			playerCameraInfo.playerCameraShake += weapon.weaponKnockback * playerCameraInfo.playerCameraShakeMultiply;
 
 		}
-
-		weapon.weaponAvailableReload = true;
+			
 		weapon.weaponBullet--;
 
 
@@ -144,33 +140,6 @@ public class PlayerEquip : MonoBehaviour {
 
 		// After Fire
 
-		weapon.weaponAvailableAttack = true;
-
-	}
-
-	// Reload
-
-	public void WeaponReload(ItemWeapon weapon) {
-	
-		if (weapon.weaponAvailableAttack && weapon.weaponAvailableReload && !weapon.weaponIsReload) {
-			StartCoroutine (WeaponBulletReload (weapon));
-		}
-	
-	}
-	IEnumerator WeaponBulletReload(ItemWeapon weapon) {
-
-		weapon.weaponIsReload = true;
-		weapon.weaponAvailableAttack = false;
-		weapon.weaponAvailableReload = false;
-
-		yield return new WaitForSeconds (weapon.weaponTimeReload);
-
-		if (weapon.weaponBullet > 0)
-			weapon.weaponBullet = weapon.weaponClip + 1;
-		else
-			weapon.weaponBullet = weapon.weaponClip;
-		
-		weapon.weaponIsReload = false;
 		weapon.weaponAvailableAttack = true;
 
 	}

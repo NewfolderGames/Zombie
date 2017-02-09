@@ -26,19 +26,15 @@ public class ItemWeapon {
 	public float weaponSpreadPercent;
 
 	public float weaponTimeAttack;
-	public float weaponTimeReload;
 
 	public bool weaponAvailableAttack;
-	public bool weaponAvailableReload;
-
-	public bool weaponIsReload;
 
 	public float weaponSpreadAngle;
 	public Vector3 weaponSpreadCircle;
 
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, float timeReload ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack ) {
 
 		weaponNumber = number;
 		weaponName = name;
@@ -57,12 +53,8 @@ public class ItemWeapon {
 		weaponSpreadMax = spreadMax;
 
 		weaponTimeAttack = timeAttack;
-		weaponTimeReload = timeReload;
 
 		weaponAvailableAttack = true;
-		weaponAvailableReload = true;
-
-		weaponIsReload = false;
 
 		WeaponRecoilCalculate ();
 
