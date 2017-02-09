@@ -40,9 +40,11 @@ public class ItemWeapon {
 
 	}
 
+	public bool weaponSemiauto;
+
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, weaponShellList shell ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, weaponShellList shell, bool semiauto ) {
 
 		weaponNumber = number;
 		weaponName = name;
@@ -67,6 +69,8 @@ public class ItemWeapon {
 		WeaponRecoilCalculate ();
 
 		weaponShell = shell;
+
+		weaponSemiauto = semiauto;
 
 	}
 
