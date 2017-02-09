@@ -89,13 +89,13 @@ public class PlayerEquip : MonoBehaviour {
 
 		if (Input.GetAxis ("Mouse ScrollWheel") > 0){
 			
-			weaponSelect++;
+			weaponSelect--;
 			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
 
 		}
 		else if (Input.GetAxis ("Mouse ScrollWheel") < 0){
 
-			weaponSelect--;
+			weaponSelect++;
 			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, 1);
 
 		}
