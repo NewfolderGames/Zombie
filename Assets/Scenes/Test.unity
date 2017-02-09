@@ -100,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 195530148}
   - component: {fileID: 195530151}
-  - component: {fileID: 195530150}
   - component: {fileID: 195530149}
   m_Layer: 10
   m_Name: Player_Weapon_Test47
@@ -153,18 +152,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &195530150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195530147}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &195530151
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -539,6 +526,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e660890dc49f17e4a8346ca20be7f376, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
   m_IsPrefabParent: 0
@@ -671,6 +662,9 @@ MonoBehaviour:
   playerInfo: {fileID: 776392045}
   bulletObject: {fileID: 1816357730341680, guid: a670e0de28052834c8fcb8f760cea6f0,
     type: 2}
+  bulletShell:
+  - {fileID: 1205019616737548, guid: 066920bf1c28e6c418327375dcf3f1d8, type: 2}
+  - {fileID: 1028736464848888, guid: 5dc80a4f355d29046a38d86f4da34a76, type: 2}
 --- !u!4 &1104025961 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
