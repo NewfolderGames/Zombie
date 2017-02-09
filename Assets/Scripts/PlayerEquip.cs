@@ -36,6 +36,8 @@ public class PlayerEquip : MonoBehaviour {
 
 	public GameObject bulletObject;
 
+	public GameObject[] bulletShell;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
@@ -43,8 +45,8 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f);
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f);
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle);
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun);
 
 		WeaponSelect ();
 
@@ -105,6 +107,7 @@ public class PlayerEquip : MonoBehaviour {
 		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
+			WeaponSpawnShell ();
 
 		}
 
@@ -141,6 +144,15 @@ public class PlayerEquip : MonoBehaviour {
 		// After Fire
 
 		weapon.weaponAvailableAttack = true;
+
+	}
+	void WeaponSpawnShell() {
+
+		GameObject shell = Instantiate (bulletShell [(int)itemWeapon[(int)weaponSelect].weaponShell], transform.position, transform.rotation);
+		Rigidbody shellRigidbody = shell.GetComponent<Rigidbody> ();
+
+		shellRigidbody.AddForce (transform.right * Random.Range (0.5f, 0.75f), ForceMode.Impulse);
+
 
 	}
 

@@ -32,9 +32,17 @@ public class ItemWeapon {
 	public float weaponSpreadAngle;
 	public Vector3 weaponSpreadCircle;
 
+	public weaponShellList weaponShell;
+	public enum weaponShellList {
+
+		ShellRifle,
+		ShellShotgun
+
+	}
+
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, weaponShellList shell ) {
 
 		weaponNumber = number;
 		weaponName = name;
@@ -57,6 +65,8 @@ public class ItemWeapon {
 		weaponAvailableAttack = true;
 
 		WeaponRecoilCalculate ();
+
+		weaponShell = shell;
 
 	}
 
