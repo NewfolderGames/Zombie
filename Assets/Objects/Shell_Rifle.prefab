@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 65698510682433888}
   - component: {fileID: 54277912368200462}
   - component: {fileID: 114592684147263508}
-  m_Layer: 0
-  m_Name: default
+  m_Layer: 9
+  m_Name: Shell_Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1c798117a23936747b37454c47123d9f, type: 2}
+  - {fileID: 2100000, guid: 5489728598250b44286ec336b6c47648, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +110,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205019616737548}
-  m_Mesh: {fileID: 4300000, guid: 28b9b461210f662458d018c1ef44f097, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7286155a52affc340b5d8fdcc72f3075, type: 3}
 --- !u!54 &54277912368200462
 Rigidbody:
   m_ObjectHideFlags: 1
