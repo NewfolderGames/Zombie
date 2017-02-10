@@ -46,6 +46,9 @@ public class PlayerEquip : MonoBehaviour {
 
 	public bool weaponFlashlightOn;
 
+	public LineRenderer weaponLaserpoint;
+	public Material weaponLaserpointMaterial;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
@@ -53,12 +56,18 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false);
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true);
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellRifle,true);
-		itemWeapon [3] = new ItemWeapon (0, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false);
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true);
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,false);
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellRifle,true,true);
+		itemWeapon [3] = new ItemWeapon (0, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,false);
 
 		WeaponSelect ();
+
+	}
+
+	void Start() {
+
+		WeaponLaserpoint ();
 
 	}
 
@@ -83,6 +92,24 @@ public class PlayerEquip : MonoBehaviour {
 
 			weaponFlashlightOn = !weaponFlashlightOn;
 			weaponFlashlight.SetActive (weaponFlashlightOn);
+
+		}
+			
+		if (weaponLaserpoint == null)
+			WeaponLaserpoint ();
+		else{
+
+			if (itemWeapon [(int)weaponSelect].weaponLaserpoint) {
+					
+				weaponLaserpoint.SetPosition (0, transform.position);
+				weaponLaserpoint.SetPosition (1, WeaponRotation ());
+
+			} else {
+					
+				weaponLaserpoint.SetPosition (0, transform.position);
+				weaponLaserpoint.SetPosition (1, transform.position);
+
+			}
 
 		}
 
@@ -125,7 +152,7 @@ public class PlayerEquip : MonoBehaviour {
 		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
-			StartCoroutine (WeaponSpawnLight (0.05f));
+			StartCoroutine (WeaponSpawnLight (Time.deltaTime));
 			WeaponSpawnShell ();
 
 		}
@@ -179,6 +206,35 @@ public class PlayerEquip : MonoBehaviour {
 
 		shellRigidbody.AddForce (transform.right * Random.Range (0.5f, 0.75f), ForceMode.Impulse);
 
+
+	}
+
+	Vector3 WeaponRotation () {
+
+		Ray ray = new Ray (transform.position, transform.forward);
+		RaycastHit rayHit;
+
+		float rayLenght = 500f;
+
+		int layerMask = LayerMask.GetMask ("Map", "Enemy");
+
+		if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask))
+			return rayHit.point;
+		else
+			return transform.position + transform.forward * 100f;
+
+	}
+
+	void WeaponLaserpoint() {
+
+		weaponLaserpoint = new GameObject ("Player_Weapon_Laserpoint").AddComponent<LineRenderer> ().GetComponent<LineRenderer> ();
+		weaponLaserpoint.numPositions = 2;
+		weaponLaserpoint.startWidth = 0.02f;
+		weaponLaserpoint.endWidth = 0.02f;
+		weaponLaserpoint.startColor = Color.white;
+		weaponLaserpoint.endColor = Color.white;
+		weaponLaserpoint.material = weaponLaserpointMaterial;
+		//weaponLaserpoint.useWorldSpace = true;
 
 	}
 

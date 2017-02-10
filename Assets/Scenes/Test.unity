@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 551403257}
   - component: {fileID: 551403256}
   - component: {fileID: 551403255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Map
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 100
-  m_SpotAngle: 30
+  m_SpotAngle: 60
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -936,6 +936,9 @@ MonoBehaviour:
   weaponFlash: {fileID: 894480133}
   weaponFlashlight: {fileID: 220212469}
   weaponFlashlightOn: 0
+  weaponLaserpoint: {fileID: 0}
+  weaponLaserpointMaterial: {fileID: 2100000, guid: 4606817aa2822f24685fea8aa459226f,
+    type: 2}
 --- !u!4 &1104025961 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
