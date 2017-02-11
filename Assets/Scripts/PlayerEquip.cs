@@ -17,7 +17,8 @@ public class PlayerEquip : MonoBehaviour {
 
 		Player_Weapon_Test47,
 		Player_Weapon_Test12,
-		Player_Weapon_Test18
+		Player_Weapon_Test18,
+		Player_Weapon_WTF
 
 	}
 
