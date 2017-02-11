@@ -125,4 +125,4 @@ MonoBehaviour:
   knockback: 0
   knockbackMultiply: 1
   range: 10
-  speed: 7
+  speed: 7.5

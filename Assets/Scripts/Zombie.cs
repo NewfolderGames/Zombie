@@ -30,6 +30,7 @@ public class Zombie : MonoBehaviour {
 			enemyNavigation.SetDestination (player.transform.position);
 		else {
 
+			enemyNavigation.Stop ();
 			if (enemyRigidbody.velocity == Vector3.zero) {
 
 				enemyNavigation.Resume ();

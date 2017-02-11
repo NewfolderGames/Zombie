@@ -57,12 +57,10 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true);
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,false);
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,true,true);
-		itemWeapon [3] = new ItemWeapon (0, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,false);
-
-		WeaponSelect ();
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.225f,1f),new Vector3(0f,0.225f,1f));
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f),new Vector3(0f,0.27f,0.23f));
+		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f),new Vector3(0f,0f,1f));
 
 	}
 
@@ -102,17 +100,19 @@ public class PlayerEquip : MonoBehaviour {
 
 			if (itemWeapon [(int)weaponSelect].weaponLaserpoint) {
 					
-				weaponLaserpoint.SetPosition (0, transform.position);
+				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
 				weaponLaserpoint.SetPosition (1, WeaponRotation ());
 
 			} else {
 					
-				weaponLaserpoint.SetPosition (0, transform.position);
-				weaponLaserpoint.SetPosition (1, transform.position);
+				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
+				weaponLaserpoint.SetPosition (1, weaponLaserpoint.transform.position);
 
 			}
 
 		}
+
+		WeaponSelect ();
 
 	}
 
@@ -126,6 +126,9 @@ public class PlayerEquip : MonoBehaviour {
 		for (int i = 0; i < weapons.Length; i++) weapons [i].SetActive (false);
 		itemWeapon [(int)weaponSelect].weaponModel.SetActive (true);
 
+		weaponFlashlight.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPointFlashlight;
+		weaponLaserpoint.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPointLaserpoint;
+
 	}
 
 	void WeaponScroll () {
@@ -133,13 +136,13 @@ public class PlayerEquip : MonoBehaviour {
 		if (Input.GetAxis ("Mouse ScrollWheel") > 0){
 			
 			weaponSelect--;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length);
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
 
 		}
 		else if (Input.GetAxis ("Mouse ScrollWheel") < 0){
 
 			weaponSelect++;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length);
+			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
 
 		}
 
@@ -228,7 +231,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	void WeaponLaserpoint() {
 
-		weaponLaserpoint = new GameObject ("Player_Weapon_Laserpoint").AddComponent<LineRenderer> ().GetComponent<LineRenderer> ();
+		weaponLaserpoint = GameObject.Find("Player_Weapon_Laserpoint").GetComponent<LineRenderer> ();
 		weaponLaserpoint.numPositions = 2;
 		weaponLaserpoint.startWidth = 0.02f;
 		weaponLaserpoint.endWidth = 0.02f;

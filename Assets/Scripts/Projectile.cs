@@ -36,7 +36,6 @@ public class Projectile : MonoBehaviour {
 
 			otherZombie.EnemyChangeHealth (damage);
 			otherZombie.enemyKnockback = true;
-			otherZombie.enemyNavigation.Stop ();
 			otherRigidbody.AddForce(transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
 
 			Destroy (gameObject);
