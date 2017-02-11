@@ -18,6 +18,8 @@ public class Projectile : MonoBehaviour {
 
 	void Start() {
 
+		knockback *= knockbackMultiply * 25f;
+		damage *= damageMultiply;
 		Destroy (gameObject, range);
 
 	}
@@ -26,6 +28,21 @@ public class Projectile : MonoBehaviour {
 
 		if (other.gameObject.tag == "Map")
 			Destroy (gameObject);
+		
+		if (other.gameObject.tag == "Enemy") {
+			
+			Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody> ();
+			Zombie otherZombie = other.gameObject.GetComponent<Zombie> ();
+
+			otherZombie.EnemyChangeHealth (damage);
+			otherZombie.enemyKnockback = true;
+			otherZombie.enemyNavigation.Stop ();
+			otherRigidbody.AddForce(transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
+
+			Destroy (gameObject);
+
+		}
+		
 	}
 
 }

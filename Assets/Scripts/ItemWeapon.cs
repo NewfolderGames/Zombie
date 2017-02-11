@@ -36,7 +36,8 @@ public class ItemWeapon {
 	public enum weaponShellList {
 
 		ShellRifle,
-		ShellShotgun
+		ShellShotgun,
+		ShellPistol
 
 	}
 
