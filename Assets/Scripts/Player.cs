@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
+
 	// PLAYER INFO
 
 	public float playerHealth;
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
 
 	public GameObject playerCameraMain;
 
-	//====================================================\\
+	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
 	void Awake () {
 
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour {
 
 	}
 
-	//====================================================\\
+	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
 	void PlayerMove ( float h, float v ) {
 

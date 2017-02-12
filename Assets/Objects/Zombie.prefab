@@ -124,7 +124,9 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyNavigation: {fileID: 0}
   enemyRigidbody: {fileID: 0}
-  enemyHealth: 100
+  spawner: {fileID: 0}
+  enemyHealth: 10
+  enemySpeed: 0
   enemyKnockback: 0
 --- !u!195 &195161331126901382
 NavMeshAgent:

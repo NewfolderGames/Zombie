@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-	// CAMERA
+	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
 
 	public GameObject playerCamera;
 	public Camera playerCameraMain;
@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour {
 
 	public float playerCameraZoom;
 
-	//====================================================\\
+	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	// Use this for initialization
 	void Start () {
@@ -40,11 +40,6 @@ public class PlayerCamera : MonoBehaviour {
 		playerCameraMain.orthographicSize = playerCameraZoom;
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void LateUpdate() {
 
@@ -59,9 +54,5 @@ public class PlayerCamera : MonoBehaviour {
 		playerCameraShake = Mathf.Lerp (playerCameraShake, 0f, 0.1f);
 
 	}
-
-	//====================================================\\
-
-
-
+		
 }

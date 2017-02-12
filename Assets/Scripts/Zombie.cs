@@ -5,20 +5,32 @@ using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour {
 
+	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
+
+	public static int enemyNumber;
+
 	public GameObject player;
 	public NavMeshAgent enemyNavigation;
 	public Rigidbody enemyRigidbody;
+	public SpawnerSystem spawner;
 
 	public float enemyHealth;
+	public float enemySpeed;
 
 	public bool enemyKnockback;
 
+	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
+
 	void Start () {
 
+		enemyNumber++;
+		spawner.waveZombieNumberCurrent = enemyNumber;
 
 		enemyNavigation = gameObject.GetComponent<NavMeshAgent> ();
 		enemyRigidbody = gameObject.GetComponent<Rigidbody> ();
 		enemyRigidbody.freezeRotation = true;
+
+		enemyNavigation.speed = enemySpeed;
 
 		player = GameObject.Find ("Player");
 
@@ -42,11 +54,18 @@ public class Zombie : MonoBehaviour {
 
 	}
 
+	// ========== ========== ========== FUNCTION ========== ========== ========== \\
+
 	public void EnemyChangeHealth(float damage) {
 
 		enemyHealth -= damage;
-		if (enemyHealth <= 0)
+		if (enemyHealth <= 0) {
+			
 			Destroy (gameObject);
+			enemyNumber--;
+			spawner.waveZombieNumberCurrent = enemyNumber;
+
+		}
 
 	}
 
