@@ -22,7 +22,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
-	public ItemWeapon[] itemWeapon = new ItemWeapon[4];
+	public ItemWeapon[] itemWeapon = new ItemWeapon[5];
 
 	// PLAYER INFO 
 
@@ -57,10 +57,13 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 1, 10f, 1f, 150, 10f, 0.1f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 12, 2f, 0.2f, 25, 8f, 0.3f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.225f,1f),new Vector3(0f,0.225f,1f));
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 1, 5f, 0.5f, 60, 10f, 0.1f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f),new Vector3(0f,0.27f,0.23f));
-		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"), 10, 1f, 0.1f, 9999, 10f, 0.1f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f),new Vector3(0f,0f,1f));
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,	10f,	1f,		150, 10f, 1f / 60f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,	2f,		0.2f,	25, 8f, 30f / 60f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.025f,1f),new Vector3(0f,0.025f,1f));
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,	7.5f,	0.5f,	60, 10f, 5f / 60f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f),new Vector3(0f,0.27f,0.23f));
+		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,	10f,	0.5f,	250, 10f, 5f / 60f, 2f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
+		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,	1f,		0.1f,	9999, 10f, 1f / 60f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f),new Vector3(0f,0f,1f));
+
+		WeaponSelect ();
 
 	}
 
@@ -111,8 +114,6 @@ public class PlayerEquip : MonoBehaviour {
 			}
 
 		}
-
-		WeaponSelect ();
 
 	}
 
