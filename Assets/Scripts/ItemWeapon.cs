@@ -44,12 +44,11 @@ public class ItemWeapon {
 	public bool weaponSemiauto;
 	public bool weaponLaserpoint;
 
-	public Vector3 weaponPointLaserpoint;
-	public Vector3 weaponPointFlashlight;
+	public Vector3 weaponPoint;
 
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, int clip, float range, float spreadMin, float spreadMax, float timeAttack, weaponShellList shell, bool semiauto, bool laserpoint, Vector3 pointLaserpoint, Vector3 pointFlashlight ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, float recoil, int clip, float range, float spreadMin, float spreadMax, float timeAttack, weaponShellList shell, bool semiauto, bool laserpoint, Vector3 point ) {
 
 		weaponNumber = number;
 		weaponName = name;
@@ -63,6 +62,8 @@ public class ItemWeapon {
 		weaponClip = clip;
 
 		weaponRange = range;
+
+		weaponRecoil = recoil;
 
 		weaponSpreadMin = spreadMin;
 		weaponSpreadMax = spreadMax;
@@ -79,8 +80,7 @@ public class ItemWeapon {
 
 		weaponLaserpoint = laserpoint;
 
-		weaponPointLaserpoint = pointFlashlight;
-		weaponPointFlashlight = pointLaserpoint;
+		weaponPoint = point;
 
 	}
 

@@ -40,7 +40,9 @@ public class PlayerEquip : MonoBehaviour {
 
 	public GameObject[] bulletShell;
 
-	// LIGHT
+	// WEAPON BARREL
+
+	public GameObject weaponBarrel;
 
 	public GameObject weaponFlash;
 	public GameObject weaponFlashlight;
@@ -56,12 +58,12 @@ public class PlayerEquip : MonoBehaviour {
 
 		playerInfo = player.GetComponent<Player> ();
 
-		// WEAPON LIST 
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,	10f,	1f,		150, 10f, 1f / 60f, 1f, 0.1f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,	2f,		0.2f,	25, 8f, 30f / 60f, 3f, 0.5f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.025f,1f),new Vector3(0f,0.025f,1f));
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,	7.5f,	0.5f,	60, 10f, 5f / 60f, 0.5f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f),new Vector3(0f,0.27f,0.23f));
-		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,	10f,	0.5f,	250, 10f, 5f / 60f, 2f, 0.2f,ItemWeapon.weaponShellList.ShellPistol,false,true,new Vector3(0f,0f,0.5f),new Vector3(0f,0f,0.5f));
-		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,	1f,		0.1f,	9999, 10f, 1f / 60f, 10f, 0.01f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f),new Vector3(0f,0f,1f));
+		// WEAPON LIST 																							pallet	damage	knbk	recoil		clip	range	min		max		speed
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,		10f,	1f,		1.2f,		150,	10f,	0.1f,	1f,		3f / 60f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f));
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.025f,1f));
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f));
+		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,ItemWeapon.weaponShellList.ShellPistol,false,true,new Vector3(0f,0.01f,0.5f));
+		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f));
 
 		WeaponSelect ();
 
@@ -126,9 +128,7 @@ public class PlayerEquip : MonoBehaviour {
 		GameObject[] weapons = GameObject.FindGameObjectsWithTag ("PlayerWeapon");
 		for (int i = 0; i < weapons.Length; i++) weapons [i].SetActive (false);
 		itemWeapon [(int)weaponSelect].weaponModel.SetActive (true);
-
-		weaponFlashlight.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPointFlashlight;
-		weaponLaserpoint.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPointLaserpoint;
+		weaponBarrel.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPoint;
 
 	}
 
@@ -173,7 +173,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			weapon.WeaponRecoilCalculate ();
 
-			GameObject projectileClone = Instantiate (bulletObject, transform.position, transform.rotation * Quaternion.Euler (itemWeapon [(int)weaponSelect].weaponSpreadCircle));
+			GameObject projectileClone = Instantiate (bulletObject, weaponBarrel.transform.position, transform.rotation * Quaternion.Euler (itemWeapon [(int)weaponSelect].weaponSpreadCircle));
 			Projectile projectileInfo = projectileClone.GetComponent<Projectile> ();
 			Rigidbody projectileRigidbody = projectileClone.GetComponent<Rigidbody> ();
 
@@ -183,7 +183,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			projectileRigidbody.AddForce ( projectileInfo.transform.forward * projectileInfo.speed, ForceMode.Impulse);
 
-			playerCameraInfo.playerCameraShake += weapon.weaponKnockback * playerCameraInfo.playerCameraShakeMultiply;
+			playerCameraInfo.playerCameraShake += weapon.weaponRecoil * playerCameraInfo.playerCameraShakeMultiply;
 
 		}
 			

@@ -325,8 +325,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 954773448}
-  m_RootOrder: 6
+  m_Father: {fileID: 1641965372}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &220212471
 Light:
@@ -389,8 +389,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 954773448}
-  m_RootOrder: 7
+  m_Father: {fileID: 1641965372}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &365400106
 LineRenderer:
@@ -763,9 +763,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 954773448}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 1641965372}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &894480135
 Light:
   m_ObjectHideFlags: 0
@@ -915,9 +915,7 @@ Transform:
   - {fileID: 487818469}
   - {fileID: 1721254841}
   - {fileID: 124433811}
-  - {fileID: 894480134}
-  - {fileID: 220212470}
-  - {fileID: 365400105}
+  - {fileID: 1641965372}
   m_Father: {fileID: 776392049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -943,6 +941,7 @@ MonoBehaviour:
   - {fileID: 1205019616737548, guid: 066920bf1c28e6c418327375dcf3f1d8, type: 2}
   - {fileID: 1028736464848888, guid: 5dc80a4f355d29046a38d86f4da34a76, type: 2}
   - {fileID: 1881485499584672, guid: f0e6e139cedc6264587f40a355b29b91, type: 2}
+  weaponBarrel: {fileID: 1641965371}
   weaponFlash: {fileID: 894480133}
   weaponFlashlight: {fileID: 220212469}
   weaponFlashlightOn: 0
@@ -1109,6 +1108,37 @@ GameObject:
   m_PrefabParentObject: {fileID: 1638478343094608, guid: e0e1632b6ab9d3844ab5eeb613d86e1b,
     type: 2}
   m_PrefabInternal: {fileID: 195539365}
+--- !u!1 &1641965371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1641965372}
+  m_Layer: 0
+  m_Name: Player_Weapon_Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641965372
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641965371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 894480134}
+  - {fileID: 220212470}
+  - {fileID: 365400105}
+  m_Father: {fileID: 954773448}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663828920
 GameObject:
   m_ObjectHideFlags: 0
