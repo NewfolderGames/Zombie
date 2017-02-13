@@ -8,6 +8,7 @@ TagManager:
   - PlayerProjectile
   - Map
   - Enemy
+  - BoxMystery
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - PlayerProiectile
   - Enemy
   - EnemyProjectile
-  - 
-  - 
+  - Box
+  - BoxMystery
   - 
   - 
   - 
