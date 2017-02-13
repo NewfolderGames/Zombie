@@ -21,7 +21,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
-	public ItemWeapon[] itemWeapon = new ItemWeapon[5];
+	public ItemWeapon[] itemWeapon = new ItemWeapon[6];
 
 	public int itemSlotNumber = 0;
 	public ItemWeapon[] itemSlot = new ItemWeapon[2];
@@ -65,7 +65,8 @@ public class PlayerEquip : MonoBehaviour {
 		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
 		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3(0f,-0.25f,0f),		new Vector3(0f,0.02f,0.23f));
 		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.35f,0f),		new Vector3(0f,0.01f,0.5f));
-		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
+		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestSMG", GameObject.Find ("Player_Weapon_TestSMG"), 1,		7.5f,	0.75f,	0.75f,		500,	10f,	0.1f,	1.5f, 	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.375f,0f),		new Vector3(0f,0.015f,0.7875f));
+		itemWeapon [5] = new ItemWeapon (5, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
 
 		itemSlot [0] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
 		itemSlot [1] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
