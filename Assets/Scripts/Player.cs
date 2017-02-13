@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -8,7 +9,8 @@ public class Player : MonoBehaviour {
 
 	// PLAYER INFO
 
-	public float playerHealth;
+	public float playerHealth = 100f;
+	public float playerPoint = 0f;
 
 	// MOVEMENT
 
@@ -32,6 +34,11 @@ public class Player : MonoBehaviour {
 
 	public GameObject playerCameraMain;
 
+	// TEXT
+
+	public Text textHealth;
+	public Text textPoint;
+
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
 	void Awake () {
@@ -41,7 +48,12 @@ public class Player : MonoBehaviour {
 		componentRigidbody.freezeRotation = true;
 
 	}
-	
+
+	void Start() {
+
+		TextUpdate ();
+
+	}
 
 	void Update () {
 
@@ -96,6 +108,13 @@ public class Player : MonoBehaviour {
 
 		}
 	
+	}
+
+	public void TextUpdate() {
+
+		textHealth.text = playerHealth.ToString ();
+		textPoint.text = playerPoint.ToString ();
+
 	}
 
 }

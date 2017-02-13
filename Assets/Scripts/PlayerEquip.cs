@@ -65,8 +65,8 @@ public class PlayerEquip : MonoBehaviour {
 
 		playerInfo = player.GetComponent<Player> ();
 
-		itemSlot [0] = WeaponRandom();
-		itemSlot [1] = WeaponRandom();
+		itemSlot [0] = WeaponRandom((int)Random.Range (0f, 6f));
+		itemSlot [1] = WeaponRandom((int)Random.Range (0f, 6f));
 
 		WeaponSelect (itemSlot [itemSlotNumber]);
 
@@ -269,9 +269,9 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
-	public ItemWeapon WeaponRandom() {
+	public ItemWeapon WeaponRandom(int number) {
 
-		switch ((int)Random.Range (0f, 6f)) {
+		switch (number) {
 
 		//							number	name					modelobject										pallet	damage	knkbck	recoil	clip	range	min		max		speed		shelltype								semi	laser	modelposition					barrelposition
 
