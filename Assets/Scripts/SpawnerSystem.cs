@@ -66,12 +66,12 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public void WaveCalculate(int wave) {
 
-		waveZombie = Mathf.FloorToInt (10f + (wave / 3));
+		waveZombie = Mathf.FloorToInt (10f + (wave * 2));
 		waveZombieHealth = 10f + (wave * 2);
 		waveZombieSpeed = Mathf.Min(10f, 2f + (wave * 0.1f));
 
 		waveSpawnDelay = Mathf.Max (1f, 2f - (wave * 0.05f));
-		waveSpawnNumber = Mathf.Min(spawners.Length, Mathf.FloorToInt (1 + (wave / 0.1f)));
+		waveSpawnNumber = Mathf.Min(spawners.Length, Mathf.FloorToInt (1 + (wave * 0.1f)));
 		waveZombieNumberLeft = waveZombieNumber;
 
 	}

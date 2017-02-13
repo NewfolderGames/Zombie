@@ -23,6 +23,10 @@ public class BoxMystery : MonoBehaviour {
 	int changeNumber = 0;
 	int changeNumberMax = 50;
 	float changeNumberTime = 5f;
+
+	float weaponVanish = 10f;
+	float weaponVanishCurrent = 0;
+
 	int weaponNumber;
 
 	public int boxCost;
@@ -37,7 +41,7 @@ public class BoxMystery : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E)) {
 
 			if (Vector3.Distance (player.transform.position, transform.position) <= 5) {
 
@@ -48,7 +52,7 @@ public class BoxMystery : MonoBehaviour {
 
 				int layerMask = LayerMask.GetMask ("BoxMystery");
 
-				if( Physics.Raycast( ray, out rayHit, rayLenght, layerMask ) ) {
+				if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask)) {
 
 					if (availableBuy && !availableGet) {
 							
@@ -59,6 +63,7 @@ public class BoxMystery : MonoBehaviour {
 							StartCoroutine (WeaponChoose ());
 							boxWeapon.SetActive (true);
 							boxLight.SetActive (true);
+							boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
 
 						} else
 							Debug.Log ("돈이 부족합니다");
@@ -77,6 +82,21 @@ public class BoxMystery : MonoBehaviour {
 					
 			}
 
+		}
+
+		if (availableGet) {
+
+			weaponVanishCurrent += Time.deltaTime;
+			boxWeapon.transform.localPosition = Vector3.Lerp (new Vector3 (0f, 1.5f, 0f), new Vector3 (0f, 0f, 0f), weaponVanishCurrent / weaponVanish);
+			if(boxWeapon.transform.localPosition == new Vector3(0f, 0f, 0f)){
+
+				weaponVanishCurrent = 0;
+				boxWeapon.SetActive (false);
+				boxLight.SetActive (false);
+				availableGet = false;
+
+			}
+				
 		}
 
 	}
