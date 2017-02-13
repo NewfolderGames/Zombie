@@ -12,7 +12,6 @@ public class PlayerEquip : MonoBehaviour {
 
 	// WEAPON LIST
 
-	public itemWeaponList weaponSelect;
 	public enum itemWeaponList {
 
 		Player_Weapon_Test47,
@@ -23,6 +22,9 @@ public class PlayerEquip : MonoBehaviour {
 	}
 
 	public ItemWeapon[] itemWeapon = new ItemWeapon[5];
+
+	public int itemSlotNumber = 0;
+	public ItemWeapon[] itemSlot = new ItemWeapon[2];
 
 	// PLAYER INFO 
 
@@ -65,7 +67,10 @@ public class PlayerEquip : MonoBehaviour {
 		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.35f,0f),		new Vector3(0f,0.01f,0.5f));
 		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
 
-		WeaponSelect (itemWeapon [(int)weaponSelect]);
+		itemSlot [0] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
+		itemSlot [1] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
+
+		WeaponSelect (itemSlot [itemSlotNumber]);
 
 	}
 
@@ -83,9 +88,9 @@ public class PlayerEquip : MonoBehaviour {
 		mousePosition.y = 0f;
 		transform.rotation = Quaternion.LookRotation (mousePosition);
 
-		if ((itemWeapon [(int)weaponSelect].weaponSemiauto && Input.GetMouseButtonDown (0))||(!itemWeapon [(int)weaponSelect].weaponSemiauto && Input.GetMouseButton (0))) {
+		if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0))||((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
 
-			WeaponAttack (itemWeapon [(int)weaponSelect]);
+			WeaponAttack (itemSlot [itemSlotNumber]);
 
 		}
 
@@ -103,7 +108,7 @@ public class PlayerEquip : MonoBehaviour {
 			WeaponLaserpoint ();
 		else{
 
-			if (itemWeapon [(int)weaponSelect].weaponLaserpoint) {
+			if (itemSlot[itemSlotNumber].weaponLaserpoint) {
 					
 				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
 				weaponLaserpoint.SetPosition (1, WeaponRotation ());
@@ -117,7 +122,7 @@ public class PlayerEquip : MonoBehaviour {
 
 		}
 
-		WeaponHeal (itemWeapon [(int)weaponSelect]);
+		WeaponHeal (itemSlot[itemSlotNumber]);
 
 	}
 
@@ -137,19 +142,19 @@ public class PlayerEquip : MonoBehaviour {
 
 	void WeaponScroll () {
 
-		if (itemWeapon [(int)weaponSelect].weaponAvailableAttack) {
+		if (itemSlot[itemSlotNumber].weaponAvailableAttack) {
 			
 			if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
-			
-				weaponSelect--;
-				weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
-				WeaponSelect (itemWeapon [(int)weaponSelect]);
+
+				itemSlotNumber--;
+				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
+				WeaponSelect (itemSlot[itemSlotNumber]);
 
 			} else if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 
-				weaponSelect++;
-				weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
-				WeaponSelect (itemWeapon [(int)weaponSelect]);
+				itemSlotNumber++;
+				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
+				WeaponSelect (itemSlot[itemSlotNumber]);
 
 			}
 
@@ -181,7 +186,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			weapon.WeaponRecoilCalculate ();
 
-			GameObject projectileClone = Instantiate (bulletObject, weaponBarrel.transform.position, transform.rotation * Quaternion.Euler (itemWeapon [(int)weaponSelect].weaponSpreadCircle));
+			GameObject projectileClone = Instantiate (bulletObject, weaponBarrel.transform.position, transform.rotation * Quaternion.Euler (itemSlot[itemSlotNumber].weaponSpreadCircle));
 			Projectile projectileInfo = projectileClone.GetComponent<Projectile> ();
 			Rigidbody projectileRigidbody = projectileClone.GetComponent<Rigidbody> ();
 
