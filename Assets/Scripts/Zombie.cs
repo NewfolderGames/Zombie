@@ -62,16 +62,15 @@ public class Zombie : MonoBehaviour {
 		enemyHealth -= damage;
 		Player playerInfo = player.GetComponent<Player> ();
 		playerInfo.playerPoint += 10f;
+		playerInfo.TextUpdate ();
 		if (enemyHealth <= 0 && !enemyDead) {
 			
 			enemyNumber--;
 			enemyDead = true;
 			spawnerSystem.waveZombieNumberCurrent = enemyNumber;
-			playerInfo.playerPoint += 90f;
 			Destroy (gameObject);
 
 		}
-		playerInfo.TextUpdate ();
 
 	}
 
