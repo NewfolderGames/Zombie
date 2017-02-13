@@ -24,6 +24,7 @@ public class Zombie : MonoBehaviour {
 	void Start () {
 
 		enemyNumber++;
+		spawner = GameObject.Find ("Spawner_System").GetComponent<SpawnerSystem> ();
 		spawner.waveZombieNumberCurrent = enemyNumber;
 
 		enemyNavigation = gameObject.GetComponent<NavMeshAgent> ();
@@ -33,7 +34,6 @@ public class Zombie : MonoBehaviour {
 		enemyNavigation.speed = enemySpeed;
 
 		player = GameObject.Find ("Player");
-
 	}
 
 	void Update () {

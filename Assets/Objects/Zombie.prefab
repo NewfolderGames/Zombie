@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b230af073e32c3428ed84cf247d85d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1814253474114064, guid: c931b5897206d3741a7185c822addf9a, type: 2}
   enemyNavigation: {fileID: 0}
   enemyRigidbody: {fileID: 0}
   spawner: {fileID: 0}
-  enemyHealth: 10
-  enemySpeed: 0
+  enemyHealth: 25
+  enemySpeed: 2.5
   enemyKnockback: 0
 --- !u!195 &195161331126901382
 NavMeshAgent:
