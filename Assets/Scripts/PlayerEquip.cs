@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerEquip : MonoBehaviour {
@@ -17,11 +18,11 @@ public class PlayerEquip : MonoBehaviour {
 		Player_Weapon_Test47,
 		Player_Weapon_Test12,
 		Player_Weapon_Test18,
+		player_Weapon_Test45,
+		Player_Weapon_TestSMG,
 		Player_Weapon_WTF
 
 	}
-
-	public ItemWeapon[] itemWeapon = new ItemWeapon[6];
 
 	public int itemSlotNumber = 0;
 	public ItemWeapon[] itemSlot = new ItemWeapon[2];
@@ -54,22 +55,18 @@ public class PlayerEquip : MonoBehaviour {
 	public LineRenderer weaponLaserpoint;
 	public Material weaponLaserpointMaterial;
 
+	// UI
+
+	public Text textBullet;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
 
 		playerInfo = player.GetComponent<Player> ();
 
-		// WEAPON LIST 																							pallet	damage	knbk	recoil		clip	range	min		max		speed
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,		10f,	1f,		1.2f,		150,	10f,	0.1f,	1f,		3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,0.5f));
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3(0f,-0.25f,0f),		new Vector3(0f,0.02f,0.23f));
-		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.35f,0f),		new Vector3(0f,0.01f,0.5f));
-		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestSMG", GameObject.Find ("Player_Weapon_TestSMG"), 1,		7.5f,	0.75f,	0.75f,		500,	10f,	0.1f,	1.5f, 	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.375f,0f),		new Vector3(0f,0.015f,0.7875f));
-		itemWeapon [5] = new ItemWeapon (5, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
-
-		itemSlot [0] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
-		itemSlot [1] = itemWeapon[(int)Random.Range (0f, itemWeapon.Length)];
+		itemSlot [0] = WeaponRandom();
+		itemSlot [1] = WeaponRandom();
 
 		WeaponSelect (itemSlot [itemSlotNumber]);
 
@@ -139,6 +136,8 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
 
+		TextUpdate (itemSlot [itemSlotNumber]);
+
 	}
 
 	void WeaponScroll () {
@@ -203,6 +202,7 @@ public class PlayerEquip : MonoBehaviour {
 			
 		weapon.weaponBullet--;
 
+		TextUpdate (itemSlot [itemSlotNumber]);
 
 		yield return new WaitForSeconds (weapon.weaponTimeAttack);
 
@@ -263,4 +263,44 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
+	void TextUpdate(ItemWeapon weapon) {
+
+		textBullet.text = weapon.weaponBullet.ToString();
+
+	}
+
+	public ItemWeapon WeaponRandom() {
+
+		switch ((int)Random.Range (0f, 6f)) {
+
+		//							number	name					modelobject										pallet	damage	knkbck	recoil	clip	range	min		max		speed		shelltype								semi	laser	modelposition					barrelposition
+
+		case (int)itemWeaponList.Player_Weapon_Test47:
+			return new ItemWeapon (0,	"Player_Weapon_Test47",	 	GameObject.Find ("Player_Weapon_Test47"), 		1,		10f,	1f,	 	1.2f,	150,	10f,	0.1f,	1f, 	3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3 (0f, 0f, 0f), 		new Vector3 (0f, 0f, 0.5f));
+		case (int)itemWeaponList.Player_Weapon_Test12:
+			return new ItemWeapon (1,	"Player_Weapon_Shotgun_1",	GameObject.Find ("Player_Weapon_Shotgun_1"), 	12,		2f,		0.2f,	0.2f,	25,		8f,		0.5f,	5f,		30f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
+		case (int)itemWeaponList.Player_Weapon_Test18:
+			return new ItemWeapon (2,	"Player_Weapon_Pistol_1",	GameObject.Find ("Player_Weapon_Pistol_1"), 	1, 		7.5f,	0.5f,	1.5f, 	60,		10f,	0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f));
+		case (int)itemWeaponList.player_Weapon_Test45:
+			return new ItemWeapon (3,	"Player_Weapon_SMG_1",		GameObject.Find ("Player_Weapon_SMG_1"), 		1, 		10f,	0.5f,	0.5f,	250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.35f, 0f),	new Vector3 (0f, 0.01f, 0.5f));
+		case (int)itemWeaponList.Player_Weapon_TestSMG:
+			return new ItemWeapon (4,	"Player_Weapon_SMG_2",		GameObject.Find ("Player_Weapon_SMG_2"),		1, 		7.5f,	0.75f,	0.75f, 	500,	10f,	0.1f,	1.5f,	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.375f, 0f),	new Vector3 (0f, 0.015f, 0.7875f));
+		case (int)itemWeaponList.Player_Weapon_WTF:
+			return new ItemWeapon (5,	"Player_Weapon_TestWTF",	GameObject.Find ("Player_Weapon_TestWTF"),		10, 	1f, 	0.1f,	0.1f, 	9999,	10f,	0f, 	10f,	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3 (0f, 0f, 0f), 		new Vector3 (0f, 0f, 1f));
+
+		}
+		return null;
+
+	}
+
 }
+
+
+/*																		pallet	damage	knbk	recoil		clip	range	min		max		speed
+itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,		10f,	1f,		1.2f,		150,	10f,	0.1f,	1f,		3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,0.5f));
+itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
+itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3(0f,-0.25f,0f),		new Vector3(0f,0.02f,0.23f));
+itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.35f,0f),		new Vector3(0f,0.01f,0.5f));
+itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestSMG", GameObject.Find ("Player_Weapon_TestSMG"), 1,		7.5f,	0.75f,	0.75f,		500,	10f,	0.1f,	1.5f, 	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.375f,0f),		new Vector3(0f,0.015f,0.7875f));
+itemWeapon [5] = new ItemWeapon (5, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
+*/
