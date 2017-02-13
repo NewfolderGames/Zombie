@@ -84,7 +84,7 @@ NavMeshSettings:
     agentRadius: 0.75
     agentHeight: 1
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -1016,6 +1016,22 @@ Prefab:
       propertyPath: m_Name
       value: Box_Mystery (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1080739413524916, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266186542384862, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930125145422302, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262019518522818, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
   m_IsPrefabParent: 0
@@ -1774,6 +1790,22 @@ Prefab:
     - target: {fileID: 4830009128291174, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262019518522818, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080739413524916, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266186542384862, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930125145422302, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e63d1470dbfda409affa52c66b28da, type: 2}
