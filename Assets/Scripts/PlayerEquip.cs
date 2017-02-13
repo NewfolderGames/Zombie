@@ -166,9 +166,7 @@ public class PlayerEquip : MonoBehaviour {
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 			StartCoroutine (WeaponSpawnLight (Time.deltaTime));
 			WeaponSpawnShell ((int)weapon.weaponShell);
-
-			weapon.weaponModel.transform.localPosition = weapon.weaponPosition - new Vector3 (0f, 0f, 0.5f);
-			weaponBarrel.transform.localPosition = weapon.weaponPoint - new Vector3 (0f, 0f, 0.5f);
+			transform.localPosition = new Vector3(0.75f,0f,0f);
 
 		}
 
@@ -255,8 +253,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	void WeaponHeal (ItemWeapon weapon) {  // Select Weapon
 
-		weapon.weaponModel.transform.localPosition = Vector3.Lerp (weapon.weaponModel.transform.localPosition, weapon.weaponPosition, Time.deltaTime * 5f);
-		weaponBarrel.transform.localPosition = Vector3.Lerp (weaponBarrel.transform.localPosition, weapon.weaponPoint, Time.deltaTime * 5f);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0.75f,0f,0.5f), Time.deltaTime * 5f);
 
 	}
 
