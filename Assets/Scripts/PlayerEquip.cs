@@ -59,13 +59,13 @@ public class PlayerEquip : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 
 		// WEAPON LIST 																							pallet	damage	knbk	recoil		clip	range	min		max		speed
-		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,		10f,	1f,		1.2f,		150,	10f,	0.1f,	1f,		3f / 60f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,0.5f));
-		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,ItemWeapon.weaponShellList.ShellShotgun,true,true,new Vector3(0f,0.025f,1f));
-		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,ItemWeapon.weaponShellList.ShellPistol,true,true,new Vector3(0f,0.27f,0.23f));
-		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,ItemWeapon.weaponShellList.ShellPistol,false,true,new Vector3(0f,0.01f,0.5f));
-		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,ItemWeapon.weaponShellList.ShellRifle,false,true,new Vector3(0f,0f,1f));
+		itemWeapon [0] = new ItemWeapon (0, "Player_Weapon_Test47", GameObject.Find ("Player_Weapon_Test47"), 	1,		10f,	1f,		1.2f,		150,	10f,	0.1f,	1f,		3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,0.5f));
+		itemWeapon [1] = new ItemWeapon (1, "Player_Weapon_Test12", GameObject.Find ("Player_Weapon_Test12"), 	12,		2f,		0.2f,	0.2f,		25,		8f,		0.5f,	5f,		30f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
+		itemWeapon [2] = new ItemWeapon (2, "Player_Weapon_Test18", GameObject.Find ("Player_Weapon_Test18"), 	1,		7.5f,	0.5f,	1.5f,		60,		10f,	0.25f,	1f,		6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3(0f,-0.25f,0f),		new Vector3(0f,0.02f,0.23f));
+		itemWeapon [3] = new ItemWeapon (3, "Player_Weapon_Test45", GameObject.Find ("Player_Weapon_Test45"), 	1,		10f,	0.5f,	0.5f,		250,	10f,	0.25f,	2f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3(0f,-0.35f,0f),		new Vector3(0f,0.01f,0.5f));
+		itemWeapon [4] = new ItemWeapon (4, "Player_Weapon_TestWTF", GameObject.Find ("Player_Weapon_TestWTF"),	10,		1f,		0.1f,	0.1f,		9999,	10f,	0f,		10f, 	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3(0f,0f,0f),			new Vector3(0f,0f,1f));
 
-		WeaponSelect ();
+		WeaponSelect (itemWeapon [(int)weaponSelect]);
 
 	}
 
@@ -90,7 +90,7 @@ public class PlayerEquip : MonoBehaviour {
 		}
 
 		WeaponScroll ();
-		WeaponSelect ();
+
 
 		if (Input.GetKeyDown (KeyCode.F)) {
 
@@ -117,36 +117,43 @@ public class PlayerEquip : MonoBehaviour {
 
 		}
 
+		WeaponHeal (itemWeapon [(int)weaponSelect]);
+
 	}
 
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
 	// Weapon Info
 
-	void WeaponSelect () {  // Select Weapon
+	void WeaponSelect (ItemWeapon weapon) {  // Select Weapon
 
 		GameObject[] weapons = GameObject.FindGameObjectsWithTag ("PlayerWeapon");
 		for (int i = 0; i < weapons.Length; i++) weapons [i].SetActive (false);
-		itemWeapon [(int)weaponSelect].weaponModel.SetActive (true);
-		weaponBarrel.transform.localPosition = itemWeapon [(int)weaponSelect].weaponPoint;
+		weapon.weaponModel.SetActive (true);
+		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
+		weaponBarrel.transform.localPosition = weapon.weaponPoint;
 
 	}
 
 	void WeaponScroll () {
 
-		if (Input.GetAxis ("Mouse ScrollWheel") > 0){
+		if (itemWeapon [(int)weaponSelect].weaponAvailableAttack) {
 			
-			weaponSelect--;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
+			if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+			
+				weaponSelect--;
+				weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
+				WeaponSelect (itemWeapon [(int)weaponSelect]);
+
+			} else if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+
+				weaponSelect++;
+				weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
+				WeaponSelect (itemWeapon [(int)weaponSelect]);
+
+			}
 
 		}
-		else if (Input.GetAxis ("Mouse ScrollWheel") < 0){
-
-			weaponSelect++;
-			weaponSelect = (itemWeaponList)Mathf.Clamp ((int)weaponSelect, 0, itemWeapon.Length - 1);
-
-		}
-
 
 	}
 
@@ -158,7 +165,10 @@ public class PlayerEquip : MonoBehaviour {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 			StartCoroutine (WeaponSpawnLight (Time.deltaTime));
-			WeaponSpawnShell ();
+			WeaponSpawnShell ((int)weapon.weaponShell);
+
+			weapon.weaponModel.transform.localPosition = weapon.weaponPosition - new Vector3 (0f, 0f, 0.5f);
+			weaponBarrel.transform.localPosition = weapon.weaponPoint - new Vector3 (0f, 0f, 0.5f);
 
 		}
 
@@ -204,9 +214,9 @@ public class PlayerEquip : MonoBehaviour {
 		weaponFlash.SetActive (false);
 
 	}
-	void WeaponSpawnShell() {
+	void WeaponSpawnShell(int shellType) {
 
-		GameObject shell = Instantiate (bulletShell [(int)itemWeapon[(int)weaponSelect].weaponShell], transform.position, transform.rotation);
+		GameObject shell = Instantiate (bulletShell [shellType], transform.position, transform.rotation);
 		Rigidbody shellRigidbody = shell.GetComponent<Rigidbody> ();
 
 		shellRigidbody.AddForce (transform.right * Random.Range (0.5f, 0.75f), ForceMode.Impulse);
@@ -240,6 +250,13 @@ public class PlayerEquip : MonoBehaviour {
 		weaponLaserpoint.endColor = Color.white;
 		weaponLaserpoint.material = weaponLaserpointMaterial;
 		//weaponLaserpoint.useWorldSpace = true;
+
+	}
+
+	void WeaponHeal (ItemWeapon weapon) {  // Select Weapon
+
+		weapon.weaponModel.transform.localPosition = Vector3.Lerp (weapon.weaponModel.transform.localPosition, weapon.weaponPosition, Time.deltaTime * 5f);
+		weaponBarrel.transform.localPosition = Vector3.Lerp (weaponBarrel.transform.localPosition, weapon.weaponPoint, Time.deltaTime * 5f);
 
 	}
 
