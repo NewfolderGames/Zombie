@@ -882,6 +882,69 @@ Transform:
   m_Father: {fileID: 954773448}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &525206982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 525206983}
+  - component: {fileID: 525206984}
+  m_Layer: 15
+  m_Name: Box_Mystery_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &525206983
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 525206982}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1341848718}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!108 &525206984
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 525206982}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Intensity: 1
+  m_Range: 50
+  m_SpotAngle: 179
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &538006133
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1029,74 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 45226591}
   m_Script: {fileID: 11500000, guid: 5016d6997eae95d43aae4c9ba556b499, type: 3}
+--- !u!1 &671857098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 671857099}
+  - component: {fileID: 671857101}
+  - component: {fileID: 671857100}
+  m_Layer: 15
+  m_Name: Box_Mystery_Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &671857099
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671857098}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1341848718}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!23 &671857100
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671857098}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &671857101
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671857098}
+  m_Mesh: {fileID: 4300000, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
 --- !u!114 &676112212 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114080229606500908, guid: 6aa62df21b65f1645a7556d87b7ab9e3,
@@ -1505,6 +1636,26 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInfo: {fileID: 0}
   playerWeapon: {fileID: 0}
+  boxLight: {fileID: 525206982}
+  boxWeapon: {fileID: 671857098}
+  mesh: {fileID: 671857101}
+  meshRenderer: {fileID: 671857100}
+  modelWeapon:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 4300000, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
+  - {fileID: 4300000, guid: 9c9b6a6433a09eb48af5c5ec18acd8e6, type: 3}
+  - {fileID: 4300000, guid: 78076fbc100b3eb4291adca82f0e87a7, type: 3}
+  - {fileID: 4300000, guid: 1572a8b23123b274d8d4c29275cbaee3, type: 3}
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  materialWeapon:
+  - {fileID: 2100000, guid: 15579907614a3744784b4cdfc3f6156f, type: 2}
+  - {fileID: 2100000, guid: e660890dc49f17e4a8346ca20be7f376, type: 2}
+  - {fileID: 2100000, guid: d42361722fdcd3942945beabdee462d1, type: 2}
+  - {fileID: 2100000, guid: 921efcd6896438c4799d9c2206476c4e, type: 2}
+  - {fileID: 2100000, guid: c5a2a9d114cc9e8418ff696669610bff, type: 2}
+  - {fileID: 2100000, guid: 15579907614a3744784b4cdfc3f6156f, type: 2}
+  availableBuy: 1
+  availableGet: 0
   boxCost: 100
 --- !u!65 &1201913116
 BoxCollider:
@@ -1674,6 +1825,11 @@ Camera:
   m_PrefabParentObject: {fileID: 20995875346729190, guid: e0e1632b6ab9d3844ab5eeb613d86e1b,
     type: 2}
   m_PrefabInternal: {fileID: 195539365}
+--- !u!4 &1341848718 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4163721783473078, guid: 2fdee1f43ad8aca4481f972cf32c072d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1573507452}
 --- !u!1001 &1456510239
 Prefab:
   m_ObjectHideFlags: 0
@@ -1771,6 +1927,14 @@ Prefab:
     - target: {fileID: 1879256917593430, guid: 2fdee1f43ad8aca4481f972cf32c072d, type: 2}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535032110267990, guid: 2fdee1f43ad8aca4481f972cf32c072d, type: 2}
+      propertyPath: m_Name
+      value: Box_Mystery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879256917593430, guid: 2fdee1f43ad8aca4481f972cf32c072d, type: 2}
+      propertyPath: m_Name
+      value: Box_Mystery_Core
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fdee1f43ad8aca4481f972cf32c072d, type: 2}

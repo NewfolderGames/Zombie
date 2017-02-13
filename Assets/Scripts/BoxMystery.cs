@@ -8,6 +8,23 @@ public class BoxMystery : MonoBehaviour {
 	public Player playerInfo;
 	public PlayerEquip playerWeapon;
 
+	public GameObject boxLight;
+	public GameObject boxWeapon;
+
+	public MeshFilter mesh;
+	public MeshRenderer meshRenderer;
+
+	public Mesh[] modelWeapon;
+	public Material[] materialWeapon;
+
+	public bool availableBuy = true;
+	public bool availableGet = false;
+
+	int changeNumber = 0;
+	int changeNumberMax = 50;
+	float changeNumberTime = 5f;
+	int weaponNumber;
+
 	public int boxCost;
 
 	void Start() {
@@ -33,15 +50,28 @@ public class BoxMystery : MonoBehaviour {
 
 				if( Physics.Raycast( ray, out rayHit, rayLenght, layerMask ) ) {
 
-					if (playerInfo.playerPoint >= boxCost) {
+					if (availableBuy && !availableGet) {
+							
+						if (playerInfo.playerPoint >= boxCost) {
+								
+							playerInfo.playerPoint -= boxCost;
+							playerInfo.TextUpdate ();
+							StartCoroutine (WeaponChoose ());
+							boxWeapon.SetActive (true);
+							boxLight.SetActive (true);
 
-						playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange ((int)Random.Range (0f, 6f));
+						} else
+							Debug.Log ("돈이 부족합니다");
+
+					} else if (availableGet) {
+
+						playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
 						playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-						playerInfo.playerPoint -= boxCost;
-						playerInfo.TextUpdate ();
+						boxWeapon.SetActive (false);
+						boxLight.SetActive (false);
+						availableGet = false;
 
-					} else
-						Debug.Log ("돈이 부족합니다");
+					}
 
 				}
 					
@@ -50,5 +80,29 @@ public class BoxMystery : MonoBehaviour {
 		}
 
 	}
+
+	IEnumerator WeaponChoose() {
+
+		availableBuy = false;
+		weaponNumber = (int)Random.Range (0f, 6f);
+		mesh.mesh = modelWeapon [weaponNumber];
+		meshRenderer.material = materialWeapon [weaponNumber];
+		changeNumber++;
+
+		yield return new WaitForSeconds (changeNumberTime / changeNumberMax);
+
+		if (changeNumber < changeNumberMax)
+			StartCoroutine (WeaponChoose ());
+		else {
+
+			changeNumber = 0;
+			availableBuy = true;
+			availableGet = true;
+
+		}
+
+	}
+
+
 
 }
