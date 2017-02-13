@@ -54,11 +54,13 @@ public class SpawnerSystem : MonoBehaviour {
 	IEnumerator WaveWait() {
 
 		waveWait = true;
+		Debug.Log ("웨이브" + wave + " 준비");
 
 		yield return new WaitForSeconds (waveWaitTime);
 
 		waveWait = false;
 		StartCoroutine (WaveSpawn ());
+		Debug.Log ("웨이브" + wave + " 시작");
 
 	}
 
@@ -69,7 +71,7 @@ public class SpawnerSystem : MonoBehaviour {
 		waveZombieSpeed = Mathf.Min(10f, 2.5f + (wave * 0.1f));
 
 		waveSpawnDelay = Mathf.Max (1f, 2.5f - (wave * 0.05f));
-		waveSpawnNumber = Mathf.FloorToInt (1 + (wave * 0.1f));
+		waveSpawnNumber = Mathf.Min(spawners.Length, Mathf.FloorToInt (1 + (wave * 0.1f)));
 		waveZombieNumberLeft = waveZombieNumber;
 
 	}
@@ -82,28 +84,39 @@ public class SpawnerSystem : MonoBehaviour {
 
 		float chance = spawners.Length;
 		int number = waveSpawnNumber;
-		for (int i = 0; i < spawners.Length; i++) {
+		while (number > 0) {
+			
+			for (int i = 0; i < spawners.Length; i++) {
 
-			if(Mathf.RoundToInt(Random.Range(1f,chance))==1) {
+				if (Mathf.RoundToInt (Random.Range (1f, chance)) == 1) {
 
-				chance--;
-				if (number > 0 && waveZombieNumberLeft > 0) {
+					chance--;
+					if (number > 0 && waveZombieNumberLeft > 0) {
 
-					number--;
-					waveZombieNumberLeft--;
-					spawners [i].SpawnEnemy ();
-					break;
+						number--;
+						waveZombieNumberLeft--;
+						spawners [i].SpawnEnemy ();
+						if (waveZombieNumberLeft == 0 || number == 0)
+							break;
+
+					} else
+						break;
 
 				} else
-					break;
+					chance--;
 
-			} else chance--;
+			}
+			if (waveZombieNumberLeft == 0 || number == 0)
+				break;
+			
+		}
+
+		if (waveZombieNumberLeft > 0) {
+			
+			waveSpawnAvailable = true;
+			StartCoroutine (WaveSpawn ());
 
 		}
-		if (waveZombieNumberLeft != 0)
-			waveSpawnAvailable = true;
-		else
-			StartCoroutine (WaveSpawn ());
 
 	}
 

@@ -12,10 +12,11 @@ public class Zombie : MonoBehaviour {
 	public GameObject player;
 	public NavMeshAgent enemyNavigation;
 	public Rigidbody enemyRigidbody;
-	public SpawnerSystem spawner;
+	public SpawnerSystem spawnerSystem;
 
 	public float enemyHealth;
 	public float enemySpeed;
+	public bool enemyDead;
 
 	public bool enemyKnockback;
 
@@ -24,8 +25,8 @@ public class Zombie : MonoBehaviour {
 	void Start () {
 
 		enemyNumber++;
-		spawner = GameObject.Find ("Spawner_System").GetComponent<SpawnerSystem> ();
-		spawner.waveZombieNumberCurrent = enemyNumber;
+		spawnerSystem = GameObject.Find ("Spawner_System").GetComponent<SpawnerSystem> ();
+		spawnerSystem.waveZombieNumberCurrent = enemyNumber;
 
 		enemyNavigation = gameObject.GetComponent<NavMeshAgent> ();
 		enemyRigidbody = gameObject.GetComponent<Rigidbody> ();
@@ -59,11 +60,12 @@ public class Zombie : MonoBehaviour {
 	public void EnemyChangeHealth(float damage) {
 
 		enemyHealth -= damage;
-		if (enemyHealth <= 0) {
+		if (enemyHealth <= 0 && !enemyDead) {
 			
-			Destroy (gameObject);
 			enemyNumber--;
-			spawner.waveZombieNumberCurrent = enemyNumber;
+			enemyDead = true;
+			spawnerSystem.waveZombieNumberCurrent = enemyNumber;
+			Destroy (gameObject);
 
 		}
 
