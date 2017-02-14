@@ -21,7 +21,7 @@ public class PlayerEquip : MonoBehaviour {
 		player_Weapon_SMG_1,
 		Player_Weapon_SMG_2,
 		Player_Weapon_Rifle_2,
-		Player_Weapon_WTF
+		Player_Weapon_SMG_3
 
 	}
 
@@ -287,11 +287,13 @@ public class PlayerEquip : MonoBehaviour {
 		case (int)itemWeaponList.Player_Weapon_Pistol_1:
 			return new ItemWeapon (2,	"Player_Weapon_Pistol_1",	weaponModel[2], 	1, 		4f,		1f,		1.5f, 	60,		10f,	0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f));
 		case (int)itemWeaponList.player_Weapon_SMG_1:
-			return new ItemWeapon (3,	"Player_Weapon_SMG_1",		weaponModel[3], 	1, 		5f,		1.5f,	0.5f,	250,	10f,	0.25f,	2f, 	7f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.35f, 0f),	new Vector3 (0f, 0.01f, 0.5f));
+			return new ItemWeapon (3,	"Player_Weapon_SMG_1",		weaponModel[3], 	1, 		5f,		1.5f,	0.5f,	250,	10f,	0.25f,	2f, 	7f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, 0.0875f, 0.75f));
 		case (int)itemWeaponList.Player_Weapon_SMG_2:
-			return new ItemWeapon (4,	"Player_Weapon_SMG_2",		weaponModel[4],		1, 		4f,		1f,		0.75f, 	500,	10f,	0.1f,	1.5f,	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.375f, 0f),	new Vector3 (0f, 0.015f, 0.7875f));
+			return new ItemWeapon (4,	"Player_Weapon_SMG_2",		weaponModel[4],		1, 		4f,		1f,		0.75f, 	300,	10f,	0.1f,	1.5f,	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.375f, 0f),	new Vector3 (0f, 0.03f, 0.92f));
 		case (int)itemWeaponList.Player_Weapon_Rifle_2:
-			return new ItemWeapon (5,	"Player_Weapon_Rifle_2",	weaponModel[5], 	1,		12.5f,	2f,		1.5f,	60,		12f,	0.05f,	0.5f, 	8f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	true,	true,	new Vector3 (0f, -0.375f, 0f), 	new Vector3 (0f, 0f, 0.75f));
+			return new ItemWeapon (5,	"Player_Weapon_Rifle_2",	weaponModel[5], 	1,		12.5f,	2f,		5f,		60,		12f,	0.05f,	0.5f, 	8f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	true,	true,	new Vector3 (0f, -0.475f, 0f), 	new Vector3 (0f, -0.0325f, 0.875f));
+		case (int)itemWeaponList.Player_Weapon_SMG_3:
+			return new ItemWeapon (6,	"Player_Weapon_SMG_3",		weaponModel[6],		1, 		3.5f,	1f,		0.75f, 	400,	10f,	0.25f,	2.5f,	3f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, -0.015f, 0.6f));
 		}
 		return null;
 

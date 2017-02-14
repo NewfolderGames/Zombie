@@ -11,6 +11,8 @@ public class BoxMystery : MonoBehaviour {
 	public GameObject boxLight;
 	public GameObject boxWeapon;
 
+	public Light boxLightInfo;
+
 	public MeshFilter mesh;
 	public MeshRenderer meshRenderer;
 
@@ -88,6 +90,7 @@ public class BoxMystery : MonoBehaviour {
 
 			weaponVanishCurrent += Time.deltaTime;
 			boxWeapon.transform.localPosition = Vector3.Lerp (new Vector3 (0f, 1.5f, 0f), new Vector3 (0f, 0f, 0f), weaponVanishCurrent / weaponVanish);
+			boxLightInfo.intensity = Mathf.Lerp (2, 0, weaponVanishCurrent / weaponVanish);
 			if(boxWeapon.transform.localPosition == new Vector3(0f, 0f, 0f)){
 
 				weaponVanishCurrent = 0;
@@ -104,7 +107,8 @@ public class BoxMystery : MonoBehaviour {
 	IEnumerator WeaponChoose() {
 		
 		availableBuy = false;
-		weaponNumber = (int)Random.Range (0f, 6f);
+		boxLightInfo.intensity = 2f;
+		weaponNumber = (int)Random.Range (0f, playerWeapon.weaponModel.Length);
 		mesh.mesh = modelWeapon [weaponNumber];
 		meshRenderer.material = materialWeapon [weaponNumber];
 		changeNumber++;

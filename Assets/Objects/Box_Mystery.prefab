@@ -271,6 +271,7 @@ MonoBehaviour:
   playerWeapon: {fileID: 0}
   boxLight: {fileID: 1080739413524916}
   boxWeapon: {fileID: 1930125145422302}
+  boxLightInfo: {fileID: 108092681161666012}
   mesh: {fileID: 33954456739619210}
   meshRenderer: {fileID: 23441360860990988}
   modelWeapon:
@@ -280,6 +281,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 78076fbc100b3eb4291adca82f0e87a7, type: 3}
   - {fileID: 4300000, guid: 1572a8b23123b274d8d4c29275cbaee3, type: 3}
   - {fileID: 4300000, guid: 76db1fa1095748041a0706ae98c5f94c, type: 3}
+  - {fileID: 4300000, guid: 295dc507ae152014a99a1d1f92d48219, type: 3}
   materialWeapon:
   - {fileID: 2100000, guid: 15579907614a3744784b4cdfc3f6156f, type: 2}
   - {fileID: 2100000, guid: e660890dc49f17e4a8346ca20be7f376, type: 2}
@@ -287,6 +289,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 921efcd6896438c4799d9c2206476c4e, type: 2}
   - {fileID: 2100000, guid: c5a2a9d114cc9e8418ff696669610bff, type: 2}
   - {fileID: 2100000, guid: 205c3b2402582844089e713b5a049f72, type: 2}
+  - {fileID: 2100000, guid: 272d3d5179a677943ba878ee0082208a, type: 2}
   availableBuy: 1
   availableGet: 0
   boxCost: 100
