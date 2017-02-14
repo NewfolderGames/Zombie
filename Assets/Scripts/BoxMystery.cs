@@ -102,7 +102,7 @@ public class BoxMystery : MonoBehaviour {
 	}
 
 	IEnumerator WeaponChoose() {
-
+		
 		availableBuy = false;
 		weaponNumber = (int)Random.Range (0f, 6f);
 		mesh.mesh = modelWeapon [weaponNumber];
@@ -114,7 +114,8 @@ public class BoxMystery : MonoBehaviour {
 		if (changeNumber < changeNumberMax)
 			StartCoroutine (WeaponChoose ());
 		else {
-
+			
+			weaponVanishCurrent = 0;
 			changeNumber = 0;
 			availableBuy = true;
 			availableGet = true;

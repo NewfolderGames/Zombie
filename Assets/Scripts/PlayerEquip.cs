@@ -15,11 +15,12 @@ public class PlayerEquip : MonoBehaviour {
 
 	public enum itemWeaponList {
 
-		Player_Weapon_Test47,
-		Player_Weapon_Test12,
-		Player_Weapon_Test18,
-		player_Weapon_Test45,
-		Player_Weapon_TestSMG,
+		Player_Weapon_Rifle_1,
+		Player_Weapon_Shotgun_1,
+		Player_Weapon_Pistol_1,
+		player_Weapon_SMG_1,
+		Player_Weapon_SMG_2,
+		Player_Weapon_Rifle_2,
 		Player_Weapon_WTF
 
 	}
@@ -69,8 +70,8 @@ public class PlayerEquip : MonoBehaviour {
 
 		playerInfo = player.GetComponent<Player> ();
 
-		itemSlot [0] = WeaponChange((int)Random.Range (0f, 6f));
-		itemSlot [1] = WeaponChange((int)Random.Range (0f, 6f));
+		itemSlot [0] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
+		itemSlot [1] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
 
 		WeaponSelect (itemSlot [itemSlotNumber]);
 
@@ -277,21 +278,20 @@ public class PlayerEquip : MonoBehaviour {
 
 		switch (number) {
 
-		//							number	name					modelobject										pallet	damage	knkbck	recoil	clip	range	min		max		speed		shelltype								semi	laser	modelposition					barrelposition
+		//							number	name					modelobject			pallet	damage	knkbck	recoil	clip	range	min		max		speed		shelltype								semi	laser	modelposition					barrelposition
 
-		case (int)itemWeaponList.Player_Weapon_Test47:
-			return new ItemWeapon (0,	"Player_Weapon_Test47",	 	weaponModel[0], 	1,		5f,		1.5f,	1.2f,	150,	10f,	0.1f,	1f, 	3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3 (0f, 0f, 0f), 		new Vector3 (0f, 0f, 0.5f));
-		case (int)itemWeaponList.Player_Weapon_Test12:
+		case (int)itemWeaponList.Player_Weapon_Rifle_1:
+			return new ItemWeapon (0,	"Player_Weapon_Rifle_1",	weaponModel[0], 	1,		5f,		1.5f,	1.2f,	150,	10f,	0.1f,	1f, 	3f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3 (0f, 0f, 0f), 		new Vector3 (0f, 0f, 0.5f));
+		case (int)itemWeaponList.Player_Weapon_Shotgun_1:
 			return new ItemWeapon (1,	"Player_Weapon_Shotgun_1",	weaponModel[1], 	12,		2f,		0.3f,	0.3f,	25,		8f,		0.5f,	7.5f,	45f / 60f,	ItemWeapon.weaponShellList.ShellShotgun,true,	true,	new Vector3(0f,0.0f,0f),		new Vector3(0f,0.025f,1f));
-		case (int)itemWeaponList.Player_Weapon_Test18:
+		case (int)itemWeaponList.Player_Weapon_Pistol_1:
 			return new ItemWeapon (2,	"Player_Weapon_Pistol_1",	weaponModel[2], 	1, 		4f,		1f,		1.5f, 	60,		10f,	0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	true,	true,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f));
-		case (int)itemWeaponList.player_Weapon_Test45:
+		case (int)itemWeaponList.player_Weapon_SMG_1:
 			return new ItemWeapon (3,	"Player_Weapon_SMG_1",		weaponModel[3], 	1, 		5f,		1.5f,	0.5f,	250,	10f,	0.25f,	2f, 	7f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.35f, 0f),	new Vector3 (0f, 0.01f, 0.5f));
-		case (int)itemWeaponList.Player_Weapon_TestSMG:
+		case (int)itemWeaponList.Player_Weapon_SMG_2:
 			return new ItemWeapon (4,	"Player_Weapon_SMG_2",		weaponModel[4],		1, 		4f,		1f,		0.75f, 	500,	10f,	0.1f,	1.5f,	4f / 60f,	ItemWeapon.weaponShellList.ShellPistol,	false,	true,	new Vector3 (0f, -0.375f, 0f),	new Vector3 (0f, 0.015f, 0.7875f));
-		case (int)itemWeaponList.Player_Weapon_WTF:
-			return new ItemWeapon (5,	"Player_Weapon_TestWTF",	weaponModel[5],		10, 	1f, 	0.1f,	0.1f, 	9999,	10f,	0f, 	10f,	1f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	false,	true,	new Vector3 (0f, 0f, 0f), 		new Vector3 (0f, 0f, 1f));
-
+		case (int)itemWeaponList.Player_Weapon_Rifle_2:
+			return new ItemWeapon (5,	"Player_Weapon_Rifle_2",	weaponModel[5], 	1,		12.5f,	2f,		1.5f,	60,		12f,	0.05f,	0.5f, 	8f / 60f,	ItemWeapon.weaponShellList.ShellRifle,	true,	true,	new Vector3 (0f, -0.375f, 0f), 	new Vector3 (0f, 0f, 0.75f));
 		}
 		return null;
 
