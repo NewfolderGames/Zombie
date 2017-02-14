@@ -275,7 +275,7 @@ MonoBehaviour:
   mesh: {fileID: 33954456739619210}
   meshRenderer: {fileID: 23441360860990988}
   modelWeapon:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 4300000, guid: c25925faf951deb4da76f13d1c649e30, type: 3}
   - {fileID: 4300000, guid: f56813e4a7b267f4da88f0ef18c5d411, type: 3}
   - {fileID: 4300000, guid: 9c9b6a6433a09eb48af5c5ec18acd8e6, type: 3}
   - {fileID: 4300000, guid: 78076fbc100b3eb4291adca82f0e87a7, type: 3}
@@ -283,7 +283,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 76db1fa1095748041a0706ae98c5f94c, type: 3}
   - {fileID: 4300000, guid: 295dc507ae152014a99a1d1f92d48219, type: 3}
   materialWeapon:
-  - {fileID: 2100000, guid: 15579907614a3744784b4cdfc3f6156f, type: 2}
+  - {fileID: 2100000, guid: d6ae645adba055445a7cf0f713a4615e, type: 2}
   - {fileID: 2100000, guid: e660890dc49f17e4a8346ca20be7f376, type: 2}
   - {fileID: 2100000, guid: d42361722fdcd3942945beabdee462d1, type: 2}
   - {fileID: 2100000, guid: 921efcd6896438c4799d9c2206476c4e, type: 2}

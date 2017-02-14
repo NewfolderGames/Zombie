@@ -1296,10 +1296,10 @@ Transform:
   - {fileID: 1104025961}
   - {fileID: 487818469}
   - {fileID: 1721254841}
-  - {fileID: 1641965372}
   - {fileID: 584181028}
   - {fileID: 726093036}
   - {fileID: 447382204}
+  - {fileID: 1641965372}
   m_Father: {fileID: 776392049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1513,7 +1513,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 76db1fa1095748041a0706ae98c5f94c, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 76db1fa1095748041a0706ae98c5f94c, type: 3}
       propertyPath: m_LocalScale.x
@@ -1789,7 +1789,7 @@ Transform:
   - {fileID: 220212470}
   - {fileID: 365400105}
   m_Father: {fileID: 954773448}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1656688637 stripped
 MonoBehaviour:
@@ -1971,7 +1971,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 1572a8b23123b274d8d4c29275cbaee3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 1572a8b23123b274d8d4c29275cbaee3, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2047,7 +2047,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 295dc507ae152014a99a1d1f92d48219, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 295dc507ae152014a99a1d1f92d48219, type: 3}
       propertyPath: m_Materials.Array.data[0]
