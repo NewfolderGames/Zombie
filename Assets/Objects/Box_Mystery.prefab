@@ -292,4 +292,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 272d3d5179a677943ba878ee0082208a, type: 2}
   availableBuy: 1
   availableGet: 0
-  boxCost: 100
+  boxCost: 1000

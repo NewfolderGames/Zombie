@@ -10,7 +10,9 @@ public class Player : MonoBehaviour {
 	// PLAYER INFO
 
 	public float playerHealth = 100f;
+
 	public float playerPoint = 0f;
+	public float playerPointTotal = 0f;
 
 	// MOVEMENT
 
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour {
 
 	public Text textHealth;
 	public Text textPoint;
+	public Text textPointTotal;
 
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
@@ -112,7 +115,8 @@ public class Player : MonoBehaviour {
 
 	public void TextUpdate() {
 
-		textHealth.text = playerHealth.ToString ();
+		textHealth.text = "HEALTH : " + playerHealth.ToString ();
+		textPointTotal.text = playerPointTotal.ToString ();
 		textPoint.text = playerPoint.ToString ();
 
 	}

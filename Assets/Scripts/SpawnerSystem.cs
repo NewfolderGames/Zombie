@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SpawnerSystem : MonoBehaviour {
@@ -24,6 +25,9 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public Spanwer[] spawners;
 
+	public Text textWave;
+	public Text textWaveZombie;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Start() {
@@ -36,7 +40,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 		if (!waveWait) {
 
-			if (waveZombieNumberCurrent == 0 && waveZombieNumberLeft == 0)
+			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0)
 				WaveNext ();
 
 		}
@@ -66,13 +70,18 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public void WaveCalculate(int wave) {
 
-		waveZombie = Mathf.FloorToInt (10f + (wave * 2));
+		waveZombie = Mathf.FloorToInt (10f + wave);
 		waveZombieHealth = 10f + (wave * 2);
-		waveZombieSpeed = Mathf.Min(10f, 2f + (wave * 0.1f));
+		waveZombieSpeed = Mathf.Min(10f, 2f + (wave * 0.05f));
 
 		waveSpawnDelay = Mathf.Max (1f, 2f - (wave * 0.05f));
 		waveSpawnNumber = Mathf.Min(spawners.Length, Mathf.FloorToInt (1 + (wave * 0.1f)));
+
+		waveZombieNumber = waveZombie;
 		waveZombieNumberLeft = waveZombieNumber;
+		waveZombieNumberCurrent = 0;
+
+		TextUpdate ();
 
 	}
 
@@ -96,6 +105,7 @@ public class SpawnerSystem : MonoBehaviour {
 						number--;
 						waveZombieNumberLeft--;
 						spawners [i].SpawnEnemy ();
+						TextUpdate ();
 						if (waveZombieNumberLeft == 0 || number == 0)
 							break;
 
@@ -117,6 +127,13 @@ public class SpawnerSystem : MonoBehaviour {
 			StartCoroutine (WaveSpawn ());
 
 		}
+
+	}
+
+	public void TextUpdate() {
+
+		textWave.text = "WAVE : " + wave.ToString ();
+		textWaveZombie.text = waveZombieNumberCurrent.ToString() + " / " + waveZombieNumber.ToString ();
 
 	}
 

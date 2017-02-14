@@ -7,8 +7,6 @@ public class Zombie : MonoBehaviour {
 
 	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
 
-	public static int enemyNumber;
-
 	public GameObject player;
 	public NavMeshAgent enemyNavigation;
 	public Rigidbody enemyRigidbody;
@@ -24,9 +22,7 @@ public class Zombie : MonoBehaviour {
 
 	void Start () {
 
-		enemyNumber++;
 		spawnerSystem = GameObject.Find ("Spawner_System").GetComponent<SpawnerSystem> ();
-		spawnerSystem.waveZombieNumberCurrent = enemyNumber;
 
 		enemyNavigation = gameObject.GetComponent<NavMeshAgent> ();
 		enemyRigidbody = gameObject.GetComponent<Rigidbody> ();
@@ -61,13 +57,13 @@ public class Zombie : MonoBehaviour {
 
 		enemyHealth -= damage;
 		Player playerInfo = player.GetComponent<Player> ();
+		playerInfo.playerPointTotal += 10f;
 		playerInfo.playerPoint += 10f;
 		playerInfo.TextUpdate ();
 		if (enemyHealth <= 0 && !enemyDead) {
 			
-			enemyNumber--;
 			enemyDead = true;
-			spawnerSystem.waveZombieNumberCurrent = enemyNumber;
+			spawnerSystem.waveZombieNumberCurrent++;
 			Destroy (gameObject);
 
 		}
