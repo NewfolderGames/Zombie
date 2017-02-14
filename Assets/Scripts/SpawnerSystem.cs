@@ -59,12 +59,14 @@ public class SpawnerSystem : MonoBehaviour {
 
 		waveWait = true;
 		Debug.Log ("웨이브" + wave + " 준비");
+		TextUpdate ();
 
 		yield return new WaitForSeconds (waveWaitTime);
 
 		waveWait = false;
 		StartCoroutine (WaveSpawn ());
 		Debug.Log ("웨이브" + wave + " 시작");
+		TextUpdate ();
 
 	}
 
@@ -105,7 +107,6 @@ public class SpawnerSystem : MonoBehaviour {
 						number--;
 						waveZombieNumberLeft--;
 						spawners [i].SpawnEnemy ();
-						TextUpdate ();
 						if (waveZombieNumberLeft == 0 || number == 0)
 							break;
 
@@ -133,7 +134,10 @@ public class SpawnerSystem : MonoBehaviour {
 	public void TextUpdate() {
 
 		textWave.text = "WAVE : " + wave.ToString ();
-		textWaveZombie.text = waveZombieNumberCurrent.ToString() + " / " + waveZombieNumber.ToString ();
+		if (!waveWait)
+			textWaveZombie.text = waveZombieNumberCurrent.ToString () + " / " + waveZombieNumber.ToString ();
+		else
+			textWaveZombie.text = "INCOMING";
 
 	}
 

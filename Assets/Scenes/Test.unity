@@ -2081,6 +2081,31 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 108719052573016800, guid: b136aca1a0b796c489455504181293c0,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.7058823
+      objectReference: {fileID: 0}
+    - target: {fileID: 108719052573016800, guid: b136aca1a0b796c489455504181293c0,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.5403651
+      objectReference: {fileID: 0}
+    - target: {fileID: 108719052573016800, guid: b136aca1a0b796c489455504181293c0,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108719052573016800, guid: b136aca1a0b796c489455504181293c0,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108719052573016800, guid: b136aca1a0b796c489455504181293c0,
+        type: 2}
+      propertyPath: m_BounceIntensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b136aca1a0b796c489455504181293c0, type: 2}
   m_IsPrefabParent: 0

@@ -64,6 +64,7 @@ public class Zombie : MonoBehaviour {
 			
 			enemyDead = true;
 			spawnerSystem.waveZombieNumberCurrent++;
+			spawnerSystem.TextUpdate ();
 			Destroy (gameObject);
 
 		}
