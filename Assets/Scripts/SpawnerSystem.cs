@@ -23,10 +23,20 @@ public class SpawnerSystem : MonoBehaviour {
 	public bool waveWait = true;
 	public float waveWaitTime = 15f;
 
+	public float waveDay;
+
 	public Spanwer[] spawners;
 
 	public Text textWave;
 	public Text textWaveZombie;
+
+	public GameObject lightObject;
+	public Light lightInfo;
+	public Quaternion lightNext;
+
+	public float lightIntensityNext;
+	public float lightAmbientIntensityNext;
+	public float lightReflectionIntensityNext;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -43,6 +53,13 @@ public class SpawnerSystem : MonoBehaviour {
 			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0)
 				WaveNext ();
 
+		} else {
+
+			lightObject.transform.rotation = Quaternion.Lerp(lightObject.transform.rotation, lightNext, Time.deltaTime);
+			RenderSettings.ambientIntensity = Mathf.Lerp (RenderSettings.ambientIntensity, lightAmbientIntensityNext, Time.deltaTime);
+			RenderSettings.reflectionIntensity = Mathf.Lerp (RenderSettings.reflectionIntensity, lightReflectionIntensityNext, Time.deltaTime);
+			lightInfo.intensity = Mathf.Lerp (lightInfo.intensity, lightIntensityNext, Time.deltaTime);
+
 		}
 
 	}
@@ -58,14 +75,16 @@ public class SpawnerSystem : MonoBehaviour {
 	IEnumerator WaveWait() {
 
 		waveWait = true;
-		Debug.Log ("웨이브" + wave + " 준비");
 		TextUpdate ();
 
 		yield return new WaitForSeconds (waveWaitTime);
 
 		waveWait = false;
 		StartCoroutine (WaveSpawn ());
-		Debug.Log ("웨이브" + wave + " 시작");
+		lightObject.transform.rotation = lightNext;
+		RenderSettings.ambientIntensity = lightAmbientIntensityNext;
+		RenderSettings.reflectionIntensity = lightReflectionIntensityNext;
+		lightInfo.intensity = lightIntensityNext;
 		TextUpdate ();
 
 	}
@@ -82,6 +101,11 @@ public class SpawnerSystem : MonoBehaviour {
 		waveZombieNumber = waveZombie;
 		waveZombieNumberLeft = waveZombieNumber;
 		waveZombieNumberCurrent = 0;
+
+		lightNext = Quaternion.Euler (new Vector3 (30f - ((75f / waveDay ) * (wave % waveDay)), -45f, 0f));
+		lightAmbientIntensityNext = ((waveDay - 1f) - (wave % waveDay)) / (waveDay - 1f);
+		lightReflectionIntensityNext = ((waveDay - 1f) - (wave % waveDay)) / (waveDay - 1f);
+		lightIntensityNext = ((waveDay - 1f) - (wave % waveDay)) / (waveDay - 1f);
 
 		TextUpdate ();
 
