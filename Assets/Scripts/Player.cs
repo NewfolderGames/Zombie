@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
 	public Vector3 mousePosition;
 	public Quaternion mouseRotation;
 
+	public bool autoAim;
+
 	// COMPONENT
 
 	Rigidbody componentRigidbody;
@@ -93,20 +95,55 @@ public class Player : MonoBehaviour {
 
 		float rayLenght = 500f;
 
-		int layerMask = LayerMask.GetMask ("Map", "Enemy");
+		if (autoAim) {
+			
+			int enemyMask = LayerMask.GetMask ("Enemy");
+			int mapMask = LayerMask.GetMask ("Map");
 
-		if( Physics.Raycast( ray, out rayHit, rayLenght, layerMask ) ) {
+			if (Physics.Raycast (ray, out rayHit, rayLenght, enemyMask)) {
+				
+				GameObject enemy = rayHit.collider.gameObject;
+				Vector3 mouse = enemy.transform.position - transform.position;
+				mouse.y = 0f;
 
-			Vector3 mouse = rayHit.point - transform.position;
-			mouse.y = 0f;
+				Quaternion rotation = Quaternion.LookRotation (mouse);
 
-			Quaternion rotation = Quaternion.LookRotation( mouse );
+				mousePosition = enemy.transform.position;
+				mouseRotation = rotation;
+				componentRigidbody.MoveRotation (rotation);
 
-			mousePosition = rayHit.point;
-			mouseRotation = rotation;
-			componentRigidbody.MoveRotation (rotation);
+			} else if (Physics.Raycast (ray, out rayHit, rayLenght, mapMask)) {
+
+				Vector3 mouse = rayHit.point - transform.position;
+				mouse.y = 0f;
+
+				Quaternion rotation = Quaternion.LookRotation (mouse);
+
+				mousePosition = rayHit.point;
+				mouseRotation = rotation;
+				componentRigidbody.MoveRotation (rotation);
+
+			}
+
+		} else {
+
+			int mask = LayerMask.GetMask ("Enemy","Map");
+
+			if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
+
+				Vector3 mouse = rayHit.point - transform.position;
+				mouse.y = 0f;
+
+				Quaternion rotation = Quaternion.LookRotation (mouse);
+
+				mousePosition = rayHit.point;
+				mouseRotation = rotation;
+				componentRigidbody.MoveRotation (rotation);
+
+			}
 
 		}
+
 	
 	}
 
