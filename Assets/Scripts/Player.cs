@@ -95,42 +95,25 @@ public class Player : MonoBehaviour {
 
 		float rayLenght = 500f;
 
-		if (autoAim) {
-			
-			int enemyMask = LayerMask.GetMask ("Enemy");
-			int mapMask = LayerMask.GetMask ("Map");
+		int mask = LayerMask.GetMask ("Enemy","Map");
+		int enemyMask = LayerMask.GetMask ("Enemy");
 
-			if (Physics.Raycast (ray, out rayHit, rayLenght, enemyMask)) {
-				
-				GameObject enemy = rayHit.collider.gameObject;
-				Vector3 mouse = enemy.transform.position - transform.position;
+		if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
+
+			GameObject collision = rayHit.collider.gameObject;
+			if (autoAim && collision.tag == "Enemy" ) {
+
+				Vector3 mouse = collision.transform.position - transform.position;
 				mouse.y = 0f;
 
 				Quaternion rotation = Quaternion.LookRotation (mouse);
 
-				mousePosition = enemy.transform.position;
+				mousePosition = collision.transform.position;
 				mouseRotation = rotation;
 				componentRigidbody.MoveRotation (rotation);
 
-			} else if (Physics.Raycast (ray, out rayHit, rayLenght, mapMask)) {
-
-				Vector3 mouse = rayHit.point - transform.position;
-				mouse.y = 0f;
-
-				Quaternion rotation = Quaternion.LookRotation (mouse);
-
-				mousePosition = rayHit.point;
-				mouseRotation = rotation;
-				componentRigidbody.MoveRotation (rotation);
-
-			}
-
-		} else {
-
-			int mask = LayerMask.GetMask ("Enemy","Map");
-
-			if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
-
+			} else {
+					
 				Vector3 mouse = rayHit.point - transform.position;
 				mouse.y = 0f;
 
@@ -143,8 +126,7 @@ public class Player : MonoBehaviour {
 			}
 
 		}
-
-	
+			
 	}
 
 	public void TextUpdate() {
