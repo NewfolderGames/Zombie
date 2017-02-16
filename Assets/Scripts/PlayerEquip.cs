@@ -320,7 +320,7 @@ public class PlayerEquip : MonoBehaviour {
 		case (int)itemWeaponList.Player_Weapon_SMG_3:
 			return new ItemWeapon (6,	"SMG_3",			weaponModel[6],		1, 		4f * weaponDamageAdd[6]		,	1f,		0.75f, 	Mathf.RoundToInt(350f * weaponClipAdd[6])	,	10f,	0.25f,	2.5f,	3f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[6]	,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, -0.015f, 0.6f));
 		case (int)itemWeaponList.player_Weapon_GrenadeLauncher_1:
-			return new ItemWeapon (7,	"GrenadeLauncher_1",weaponModel[7],		1, 		10f * weaponDamageAdd[7]	,	15f,	10f, 	Mathf.RoundToInt(5f * weaponClipAdd[7])		,	2.5f,	0.1f,	0.5f,	120f / 60f,	ItemWeapon.weaponProjectileList.ProjectileGrenade,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[7]	,	new Vector3 (0f, -0.25f, 0f),	new Vector3 (0f, 0f, 0.405f));
+			return new ItemWeapon (7,	"GrenadeLauncher_1",weaponModel[7],		1, 		25f * weaponDamageAdd[7]	,	10f,	10f, 	Mathf.RoundToInt(5f * weaponClipAdd[7])		,	3f,		0.1f,	0.5f,	120f / 60f,	ItemWeapon.weaponProjectileList.ProjectileGrenade,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[7]	,	new Vector3 (0f, -0.25f, 0f),	new Vector3 (0f, 0f, 0.405f));
 
 		}
 		return null;
