@@ -31,6 +31,16 @@ public class BoxMystery : MonoBehaviour {
 
 	int weaponNumber;
 
+	public boxType box;
+	public enum boxType {
+
+		Box_Weapon,
+		Box_Damage,
+		Box_Clip,
+		Box_Laser
+
+	}
+
 	public int boxCost;
 
 	void Start() {
@@ -52,7 +62,7 @@ public class BoxMystery : MonoBehaviour {
 
 				float rayLenght = 500f;
 
-				int layerMask = LayerMask.GetMask ("BoxMystery");
+				int layerMask = LayerMask.GetMask ("Box");
 
 				if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask)) {
 
@@ -72,8 +82,38 @@ public class BoxMystery : MonoBehaviour {
 
 					} else if (availableGet) {
 
-						playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
-						playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+						switch((int)box) {
+
+						case 0: 
+							playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
+							playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+							break;
+
+						case 1:
+							playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
+							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+									playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
+							}
+							break;
+
+						case 2:
+							playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+									playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+							}
+							break;
+
+						case 3:
+							playerWeapon.weaponLaserAdd [weaponNumber] = true;
+							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+									playerWeapon.itemSlot [i].weaponLaserpoint = true;
+							}
+							break;
+
+						}
 						boxWeapon.SetActive (false);
 						boxLight.SetActive (false);
 						availableGet = false;

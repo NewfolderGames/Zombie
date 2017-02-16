@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 	public Text textPoint;
 	public Text textPointTotal;
 
-	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
+	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake () {
 
@@ -60,19 +60,16 @@ public class Player : MonoBehaviour {
 
 	void Update () {
 
+		inputHorizontal = Input.GetAxisRaw ("Horizontal");
+		inputVertical = Input.GetAxisRaw ("Vertical");
 
+		MouseRotation ();
 
 	}
 
 	void FixedUpdate() {
 
-		inputHorizontal = Input.GetAxisRaw ("Horizontal");
-		inputVertical = Input.GetAxisRaw ("Vertical");
-
 		PlayerMove (inputHorizontal, inputVertical);
-
-		MouseRotation ();
-
 
 	}
 
