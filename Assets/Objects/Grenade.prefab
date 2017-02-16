@@ -126,3 +126,5 @@ MonoBehaviour:
   knockbackMultiply: 1
   range: 10
   speed: 50
+  explosive: 1
+  explosion: {fileID: 1036689706262308, guid: 0ccf583d1c5c7124690b630d5ddb19b4, type: 2}

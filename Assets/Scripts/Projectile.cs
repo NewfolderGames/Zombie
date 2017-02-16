@@ -16,36 +16,67 @@ public class Projectile : MonoBehaviour {
 
 	public float speed;
 
+	public bool explosive;
+	public GameObject explosion;
+
 	void Start() {
 
 		gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 		knockback *= knockbackMultiply * 25f;
 		damage *= damageMultiply;
-		if (range != -1)
-			Destroy (gameObject, range);
-		else
-			Destroy (gameObject, Time.deltaTime * 2);
+		Destroy (gameObject, 5f);
 
 	}
 
 	void OnCollisionEnter( Collision other ) {
 
-		if (other.gameObject.tag == "Map")
-			Destroy (gameObject);
-		
-		if (other.gameObject.tag == "Enemy") {
-			
-			Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody> ();
-			Zombie otherZombie = other.gameObject.GetComponent<Zombie> ();
+		if (other.gameObject.tag == "Map") {
 
-			if (!otherZombie.enemyDead) {
-				
-				otherZombie.EnemyChangeHealth (damage);
-				otherZombie.enemyKnockback = true;
-				otherRigidbody.AddForce (transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
+			if (!explosive)
+				Destroy (gameObject);
+			else {
+
+				GameObject exp = Instantiate (explosion, transform.position, transform.rotation);
+				ProjectileExplosion expInfo = exp.GetComponent<ProjectileExplosion> ();
+
+				expInfo.damage = damage;
+				expInfo.knockback = knockback;
+				expInfo.range = range;
+
+				Destroy (gameObject);
 
 			}
-			Destroy (gameObject);
+
+		}
+
+		if (other.gameObject.tag == "Enemy") {
+
+			if (!explosive) {
+				
+				Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody> ();
+				Zombie otherZombie = other.gameObject.GetComponent<Zombie> ();
+
+				if (!otherZombie.enemyDead) {
+				
+					otherZombie.EnemyChangeHealth (damage);
+					otherZombie.enemyKnockback = true;
+					otherRigidbody.AddForce (transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
+
+				}
+				Destroy (gameObject);
+
+			} else {
+
+				GameObject exp = Instantiate (explosion, transform.position, transform.rotation);
+				ProjectileExplosion expInfo = exp.GetComponent<ProjectileExplosion> ();
+
+				expInfo.damage = damage;
+				expInfo.knockback = knockback;
+				expInfo.range = range;
+
+				Destroy (gameObject);
+
+			}
 
 		}
 		
