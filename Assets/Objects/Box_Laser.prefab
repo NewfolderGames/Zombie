@@ -295,4 +295,4 @@ MonoBehaviour:
   availableBuy: 1
   availableGet: 0
   box: 3
-  boxCost: 500
+  boxCost: 250
