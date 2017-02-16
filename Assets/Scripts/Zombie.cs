@@ -55,17 +55,21 @@ public class Zombie : MonoBehaviour {
 
 	public void EnemyChangeHealth(float damage) {
 
-		enemyHealth -= damage;
-		Player playerInfo = player.GetComponent<Player> ();
-		playerInfo.playerPointTotal += 10f;
-		playerInfo.playerPoint += 10f;
-		playerInfo.TextUpdate ();
-		if (enemyHealth <= 0 && !enemyDead) {
+		if (!enemyDead) {
 			
-			enemyDead = true;
-			spawnerSystem.waveZombieNumberCurrent++;
-			spawnerSystem.TextUpdate ();
-			Destroy (gameObject);
+			enemyHealth -= damage;
+			Player playerInfo = player.GetComponent<Player> ();
+			playerInfo.playerPointTotal += damage;
+			playerInfo.playerPoint += damage;
+			playerInfo.TextUpdate ();
+			if (enemyHealth <= 0) {
+			
+				enemyDead = true;
+				spawnerSystem.waveZombieNumberCurrent++;
+				spawnerSystem.TextUpdate ();
+				Destroy (gameObject);
+
+			}
 
 		}
 

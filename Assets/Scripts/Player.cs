@@ -96,7 +96,6 @@ public class Player : MonoBehaviour {
 		float rayLenght = 500f;
 
 		int mask = LayerMask.GetMask ("Enemy","Map");
-		int enemyMask = LayerMask.GetMask ("Enemy");
 
 		if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
 
@@ -132,8 +131,8 @@ public class Player : MonoBehaviour {
 	public void TextUpdate() {
 
 		textHealth.text = "HEALTH : " + playerHealth.ToString ();
-		textPointTotal.text = playerPointTotal.ToString ();
-		textPoint.text = playerPoint.ToString ();
+		textPointTotal.text = Mathf.Floor(playerPointTotal).ToString ();
+		textPoint.text = Mathf.Floor(playerPoint).ToString ();
 
 	}
 

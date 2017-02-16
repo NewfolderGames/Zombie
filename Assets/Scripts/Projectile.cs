@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour {
 
 	void Start() {
 
+		gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 		knockback *= knockbackMultiply * 25f;
 		damage *= damageMultiply;
 		Destroy (gameObject, range);
@@ -34,10 +35,13 @@ public class Projectile : MonoBehaviour {
 			Rigidbody otherRigidbody = other.gameObject.GetComponent<Rigidbody> ();
 			Zombie otherZombie = other.gameObject.GetComponent<Zombie> ();
 
-			otherZombie.EnemyChangeHealth (damage);
-			otherZombie.enemyKnockback = true;
-			otherRigidbody.AddForce(transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
+			if (!otherZombie.enemyDead) {
+				
+				otherZombie.EnemyChangeHealth (damage);
+				otherZombie.enemyKnockback = true;
+				otherRigidbody.AddForce (transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
 
+			}
 			Destroy (gameObject);
 
 		}
