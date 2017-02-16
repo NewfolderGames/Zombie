@@ -130,7 +130,7 @@ public class BoxMystery : MonoBehaviour {
 
 			weaponVanishCurrent += Time.deltaTime;
 			boxWeapon.transform.localPosition = Vector3.Lerp (new Vector3 (0f, 1.5f, 0f), new Vector3 (0f, 0f, 0f), weaponVanishCurrent / weaponVanish);
-			boxLightInfo.intensity = Mathf.Lerp (2, 0, weaponVanishCurrent / weaponVanish);
+			boxLightInfo.intensity = Mathf.Lerp (2, 0, weaponVanishCurrent / weaponVanish);;
 			if(boxWeapon.transform.localPosition == new Vector3(0f, 0f, 0f)){
 
 				weaponVanishCurrent = 0;

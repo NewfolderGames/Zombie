@@ -21,7 +21,10 @@ public class Projectile : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 		knockback *= knockbackMultiply * 25f;
 		damage *= damageMultiply;
-		Destroy (gameObject, range);
+		if (range != -1)
+			Destroy (gameObject, range);
+		else
+			Destroy (gameObject, Time.deltaTime * 2);
 
 	}
 

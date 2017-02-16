@@ -51,6 +51,7 @@ public class Zombie : MonoBehaviour {
 
 	}
 
+
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
 	public void EnemyChangeHealth(float damage) {

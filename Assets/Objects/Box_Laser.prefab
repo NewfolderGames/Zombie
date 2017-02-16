@@ -282,6 +282,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 1572a8b23123b274d8d4c29275cbaee3, type: 3}
   - {fileID: 4300000, guid: 76db1fa1095748041a0706ae98c5f94c, type: 3}
   - {fileID: 4300000, guid: 295dc507ae152014a99a1d1f92d48219, type: 3}
+  - {fileID: 4300000, guid: bddafe6a52a824a46b8d37d2f457d168, type: 3}
   materialWeapon:
   - {fileID: 2100000, guid: d6ae645adba055445a7cf0f713a4615e, type: 2}
   - {fileID: 2100000, guid: e660890dc49f17e4a8346ca20be7f376, type: 2}
@@ -290,6 +291,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c5a2a9d114cc9e8418ff696669610bff, type: 2}
   - {fileID: 2100000, guid: 205c3b2402582844089e713b5a049f72, type: 2}
   - {fileID: 2100000, guid: 272d3d5179a677943ba878ee0082208a, type: 2}
+  - {fileID: 2100000, guid: 742c77b659c657b4b935a5ab71c53569, type: 2}
   availableBuy: 1
   availableGet: 0
   box: 3
