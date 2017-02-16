@@ -36,7 +36,8 @@ public class ItemWeapon {
 	public enum weaponProjectileList {
 
 		ProjectileBullet,
-		ProjectileGrenade
+		ProjectileGrenade,
+		ProjectileRocket
 
 	}
 
