@@ -93,77 +93,81 @@ public class BoxMystery : MonoBehaviour {
 
 				if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask)) {
 
-					if (availableBuy && !availableGet) {
+					if (rayHit.collider.gameObject.Equals (gameObject)) {
+						
+						if (availableBuy && !availableGet) {
 							
-						if (playerInfo.playerPoint >= boxCost) {
+							if (playerInfo.playerPoint >= boxCost) {
 								
-							playerInfo.playerPoint -= boxCost;
-							playerInfo.TextUpdate ();
-							StartCoroutine (WeaponChoose ());
-							boxWeapon.SetActive (true);
-							boxLight.SetActive (true);
-							boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
+								playerInfo.playerPoint -= boxCost;
+								playerInfo.TextUpdate ();
+								StartCoroutine (WeaponChoose ());
+								boxWeapon.SetActive (true);
+								boxLight.SetActive (true);
+								boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
 
-						} else
-							Debug.Log ("돈이 부족합니다");
+							} else
+								Debug.Log ("돈이 부족합니다");
 
-					} else if (availableGet) {
+						} else if (availableGet) {
 
-						switch((int)box) {
+							switch ((int)box) {
 
-						case 0: 
-							playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
-							playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-							break;
+							case 0: 
+								playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
+								playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+								break;
 
-						case 1:
-							playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
-							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-									playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
-							}
-							break;
-
-						case 2:
-
-							switch (weaponNumber) {
-
-							case 7:
-							case 8:
-								playerWeapon.weaponClipAdd [weaponNumber]++;
+							case 1:
+								playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
 								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponBullet++;
+										playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
 								}
 								break;
 
-							default:
-								playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+							case 2:
+
+								switch (weaponNumber) {
+
+								case 7:
+								case 8:
+									playerWeapon.weaponClipAdd [weaponNumber]++;
+									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+											playerWeapon.itemSlot [i].weaponBullet++;
+									}
+									break;
+
+								default:
+									playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+											playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+									}
+									break;
+
+								}
+								break;
+
+							case 3:
+								playerWeapon.weaponLaserAdd [weaponNumber] = true;
 								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+										playerWeapon.itemSlot [i].weaponLaserpoint = true;
 								}
 								break;
 
 							}
-							break;
+							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+							boxWeapon.SetActive (false);
+							boxLight.SetActive (false);
+							availableGet = false;
 
-						case 3:
-							playerWeapon.weaponLaserAdd [weaponNumber] = true;
-							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-									playerWeapon.itemSlot [i].weaponLaserpoint = true;
+							if (boxRandom) {
+								Destroy (gameObject);
 							}
-							break;
 
-						}
-						playerWeapon.TextUpdate (playerWeapon.itemSlot[playerWeapon.itemSlotNumber]);
-						boxWeapon.SetActive (false);
-						boxLight.SetActive (false);
-						availableGet = false;
-
-						if (boxRandom) {
-							Destroy (gameObject);
 						}
 
 					}
