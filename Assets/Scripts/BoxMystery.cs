@@ -79,7 +79,7 @@ public class BoxMystery : MonoBehaviour {
 		if (boxAmmo) {
 
 			boxRandom = false;
-			boxCost = Mathf.RoundToInt (Random.Range(75f, 150f));
+			boxCost = Mathf.RoundToInt (Random.Range(150f, 250f));
 			boxLightInfo.color = Color.green;
 			Destroy (gameObject, 25f);
 
@@ -175,7 +175,7 @@ public class BoxMystery : MonoBehaviour {
 
 								for (int i = 0; i < playerWeapon.itemSlot.Length; i++)
 									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponClip * 0.25f);
+										playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponClip * playerWeapon.weaponClipAdd[weaponNumber] * 0.25f);
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);

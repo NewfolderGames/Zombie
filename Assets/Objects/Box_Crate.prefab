@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4029096094441882}
   m_Layer: 14
-  m_Name: Box_Crate_1
+  m_Name: Box_Crate
   m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
