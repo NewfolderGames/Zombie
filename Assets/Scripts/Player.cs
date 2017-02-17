@@ -43,6 +43,7 @@ public class Player : MonoBehaviour {
 	public Text textHealth;
 	public Text textPoint;
 	public Text textPointTotal;
+	public Text textBox;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -95,7 +96,7 @@ public class Player : MonoBehaviour {
 
 		float rayLenght = 500f;
 
-		int mask = LayerMask.GetMask ("Enemy","Map");
+		int mask = LayerMask.GetMask ("Enemy","Map","Box");
 
 		if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
 
@@ -121,6 +122,33 @@ public class Player : MonoBehaviour {
 				mousePosition = rayHit.point;
 				mouseRotation = rotation;
 				componentRigidbody.MoveRotation (rotation);
+
+				if (collision.tag == "BoxMystery") {
+
+					BoxMystery box = collision.GetComponent<BoxMystery> ();
+					switch ((int)box.box) {
+
+					case 0:
+						textBox.text = "WEAPON BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.color = Color.yellow;
+						break;
+					case 1:
+						textBox.text = "DAMAGE INCREASE BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.color = new Color (1f, 1f / 2f, 0f);
+						break;
+					case 2:
+						textBox.text = "CLIP EXTEND BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.color = Color.red;
+						break;
+					case 3:
+						textBox.text = "LASER SIGHT BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.color = new Color (0f, 3f / 4f, 1f);
+						break;
+
+					}
+
+				} else
+					textBox.text = "";
 
 			}
 

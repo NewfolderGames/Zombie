@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114962810072921020}
   m_Layer: 14
   m_Name: Box_Clip_Core
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4263037622350676}
   m_Layer: 14
   m_Name: Box_Clip
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -230,7 +230,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 2
-  m_Color: {r: 0, g: 0.628, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7490196, b: 1, a: 1}
   m_Intensity: 2
   m_Range: 100
   m_SpotAngle: 179

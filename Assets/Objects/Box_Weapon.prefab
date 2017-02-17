@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114473665811396122}
   m_Layer: 14
   m_Name: Box_Weapon_Core
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4477434397934618}
   m_Layer: 14
   m_Name: Box_Weapon
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

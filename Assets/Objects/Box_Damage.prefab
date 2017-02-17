@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114778456726019168}
   m_Layer: 14
   m_Name: Box_Damage_Core
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4665464307107316}
   m_Layer: 14
   m_Name: Box_Damage
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

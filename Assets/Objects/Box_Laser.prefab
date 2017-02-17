@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4801980997842180}
   m_Layer: 14
   m_Name: Box_Laser
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114996283320089198}
   m_Layer: 14
   m_Name: Box_Laser_Core
-  m_TagString: Untagged
+  m_TagString: BoxMystery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
