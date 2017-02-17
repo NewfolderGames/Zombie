@@ -67,11 +67,13 @@ public class SpawnerSystem : MonoBehaviour {
 			}
 
 		} else {
-
+			/*
 			lightObject.transform.rotation = Quaternion.Lerp(lightObject.transform.rotation, lightNext, Time.deltaTime);
 			RenderSettings.ambientIntensity = Mathf.Lerp (RenderSettings.ambientIntensity, lightAmbientIntensityNext, Time.deltaTime);
 			RenderSettings.reflectionIntensity = Mathf.Lerp (RenderSettings.reflectionIntensity, lightReflectionIntensityNext, Time.deltaTime);
 			lightInfo.intensity = Mathf.Lerp (lightInfo.intensity, lightIntensityNext, Time.deltaTime);
+			*/
+
 
 		}
 
@@ -89,6 +91,11 @@ public class SpawnerSystem : MonoBehaviour {
 
 		waveWait = true;
 		TextUpdate ();
+
+		lightObject.transform.rotation = lightNext;
+		RenderSettings.ambientIntensity = lightAmbientIntensityNext;
+		RenderSettings.reflectionIntensity = lightReflectionIntensityNext;
+		lightInfo.intensity = lightIntensityNext;
 
 		yield return new WaitForSeconds (waveWaitTime);
 
