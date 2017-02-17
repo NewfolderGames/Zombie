@@ -38,6 +38,11 @@ public class SpawnerSystem : MonoBehaviour {
 	public float lightAmbientIntensityNext;
 	public float lightReflectionIntensityNext;
 
+	public GameObject player;
+	public GameObject box;
+
+	public int boxAmount;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Start() {
@@ -50,8 +55,13 @@ public class SpawnerSystem : MonoBehaviour {
 
 		if (!waveWait) {
 
-			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0)
+			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0) {
+
+				for (int i = 0; i < boxAmount; i++)
+					Instantiate (box, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
 				WaveNext ();
+
+			}
 
 		} else {
 

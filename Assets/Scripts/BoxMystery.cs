@@ -43,11 +43,38 @@ public class BoxMystery : MonoBehaviour {
 
 	public int boxCost;
 
+	public bool boxRandom;
+
 	void Start() {
 
 		player = GameObject.Find ("Player");
 		playerInfo = player.GetComponent<Player> ();
 		playerWeapon = GameObject.Find ("Player_Equip").GetComponent<PlayerEquip> ();
+
+		if (boxRandom) {
+			
+			box = (boxType)Mathf.RoundToInt (Random.Range (0f, 3f));
+			boxCost = Mathf.RoundToInt (Random.Range(100f, 1000f));
+			Destroy (gameObject, 25f);
+
+		}
+
+		switch ((int)box) {
+
+		case 0:
+			boxLightInfo.color = Color.yellow;
+			break;
+		case 1:
+			boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
+			break;
+		case 2:
+			boxLightInfo.color = Color.red;
+			break;
+		case 3:
+			boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
+			break;
+
+		}
 
 	}
 
@@ -135,6 +162,10 @@ public class BoxMystery : MonoBehaviour {
 						boxLight.SetActive (false);
 						availableGet = false;
 
+						if (boxRandom) {
+							Destroy (gameObject);
+						}
+
 					}
 
 				}
@@ -147,8 +178,8 @@ public class BoxMystery : MonoBehaviour {
 
 			weaponVanishCurrent += Time.deltaTime;
 			boxWeapon.transform.localPosition = Vector3.Lerp (new Vector3 (0f, 1.5f, 0f), new Vector3 (0f, 0f, 0f), weaponVanishCurrent / weaponVanish);
-			boxLightInfo.intensity = Mathf.Lerp (2, 0, weaponVanishCurrent / weaponVanish);;
-			if(boxWeapon.transform.localPosition == new Vector3(0f, 0f, 0f)){
+			boxLightInfo.intensity = Mathf.Lerp (2, 0, weaponVanishCurrent / weaponVanish);
+			if (boxWeapon.transform.localPosition == new Vector3 (0f, 0f, 0f)) {
 
 				weaponVanishCurrent = 0;
 				boxWeapon.SetActive (false);
