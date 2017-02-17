@@ -53,7 +53,7 @@ public class BoxMystery : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyUp (KeyCode.E)) {
 
 			if (Vector3.Distance (player.transform.position, transform.position) <= 5) {
 
@@ -98,10 +98,26 @@ public class BoxMystery : MonoBehaviour {
 							break;
 
 						case 2:
-							playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
-							for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-								if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-									playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+
+							switch (weaponNumber) {
+
+							case 7:
+							case 8:
+								playerWeapon.weaponClipAdd [weaponNumber]++;
+								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+										playerWeapon.itemSlot [i].weaponBullet++;
+								}
+								break;
+
+							default:
+								playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+										playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+								}
+								break;
+
 							}
 							break;
 
@@ -114,7 +130,7 @@ public class BoxMystery : MonoBehaviour {
 							break;
 
 						}
-						playerWeapon.TextUpdate ();
+						playerWeapon.TextUpdate (playerWeapon.itemSlot[playerWeapon.itemSlotNumber]);
 						boxWeapon.SetActive (false);
 						boxLight.SetActive (false);
 						availableGet = false;
