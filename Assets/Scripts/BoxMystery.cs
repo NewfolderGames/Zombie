@@ -44,6 +44,7 @@ public class BoxMystery : MonoBehaviour {
 	public int boxCost;
 
 	public bool boxRandom;
+	public bool boxAmmo;
 
 	void Start() {
 
@@ -52,27 +53,35 @@ public class BoxMystery : MonoBehaviour {
 		playerWeapon = GameObject.Find ("Player_Equip").GetComponent<PlayerEquip> ();
 
 		if (boxRandom) {
-			
+
+			boxAmmo = false;
 			box = (boxType)Mathf.RoundToInt (Random.Range (0f, 3f));
 			boxCost = Mathf.RoundToInt (Random.Range(100f, 1000f));
+			switch ((int)box) {
+
+			case 0:
+				boxLightInfo.color = Color.yellow;
+				break;
+			case 1:
+				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
+				break;
+			case 2:
+				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
+				break;
+			case 3:
+				boxLightInfo.color = Color.red;
+				break;
+
+			}
 			Destroy (gameObject, 25f);
 
 		}
+		if (boxAmmo) {
 
-		switch ((int)box) {
-
-		case 0:
-			boxLightInfo.color = Color.yellow;
-			break;
-		case 1:
-			boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-			break;
-		case 2:
-			boxLightInfo.color = Color.red;
-			break;
-		case 3:
-			boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-			break;
+			boxRandom = false;
+			boxCost = Mathf.RoundToInt (Random.Range(75f, 150f));
+			boxLightInfo.color = Color.green;
+			Destroy (gameObject, 25f);
 
 		}
 
@@ -111,52 +120,62 @@ public class BoxMystery : MonoBehaviour {
 
 						} else if (availableGet) {
 
-							switch ((int)box) {
+							if (!boxAmmo) {
+								
+								switch ((int)box) {
 
-							case 0: 
-								playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
-								playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-								break;
+								case 0: 
+									playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
+									playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+									break;
 
-							case 1:
-								playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
-								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
-								}
-								break;
-
-							case 2:
-
-								switch (weaponNumber) {
-
-								case 7:
-								case 8:
-									playerWeapon.weaponClipAdd [weaponNumber]++;
+								case 1:
+									playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
 									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-											playerWeapon.itemSlot [i].weaponBullet++;
+											playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
 									}
 									break;
 
-								default:
-									playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+								case 2:
+
+									switch (weaponNumber) {
+
+									case 7:
+									case 8:
+										playerWeapon.weaponClipAdd [weaponNumber]++;
+										for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+											if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+												playerWeapon.itemSlot [i].weaponBullet++;
+										}
+										break;
+
+									default:
+										playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
+										for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+											if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+												playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+										}
+										break;
+
+									}
+									break;
+
+								case 3:
+									playerWeapon.weaponLaserAdd [weaponNumber] = true;
 									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-											playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
+											playerWeapon.itemSlot [i].weaponLaserpoint = true;
 									}
 									break;
 
 								}
-								break;
 
-							case 3:
-								playerWeapon.weaponLaserAdd [weaponNumber] = true;
-								for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+							} else {
+
+								for (int i = 0; i < playerWeapon.itemSlot.Length; i++)
 									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponLaserpoint = true;
-								}
-								break;
+										playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponClip * 0.25f);
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
@@ -164,7 +183,7 @@ public class BoxMystery : MonoBehaviour {
 							boxLight.SetActive (false);
 							availableGet = false;
 
-							if (boxRandom) {
+							if (boxRandom || boxAmmo) {
 								Destroy (gameObject);
 							}
 
@@ -200,7 +219,11 @@ public class BoxMystery : MonoBehaviour {
 		
 		availableBuy = false;
 		boxLightInfo.intensity = 2f;
-		weaponNumber = (int)Random.Range (0f, playerWeapon.weaponModel.Length);
+		if (!boxAmmo)
+			weaponNumber = (int)Random.Range (0f, playerWeapon.weaponModel.Length);
+		else
+			weaponNumber = playerWeapon.itemSlot[Mathf.RoundToInt (Random.Range (0f, playerWeapon.itemSlot.Length - 1))].weaponNumber;
+
 		mesh.mesh = modelWeapon [weaponNumber];
 		meshRenderer.material = materialWeapon [weaponNumber];
 		changeNumber++;

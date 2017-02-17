@@ -126,24 +126,33 @@ public class Player : MonoBehaviour {
 				if (collision.tag == "BoxMystery") {
 
 					BoxMystery box = collision.GetComponent<BoxMystery> ();
-					switch ((int)box.box) {
+					if (!box.boxAmmo) {
+						
+						switch ((int)box.box) {
 
-					case 0:
-						textBox.text = "WEAPON BOX\n" + box.boxCost.ToString () + " POINT"; 
-						textBox.color = Color.yellow;
-						break;
-					case 1:
-						textBox.text = "DAMAGE INCREASE BOX\n" + box.boxCost.ToString () + " POINT"; 
-						textBox.color = new Color (1f, 1f / 2f, 0f);
-						break;
-					case 2:
-						textBox.text = "CLIP EXTEND BOX\n" + box.boxCost.ToString () + " POINT"; 
-						textBox.color = Color.red;
-						break;
-					case 3:
-						textBox.text = "LASER SIGHT BOX\n" + box.boxCost.ToString () + " POINT"; 
-						textBox.color = new Color (0f, 3f / 4f, 1f);
-						break;
+						case 0:
+							textBox.text = "WEAPON BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.color = Color.yellow;
+							break;
+						case 1:
+							textBox.text = "DAMAGE INCREASE BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.color = new Color (1f, 1f / 2f, 0f);
+							break;
+						case 2:
+							textBox.text = "CLIP EXTEND BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.color = new Color (0f, 3f / 4f, 1f);;
+							break;
+						case 3:
+							textBox.text = "LASER SIGHT BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.color = Color.red;
+							break;
+
+						}
+
+					} else {
+
+						textBox.text = "AMMO BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.color = Color.green;
 
 					}
 

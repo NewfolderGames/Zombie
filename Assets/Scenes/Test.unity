@@ -220,8 +220,20 @@ Prefab:
     - target: {fileID: 114080229606500908, guid: 6aa62df21b65f1645a7556d87b7ab9e3,
         type: 2}
       propertyPath: boxAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114080229606500908, guid: 6aa62df21b65f1645a7556d87b7ab9e3,
+        type: 2}
+      propertyPath: boxAmmo
+      value: 
+      objectReference: {fileID: 1644640461984294, guid: 3c1b61de759b92449a606ffa30045754,
+        type: 2}
+    - target: {fileID: 114080229606500908, guid: 6aa62df21b65f1645a7556d87b7ab9e3,
+        type: 2}
+      propertyPath: boxRandom
+      value: 
+      objectReference: {fileID: 1114199118428568, guid: 4b7ad4f05408b314689b25682c45e0c5,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aa62df21b65f1645a7556d87b7ab9e3, type: 2}
   m_IsPrefabParent: 0
