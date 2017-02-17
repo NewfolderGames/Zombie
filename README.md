@@ -1,4 +1,6 @@
 # 유니티 좀비 서바이벌
-### GIF
+## GIF
 ![Alt text](/Images/Image_1.gif)
 ![Alt text](/Images/Image_2.gif)
+![Alt text](/Images/Image_3.gif)
+![Alt text](/Images/Image_4.gif)
