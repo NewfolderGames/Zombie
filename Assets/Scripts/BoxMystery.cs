@@ -56,20 +56,23 @@ public class BoxMystery : MonoBehaviour {
 
 			boxAmmo = false;
 			box = (boxType)Mathf.RoundToInt (Random.Range (0f, 3f));
-			boxCost = Mathf.RoundToInt (Random.Range(100f, 1000f));
 			switch ((int)box) {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
+				boxCost = Mathf.RoundToInt (Random.Range(500f, 1000f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
+				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
+				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
+				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
 				break;
 
 			}
@@ -174,8 +177,16 @@ public class BoxMystery : MonoBehaviour {
 							} else {
 
 								for (int i = 0; i < playerWeapon.itemSlot.Length; i++)
-									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-										playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt(playerWeapon.itemSlot [i].weaponClip * playerWeapon.weaponClipAdd[weaponNumber] * 0.25f);
+									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber) {
+										switch(weaponNumber) {
+										case 7: case 8:
+											playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt ((playerWeapon.itemSlot [i].weaponClip + playerWeapon.weaponClipAdd [weaponNumber]) * 0.25f);
+											break;
+										default :
+											playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponClip * playerWeapon.weaponClipAdd [weaponNumber] * 0.25f);
+											break;
+										}
+									}
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
