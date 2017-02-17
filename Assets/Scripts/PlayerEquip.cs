@@ -286,7 +286,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
-	void TextUpdate(ItemWeapon weapon) {
+	public void TextUpdate(ItemWeapon weapon) {
 
 		textBullet.text = weapon.weaponBullet.ToString();
 		textWeapon.text = weapon.weaponName;
@@ -309,9 +309,9 @@ public class PlayerEquip : MonoBehaviour {
 		case (int)itemWeaponList.Player_Weapon_Rifle_1:
 			return new ItemWeapon (0,	"Rifle_1",			weaponModel[0], 	1,		7.5f * weaponDamageAdd[0]	,	1f,		0.5f,	Mathf.RoundToInt(150f * weaponClipAdd[0])	,	10f,	0.1f,	1f, 	3f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellRifle,		false,	weaponLaserAdd[0]	,	new Vector3 (0f, -0.4f, 0f), 	new Vector3 (0f, 0f, 0.9f)); 
 		case (int)itemWeaponList.Player_Weapon_Shotgun_1:
-			return new ItemWeapon (1,	"Shotgun_1",		weaponModel[1], 	12,		2f * weaponDamageAdd[1]		,	0.3f,	0.3f,	Mathf.RoundToInt(25f * weaponClipAdd[1])	,	8f,		0.5f,	7.5f,	45f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellShotgun,	true,	weaponLaserAdd[1]	,	new Vector3(0f, 0f, 0f),		new Vector3(0f,0.025f,1f));
+			return new ItemWeapon (1,	"Shotgun_1",		weaponModel[1], 	12,		2.5f * weaponDamageAdd[1]	,	0.3f,	0.3f,	Mathf.RoundToInt(40f * weaponClipAdd[1])	,	10f,	0.5f,	7.5f,	30f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellShotgun,	true,	weaponLaserAdd[1]	,	new Vector3(0f, 0f, 0f),		new Vector3(0f,0.025f,1f));
 		case (int)itemWeaponList.Player_Weapon_Pistol_1:
-			return new ItemWeapon (2,	"Pistol_1",			weaponModel[2], 	1, 		4.5f * weaponDamageAdd[2]	,	1f,		1.5f, 	Mathf.RoundToInt(100f * weaponClipAdd[2])	,	10f,	0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	true,	weaponLaserAdd[2]	,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f)); 
+			return new ItemWeapon (2,	"Pistol_1",			weaponModel[2], 	1, 		4.5f * weaponDamageAdd[2]	,	1f,		1.5f, 	Mathf.RoundToInt(120f * weaponClipAdd[2])	,	10f,	0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	true,	weaponLaserAdd[2]	,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f)); 
 		case (int)itemWeaponList.player_Weapon_SMG_1:
 			return new ItemWeapon (3,	"SMG_1",			weaponModel[3], 	1, 		5.5f * weaponDamageAdd[3]	,	1.5f,	0.5f,	Mathf.RoundToInt(250f * weaponClipAdd[3])	,	10f,	0.25f,	2f, 	7f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[3]	,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, 0.0875f, 0.75f));
 		case (int)itemWeaponList.Player_Weapon_SMG_2:

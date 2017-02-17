@@ -114,6 +114,7 @@ public class BoxMystery : MonoBehaviour {
 							break;
 
 						}
+						playerWeapon.TextUpdate ();
 						boxWeapon.SetActive (false);
 						boxLight.SetActive (false);
 						availableGet = false;
