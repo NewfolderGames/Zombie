@@ -124,10 +124,16 @@ MonoBehaviour:
   player: {fileID: 1814253474114064, guid: c931b5897206d3741a7185c822addf9a, type: 2}
   enemyNavigation: {fileID: 0}
   enemyRigidbody: {fileID: 0}
-  spawner: {fileID: 0}
+  spawnerSystem: {fileID: 0}
   enemyHealth: 25
   enemySpeed: 2.5
+  enemyDamage: 5
+  enemyDead: 0
   enemyKnockback: 0
+  enemyAttack: 0
+  enemyAttackTime: 1
+  enemyAttackRange: 2.5
+  enemyAttackAvailable: 1
 --- !u!195 &195161331126901382
 NavMeshAgent:
   m_ObjectHideFlags: 1

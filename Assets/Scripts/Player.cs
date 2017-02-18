@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	// PLAYER INFO
 
 	public float playerHealth = 100f;
+	public bool playerDead;
 
 	public float playerPoint = 0f;
 	public float playerPointTotal = 0f;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour {
 	// COMPONENT
 
 	Rigidbody componentRigidbody;
+	PlayerCamera componentCamera;
 
 	// CAMERA
 
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour {
 	void Awake () {
 
 		componentRigidbody = GetComponent<Rigidbody> ();
+		componentCamera = GetComponent<PlayerCamera> ();
 
 		componentRigidbody.freezeRotation = true;
 
@@ -170,6 +173,23 @@ public class Player : MonoBehaviour {
 		textHealth.text = "HEALTH : " + playerHealth.ToString ();
 		textPointTotal.text = Mathf.Floor(playerPointTotal).ToString ();
 		textPoint.text = Mathf.Floor(playerPoint).ToString ();
+
+	}
+
+	public void ChangeHealth(float damage) {
+
+		if (!playerDead) {
+
+			playerHealth -= damage;
+			componentCamera.playerCameraShake += 2.5f * componentCamera.playerCameraShakeMultiply;
+			TextUpdate ();
+			if (playerHealth <= 0) {
+
+				playerDead = true;
+
+			}
+
+		}
 
 	}
 

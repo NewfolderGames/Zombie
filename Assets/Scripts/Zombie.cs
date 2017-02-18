@@ -14,9 +14,15 @@ public class Zombie : MonoBehaviour {
 
 	public float enemyHealth;
 	public float enemySpeed;
+	public float enemyDamage;
 	public bool enemyDead;
 
 	public bool enemyKnockback;
+
+	public bool enemyAttack;
+	public float enemyAttackTime;
+	public float enemyAttackRange;
+	public bool enemyAttackAvailable = true;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -31,12 +37,31 @@ public class Zombie : MonoBehaviour {
 		enemyNavigation.speed = enemySpeed;
 
 		player = GameObject.Find ("Player");
+
 	}
 
 	void Update () {
 
-		if (!enemyKnockback)
+		if (!enemyKnockback) {
+			
 			enemyNavigation.SetDestination (player.transform.position);
+			if (Vector3.Distance(player.transform.position, transform.position) <= enemyAttackRange && enemyAttack) {
+
+				Player playerInfo = player.GetComponent<Player> ();
+				playerInfo.ChangeHealth (enemyDamage);
+				enemyAttackAvailable = true;
+				enemyAttack = false;
+
+			} else if (Vector3.Distance(player.transform.position, transform.position) <= enemyAttackRange && !enemyAttack) {
+
+				if (enemyAttackAvailable) {
+					enemyAttackAvailable = false;
+					StartCoroutine (AttackWait (enemyAttackTime));
+				}
+
+			} else enemyAttack = false;
+
+		}
 		else {
 
 			enemyNavigation.Stop ();
@@ -50,7 +75,26 @@ public class Zombie : MonoBehaviour {
 		}
 
 	}
+	/*
+	void OnCollisionEnter( Collision other ) {
 
+		if (other.gameObject.tag == "Player") {
+
+			if (!enemyAttack) {
+
+				StartCoroutine (AttackWait (enemyAttackTime));
+
+			} else {
+
+				Player playerInfo = player.GetComponent<Player> ();
+				playerInfo.ChangeHealth (enemyDamage);
+				enemyAttack = false;
+
+			}
+
+		}
+
+	}*/
 
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
@@ -73,6 +117,13 @@ public class Zombie : MonoBehaviour {
 			}
 
 		}
+
+	}
+
+	IEnumerator AttackWait(float time) {
+
+		yield return new WaitForSeconds (time);
+		enemyAttack = true;
 
 	}
 

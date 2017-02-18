@@ -55,7 +55,7 @@ public class BoxMystery : MonoBehaviour {
 		if (boxRandom) {
 
 			boxAmmo = false;
-			box = (boxType)Mathf.RoundToInt (Random.Range (0f, 3f));
+			box = (boxType)Mathf.Floor (Random.Range(0f, 4f));
 			switch ((int)box) {
 
 			case 0:
