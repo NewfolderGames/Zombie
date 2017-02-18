@@ -43,27 +43,28 @@ public class Zombie : MonoBehaviour {
 	void Update () {
 
 		if (!enemyKnockback) {
-			
-			enemyNavigation.SetDestination (player.transform.position);
-			if (Vector3.Distance(player.transform.position, transform.position) <= enemyAttackRange && enemyAttack) {
 
-				Player playerInfo = player.GetComponent<Player> ();
-				playerInfo.ChangeHealth (enemyDamage);
-				enemyAttackAvailable = true;
-				enemyAttack = false;
+			if (Vector3.Distance (player.transform.position, transform.position) <= enemyAttackRange) {
 
-			} else if (Vector3.Distance(player.transform.position, transform.position) <= enemyAttackRange && !enemyAttack) {
+				if (enemyAttackAvailable && !enemyAttack) {
 
-				if (enemyAttackAvailable) {
+					enemyAttack = true;
 					enemyAttackAvailable = false;
 					StartCoroutine (AttackWait (enemyAttackTime));
+
 				}
 
-			} else enemyAttack = false;
+			} else {
+
+				enemyNavigation.Resume ();
+				enemyNavigation.SetDestination (player.transform.position);
+
+			}
 
 		}
 		else {
 
+			enemyAttack = false;
 			enemyNavigation.Stop ();
 			if (enemyRigidbody.velocity == Vector3.zero) {
 
@@ -75,26 +76,6 @@ public class Zombie : MonoBehaviour {
 		}
 
 	}
-	/*
-	void OnCollisionEnter( Collision other ) {
-
-		if (other.gameObject.tag == "Player") {
-
-			if (!enemyAttack) {
-
-				StartCoroutine (AttackWait (enemyAttackTime));
-
-			} else {
-
-				Player playerInfo = player.GetComponent<Player> ();
-				playerInfo.ChangeHealth (enemyDamage);
-				enemyAttack = false;
-
-			}
-
-		}
-
-	}*/
 
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
@@ -122,8 +103,20 @@ public class Zombie : MonoBehaviour {
 
 	IEnumerator AttackWait(float time) {
 
+		enemyNavigation.Stop ();
+
 		yield return new WaitForSeconds (time);
-		enemyAttack = true;
+
+		if (Vector3.Distance (player.transform.position, transform.position) <= enemyAttackRange && !enemyKnockback && enemyAttack) {
+
+			Player playerInfo = player.GetComponent<Player> ();
+			playerInfo.ChangeHealth (enemyDamage);
+
+		}
+
+		enemyAttackAvailable = true;
+		enemyNavigation.Resume ();
+		enemyAttack = false;
 
 	}
 
