@@ -20,6 +20,7 @@ public class ProjectileExplosion : MonoBehaviour {
 		for (int i = 0; i < enemy.Length; i++) {
 
 			Zombie enemyInfo = enemy [i].GetComponent<Zombie> ();
+			enemyInfo.damageExplosive = true;
 			enemyInfo.EnemyChangeHealth (damage);
 			enemyInfo.enemyKnockback = true;
 			enemyInfo.enemyRigidbody.AddForce (Quaternion.LookRotation (enemyInfo.transform.position - transform.position) * Vector3.forward * knockback, ForceMode.Impulse);

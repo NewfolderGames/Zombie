@@ -24,6 +24,8 @@ public class Zombie : MonoBehaviour {
 	public float enemyAttackRange;
 	public bool enemyAttackAvailable = true;
 
+	public bool damageExplosive = false;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Start () {
@@ -86,7 +88,10 @@ public class Zombie : MonoBehaviour {
 			enemyHealth -= damage;
 			Player playerInfo = player.GetComponent<Player> ();
 			playerInfo.playerPointTotal += damage;
-			playerInfo.playerPoint += damage;
+			if (damageExplosive)
+				playerInfo.playerPoint += damage / 5f;
+			else
+				playerInfo.playerPoint += damage;
 			playerInfo.TextUpdate ();
 			if (enemyHealth <= 0) {
 			
