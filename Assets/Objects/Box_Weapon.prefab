@@ -298,3 +298,6 @@ MonoBehaviour:
   availableGet: 0
   box: 0
   boxCost: 750
+  boxCrate: 0
+  boxAmmo: 0
+  boxRandom: 1

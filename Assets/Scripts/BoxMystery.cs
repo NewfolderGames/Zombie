@@ -24,7 +24,7 @@ public class BoxMystery : MonoBehaviour {
 
 	int changeNumber = 0;
 	int changeNumberMax = 50;
-	float changeNumberTime = 5f;
+	float changeNumberTime = 2.5f;
 
 	float weaponVanish = 10f;
 	float weaponVanishCurrent = 0;
@@ -43,8 +43,9 @@ public class BoxMystery : MonoBehaviour {
 
 	public int boxCost;
 
-	public bool boxRandom;
+	public bool boxCrate;
 	public bool boxAmmo;
+	public bool boxRandom;
 
 	void Start() {
 
@@ -52,7 +53,7 @@ public class BoxMystery : MonoBehaviour {
 		playerInfo = player.GetComponent<Player> ();
 		playerWeapon = GameObject.Find ("Player_Equip").GetComponent<PlayerEquip> ();
 
-		if (boxRandom) {
+		if (boxCrate) {
 
 			boxAmmo = false;
 			box = (boxType)Mathf.Floor (Random.Range(0f, 4f));
@@ -60,28 +61,29 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCost = Mathf.RoundToInt (Random.Range(500f, 1000f));
+				boxCost = Mathf.RoundToInt (Random.Range (500f, 1000f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
+				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
+				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCost = Mathf.RoundToInt (Random.Range(150f, 350f));
+				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 
 			}
+			boxRandom = true;
 			Destroy (gameObject, 25f);
 
 		}
 		if (boxAmmo) {
 
-			boxRandom = false;
+			boxCrate = false;
 			boxCost = Mathf.RoundToInt (Random.Range(150f, 250f));
 			boxLightInfo.color = Color.green;
 			Destroy (gameObject, 25f);
@@ -194,7 +196,7 @@ public class BoxMystery : MonoBehaviour {
 							boxLight.SetActive (false);
 							availableGet = false;
 
-							if (boxRandom || boxAmmo) {
+							if (boxCrate || boxAmmo) {
 								Destroy (gameObject);
 							}
 
@@ -230,7 +232,7 @@ public class BoxMystery : MonoBehaviour {
 		
 		availableBuy = false;
 		boxLightInfo.intensity = 2f;
-		if (!boxAmmo)
+		if (boxRandom)
 			weaponNumber = (int)Random.Range (0f, playerWeapon.weaponModel.Length);
 		else
 			weaponNumber = playerWeapon.itemSlot[Mathf.RoundToInt (Random.Range (0f, playerWeapon.itemSlot.Length - 1))].weaponNumber;
