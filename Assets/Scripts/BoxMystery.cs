@@ -66,28 +66,28 @@ public class BoxMystery : MonoBehaviour {
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(200f, 300f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(200f, 300f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(75f, 175f));
 				break;
 
 			}
 			boxRandom = true;
 			boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
-			Destroy (gameObject, 25f);
+			StartCoroutine (BoxDestroy (25f));
 
 		} else if (boxAmmo) {
 
 			boxCrate = false;
 			boxCost = Mathf.RoundToInt (Random.Range (150f, 250f));
 			boxLightInfo.color = Color.green;
-			Destroy (gameObject, 25f);
+			StartCoroutine (BoxDestroy (25f));
 
 		} else {
 
@@ -244,6 +244,12 @@ public class BoxMystery : MonoBehaviour {
 
 	}
 
+	IEnumerator BoxDestroy(float time) {
 
+		yield return new WaitForSeconds (time);
+		if (!availableGet && availableBuy)
+			Destroy (gameObject);
 
+	}
+		
 }
