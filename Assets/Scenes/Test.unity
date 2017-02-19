@@ -1359,6 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+  playerDead: 0
   playerPoint: 0
   playerPointTotal: 0
   playerSpeed: 10
@@ -1809,6 +1810,130 @@ MonoBehaviour:
   weaponDamageAdd: []
   weaponClipAdd: []
   weaponLaserAdd: 
+  weaponName:
+  - Rifle 1
+  - Shotgun 1
+  - Pistol 1
+  - SMG 1
+  - SMG 2
+  - Rifle 2
+  - SMG 3
+  - GrenadeLauncher 1
+  - RocketLauncher 1
+  weaponModel:
+  - {fileID: 108132714}
+  - {fileID: 411431063}
+  - {fileID: 370287549}
+  - {fileID: 13560126}
+  - {fileID: 1910643326}
+  - {fileID: 726093035}
+  - {fileID: 447382203}
+  - {fileID: 178868850}
+  - {fileID: 374492210}
+  weaponPallet: 010000000c00000001000000010000000100000001000000010000000100000001000000
+  weaponDamage:
+  - 7.5
+  - 2.5
+  - 4.5
+  - 5.5
+  - 5
+  - 12.5
+  - 4
+  - 25
+  - 35
+  weaponKnockback:
+  - 1
+  - 0.3
+  - 1
+  - 1.5
+  - 1
+  - 2
+  - 1
+  - 10
+  - 15
+  weaponRecoil:
+  - 0.5
+  - 0.3
+  - 1.5
+  - 0.5
+  - 0.75
+  - 2
+  - 0.75
+  - 10
+  - 15
+  weaponClip:
+  - 150
+  - 40
+  - 120
+  - 250
+  - 300
+  - 60
+  - 350
+  - 10
+  - 5
+  weaponRange:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 3
+  - 5
+  weaponSpreadMin:
+  - 0.1
+  - 0.5
+  - 0.25
+  - 0.25
+  - 0.1
+  - 0.05
+  - 0.25
+  - 0.1
+  - 0.1
+  weaponSpreadMax:
+  - 1
+  - 7.5
+  - 1
+  - 2
+  - 1.5
+  - 0.5
+  - 2.5
+  - 0.5
+  - 0.5
+  weaponSpeed:
+  - 0.05
+  - 0.5
+  - 0.1
+  - 0.11666667
+  - 0.06666667
+  - 0.1
+  - 0.05
+  - 2
+  - 2
+  weaponProjectile: 000000000000000000000000000000000000000000000000000000000100000002000000
+  weaponShell: 000000000100000002000000020000000200000000000000020000000000000000000000
+  weaponSemi: 000101000001000101
+  weaponPosition:
+  - {x: 0, y: -0.4, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -0.25, z: 0}
+  - {x: 0, y: -0.45, z: 0}
+  - {x: 0, y: -0.375, z: 0}
+  - {x: 0, y: -0.475, z: 0}
+  - {x: 0, y: -0.45, z: 0}
+  - {x: 0, y: -0.25, z: 0}
+  - {x: 0, y: -0.4, z: -0.3}
+  weaponBarrelPosition:
+  - {x: 0, y: 0, z: 0.9}
+  - {x: 0, y: 0.025, z: 1}
+  - {x: 0, y: 0.02, z: 0.23}
+  - {x: 0, y: 0.0875, z: 0.75}
+  - {x: 0, y: 0.03, z: 0.92}
+  - {x: 0, y: -0.0325, z: 0.875}
+  - {x: 0, y: -0.015, z: 0.6}
+  - {x: 0, y: 0, z: 0.405}
+  - {x: -0.0125, y: 0.125, z: 1.05}
   player: {fileID: 776392043}
   playerInfo: {fileID: 776392045}
   bulletObject:
@@ -1826,16 +1951,6 @@ MonoBehaviour:
   weaponLaserpoint: {fileID: 365400106}
   weaponLaserpointMaterial: {fileID: 2100000, guid: 4606817aa2822f24685fea8aa459226f,
     type: 2}
-  weaponModel:
-  - {fileID: 108132714}
-  - {fileID: 411431063}
-  - {fileID: 370287549}
-  - {fileID: 13560126}
-  - {fileID: 1910643326}
-  - {fileID: 726093035}
-  - {fileID: 447382203}
-  - {fileID: 178868850}
-  - {fileID: 374492210}
   textBullet: {fileID: 216343220}
   textWeapon: {fileID: 585947831}
 --- !u!1 &1022102964

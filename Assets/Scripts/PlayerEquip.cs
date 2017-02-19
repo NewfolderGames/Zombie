@@ -34,6 +34,38 @@ public class PlayerEquip : MonoBehaviour {
 	public float[] weaponClipAdd;
 	public bool[] weaponLaserAdd;
 
+	public string[] weaponName;
+	public GameObject[] weaponModel;
+	public int[] weaponPallet;
+	public float[] weaponDamage;
+	public float[] weaponKnockback;
+	public float[] weaponRecoil;
+	public float[] weaponClip;
+	public float[] weaponRange;
+	public float[] weaponSpreadMin;
+	public float[] weaponSpreadMax;
+	public float[] weaponSpeed;
+	public weaponProjectileList[] weaponProjectile;
+	public weaponShellList[] weaponShell;
+	public bool[] weaponSemi;
+	public Vector3[] weaponPosition;
+	public Vector3[] weaponBarrelPosition;
+
+	public enum weaponProjectileList {
+
+		ProjectileBullet,
+		ProjectileGrenade,
+		ProjectileRocket
+
+	}
+	public enum weaponShellList {
+
+		ShellRifle,
+		ShellShotgun,
+		ShellPistol
+
+	}
+
 	// PLAYER INFO 
 
 	public GameObject player;
@@ -61,10 +93,6 @@ public class PlayerEquip : MonoBehaviour {
 
 	public LineRenderer weaponLaserpoint;
 	public Material weaponLaserpointMaterial;
-
-	// WEAPON MODEL
-
-	public GameObject[] weaponModel;
 
 	// UI
 
@@ -94,6 +122,8 @@ public class PlayerEquip : MonoBehaviour {
 		itemSlot [1] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
 
 		WeaponSelect (itemSlot [itemSlotNumber]);
+		WeaponUpdate (0, true, true, false);
+		WeaponUpdate (1, true, true, false);
 
 	}
 
@@ -195,7 +225,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 			StartCoroutine (WeaponSpawnLight (Time.deltaTime));
-			WeaponSpawnShell ((int)weapon.weaponShell);
+			WeaponSpawnShell (weapon.weaponShell);
 			transform.localPosition = new Vector3(0.75f,0f,0f);
 
 		}
@@ -211,7 +241,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			weapon.WeaponRecoilCalculate ();
 
-			GameObject projectileClone = Instantiate (bulletObject[(int)weapon.weaponProjectile], weaponBarrel.transform.position, transform.rotation * Quaternion.Euler (itemSlot[itemSlotNumber].weaponSpreadCircle));
+			GameObject projectileClone = Instantiate (bulletObject[weapon.weaponProjectile], weaponBarrel.transform.position, transform.rotation * Quaternion.Euler (itemSlot[itemSlotNumber].weaponSpreadCircle));
 			Projectile projectileInfo = projectileClone.GetComponent<Projectile> ();
 			Rigidbody projectileRigidbody = projectileClone.GetComponent<Rigidbody> ();
 
@@ -278,7 +308,6 @@ public class PlayerEquip : MonoBehaviour {
 		weaponLaserpoint.startColor = Color.white;
 		weaponLaserpoint.endColor = Color.white;
 		weaponLaserpoint.material = weaponLaserpointMaterial;
-		//weaponLaserpoint.useWorldSpace = true;
 
 	}
 
@@ -302,32 +331,33 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
+	public void WeaponUpdate(int number, bool damage, bool clip, bool clipAdd) {
+		
+		if(damage) itemSlot [number].weaponDamage = weaponDamage[itemSlot [number].weaponNumber] * weaponDamageAdd [itemSlot [number].weaponNumber];
+		if (clip) {
+
+			switch(number) {
+
+				case 7:
+				case 8:
+					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + weaponClipAdd [itemSlot [number].weaponNumber]);
+					else itemSlot [number].weaponBullet += 1;
+					break;
+
+				default:
+					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber]);
+					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber]);
+					break;
+				
+			}
+
+		}
+
+	}
+
 	public ItemWeapon WeaponChange(int number) {
 
-		switch (number) {
-
-		//						  number	name			modelobject			pallet	damage							knkbck	recoil	clip											range	min		max		speed		projectiletype										 shelltype									semi	laser					modelposition					barrelposition
-
-		case (int)itemWeaponList.Player_Weapon_Rifle_1:
-			return new ItemWeapon (0,	"Rifle_1",			weaponModel[0], 	1,		7.5f * weaponDamageAdd[0]	,	1f,		0.5f,	Mathf.RoundToInt(150f * weaponClipAdd[0])	,	0f,		0.1f,	1f, 	3f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellRifle,		false,	weaponLaserAdd[0]	,	new Vector3 (0f, -0.4f, 0f), 	new Vector3 (0f, 0f, 0.9f)); 
-		case (int)itemWeaponList.Player_Weapon_Shotgun_1:	
-			return new ItemWeapon (1,	"Shotgun_1",		weaponModel[1], 	12,		2.5f * weaponDamageAdd[1]	,	0.3f,	0.3f,	Mathf.RoundToInt(40f * weaponClipAdd[1])	,	0f,		0.5f,	7.5f,	30f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellShotgun,	true,	weaponLaserAdd[1]	,	new Vector3(0f, 0f, 0f),		new Vector3(0f,0.025f,1f));
-		case (int)itemWeaponList.Player_Weapon_Pistol_1:
-			return new ItemWeapon (2,	"Pistol_1",			weaponModel[2], 	1, 		4.5f * weaponDamageAdd[2]	,	1f,		1.5f, 	Mathf.RoundToInt(120f * weaponClipAdd[2])	,	0f,		0.25f,	1f, 	6f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	true,	weaponLaserAdd[2]	,	new Vector3 (0f, -0.25f, 0f), 	new Vector3 (0f, 0.02f, 0.23f)); 
-		case (int)itemWeaponList.player_Weapon_SMG_1:
-			return new ItemWeapon (3,	"SMG_1",			weaponModel[3], 	1, 		5.5f * weaponDamageAdd[3]	,	1.5f,	0.5f,	Mathf.RoundToInt(250f * weaponClipAdd[3])	,	0f,		0.25f,	2f, 	7f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[3]	,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, 0.0875f, 0.75f));
-		case (int)itemWeaponList.Player_Weapon_SMG_2:
-			return new ItemWeapon (4,	"SMG_2",			weaponModel[4],		1, 		5f * weaponDamageAdd[4]		,	1f,		0.75f, 	Mathf.RoundToInt(300f * weaponClipAdd[4])	,	0f,		0.1f,	1.5f,	4f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[4]	,	new Vector3 (0f, -0.375f, 0f),	new Vector3 (0f, 0.03f, 0.92f));
-		case (int)itemWeaponList.Player_Weapon_Rifle_2:
-			return new ItemWeapon (5,	"Rifle_2",			weaponModel[5], 	1,		12.5f * weaponDamageAdd[5]	,	2f,		2f,		Mathf.RoundToInt(60f * weaponClipAdd[5])	,	0f,		0.05f,	0.5f, 	6f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellRifle,		true,	weaponLaserAdd[5]	,	new Vector3 (0f, -0.475f, 0f), 	new Vector3 (0f, -0.0325f, 0.875f));
-		case (int)itemWeaponList.Player_Weapon_SMG_3:
-			return new ItemWeapon (6,	"SMG_3",			weaponModel[6],		1, 		4f * weaponDamageAdd[6]		,	1f,		0.75f, 	Mathf.RoundToInt(350f * weaponClipAdd[6])	,	0f,		0.25f,	2.5f,	3f / 60f,	ItemWeapon.weaponProjectileList.ProjectileBullet,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[6]	,	new Vector3 (0f, -0.45f, 0f),	new Vector3 (0f, -0.015f, 0.6f));
-		case (int)itemWeaponList.player_Weapon_GrenadeLauncher_1:
-			return new ItemWeapon (7,	"GrenadeLauncher_1",weaponModel[7],		1, 		25f * weaponDamageAdd[7]	,	10f,	10f, 	Mathf.RoundToInt(10f + weaponClipAdd[7])	,	3f,		0.1f,	0.5f,	120f / 60f,	ItemWeapon.weaponProjectileList.ProjectileGrenade,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[7]	,	new Vector3 (0f, -0.25f, 0f),	new Vector3 (0f, 0f, 0.405f));
-		case (int)itemWeaponList.player_Weapon_RocketLauncher_1:
-			return new ItemWeapon (8,	"RocketLauncher_1",	weaponModel[8],		1, 		35f * weaponDamageAdd[8]	,	15f,	15f, 	Mathf.RoundToInt(5f + weaponClipAdd[8])		,	5f,		0.1f,	0.5f,	120f / 60f,	ItemWeapon.weaponProjectileList.ProjectileRocket,	 ItemWeapon.weaponShellList.ShellPistol,	false,	weaponLaserAdd[8]	,	new Vector3 (0f, -0.4f, -0.3f),	new Vector3 (-0.0125f, 0.125f, 1.05f));
-		}
-		return null;
+		return new ItemWeapon (number, weaponName [number], weaponModel [number], weaponPallet [number], weaponDamage [number], weaponKnockback [number], weaponRecoil [number], weaponClip [number], weaponRange [number],	weaponSpreadMin [number], weaponSpreadMax [number], weaponSpeed [number], (int)weaponProjectile [number], (int)weaponShell [number], weaponSemi [number], weaponLaserAdd [number], weaponPosition [number], weaponBarrelPosition [number]); 
 
 	}
 

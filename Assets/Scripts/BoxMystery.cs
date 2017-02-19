@@ -23,7 +23,7 @@ public class BoxMystery : MonoBehaviour {
 	public bool availableGet = false;
 
 	int changeNumber = 0;
-	int changeNumberMax = 50;
+	int changeNumberMax = 25;
 	float changeNumberTime = 2.5f;
 
 	float weaponVanish = 10f;
@@ -46,6 +46,11 @@ public class BoxMystery : MonoBehaviour {
 	public bool boxCrate;
 	public bool boxAmmo;
 	public bool boxRandom;
+
+	public static int boxOpenWeapon;
+	public static int boxOpenDamage;
+	public static int boxOpenClip;
+	public static int boxOpenLaser;
 
 	void Start() {
 
@@ -132,37 +137,22 @@ public class BoxMystery : MonoBehaviour {
 								case 0: 
 									playerWeapon.itemSlot [playerWeapon.itemSlotNumber] = playerWeapon.WeaponChange (weaponNumber);
 									playerWeapon.WeaponSelect (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+									playerWeapon.WeaponUpdate (playerWeapon.itemSlotNumber, true, true, false);
 									break;
 
 								case 1:
-									playerWeapon.weaponDamageAdd [weaponNumber] *= 1.25f;
+									playerWeapon.weaponDamageAdd [weaponNumber]++;
 									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-											playerWeapon.itemSlot [i].weaponDamage *= 1.25f;
+											playerWeapon.WeaponUpdate (i, true, false, false);
 									}
 									break;
 
 								case 2:
-
-									switch (weaponNumber) {
-
-									case 7:
-									case 8:
-										playerWeapon.weaponClipAdd [weaponNumber] += 2;
-										for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-											if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-												playerWeapon.itemSlot [i].weaponBullet += 2;
-										}
-										break;
-
-									default:
-										playerWeapon.weaponClipAdd [weaponNumber] *= 1.25f;
-										for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
-											if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-												playerWeapon.itemSlot [i].weaponBullet = Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponBullet * 1.25f);
-										}
-										break;
-
+									playerWeapon.weaponClipAdd [weaponNumber]++;
+									for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
+										if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
+											playerWeapon.WeaponUpdate (i, true, true, true);
 									}
 									break;
 
@@ -180,14 +170,7 @@ public class BoxMystery : MonoBehaviour {
 
 								for (int i = 0; i < playerWeapon.itemSlot.Length; i++)
 									if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber) {
-										switch(weaponNumber) {
-										case 7: case 8:
-											playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt ((playerWeapon.itemSlot [i].weaponClip + playerWeapon.weaponClipAdd [weaponNumber]) * 0.25f);
-											break;
-										default :
-											playerWeapon.itemSlot [i].weaponBullet += Mathf.RoundToInt (playerWeapon.itemSlot [i].weaponClip * playerWeapon.weaponClipAdd [weaponNumber] * 0.25f);
-											break;
-										}
+										playerWeapon.WeaponUpdate (i, true, true, true);
 									}
 
 							}

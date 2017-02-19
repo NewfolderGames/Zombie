@@ -2,6 +2,9 @@
 =======================================
 
 ## 목록
+[GIF](https://github.com/Newfoldergames/Zombie#gif)
+[무기](https://github.com/Newfoldergames/Zombie#무기)
+[상자](https://github.com/Newfoldergames/Zombie#상자)
 
 =======================================
 
