@@ -148,10 +148,10 @@ public class BoxMystery : MonoBehaviour {
 
 									case 7:
 									case 8:
-										playerWeapon.weaponClipAdd [weaponNumber]++;
+										playerWeapon.weaponClipAdd [weaponNumber] += 2;
 										for (int i = 0; i < playerWeapon.itemSlot.Length; i++) {
 											if (weaponNumber == playerWeapon.itemSlot [i].weaponNumber)
-												playerWeapon.itemSlot [i].weaponBullet++;
+												playerWeapon.itemSlot [i].weaponBullet += 2;
 										}
 										break;
 
