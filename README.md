@@ -3,7 +3,9 @@
 
 ## 목록
 [GIF](https://github.com/Newfoldergames/Zombie#gif)
+
 [무기](https://github.com/Newfoldergames/Zombie#무기)
+
 [상자](https://github.com/Newfoldergames/Zombie#상자)
 
 =======================================
@@ -92,7 +94,7 @@
 
 웨이브가 끝나면 플레이어 근처로 떨어지는 상자입니다
 상자와 같이 e를 구입을 할수 있습니다
-상자는 생성된뒤 시간이 지나면 자동으로 사라집니다
+상자는 생성된뒤 시간이 지나거나, 구입을 하면 자동으로 사라집니다
 생성될 때 마다 다른 가격을 가집니다
 
 보급 상자
