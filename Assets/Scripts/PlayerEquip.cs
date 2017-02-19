@@ -111,12 +111,10 @@ public class PlayerEquip : MonoBehaviour {
 
 		for (int i = 0; i < weaponModel.Length; i++) {
 
-			weaponDamageAdd [i] = 1f;
-			weaponClipAdd [i] = 1f;
+			weaponDamageAdd [i] = 0f;
+			weaponClipAdd [i] = 0f;
 
 		}
-		weaponClipAdd [7] = 0f;
-		weaponClipAdd [8] = 0f;
 			
 		itemSlot [0] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
 		itemSlot [1] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
@@ -333,20 +331,20 @@ public class PlayerEquip : MonoBehaviour {
 
 	public void WeaponUpdate(int number, bool damage, bool clip, bool clipAdd) {
 		
-		if(damage) itemSlot [number].weaponDamage = weaponDamage[itemSlot [number].weaponNumber] * weaponDamageAdd [itemSlot [number].weaponNumber];
+		if(damage) itemSlot [number].weaponDamage = weaponDamage[itemSlot [number].weaponNumber] + ( weaponDamage[itemSlot [number].weaponNumber] * weaponDamageAdd [itemSlot [number].weaponNumber] / 5f);
 		if (clip) {
 
-			switch(number) {
+			switch(itemSlot [number].weaponNumber) {
 
 				case 7:
 				case 8:
-					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + weaponClipAdd [itemSlot [number].weaponNumber]);
+				if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + weaponClipAdd [itemSlot [number].weaponNumber]);
 					else itemSlot [number].weaponBullet += 1;
 					break;
 
 				default:
-					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber]);
-					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber]);
+					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber] / 5f));
+					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] / 5f);
 					break;
 				
 			}

@@ -42,15 +42,11 @@ public class BoxMystery : MonoBehaviour {
 	}
 
 	public int boxCost;
+	public int boxCostBase;
 
 	public bool boxCrate;
 	public bool boxAmmo;
 	public bool boxRandom;
-
-	public static int boxOpenWeapon;
-	public static int boxOpenDamage;
-	public static int boxOpenClip;
-	public static int boxOpenLaser;
 
 	void Start() {
 
@@ -66,32 +62,36 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCost = Mathf.RoundToInt (Random.Range (500f, 1000f));
+				boxCostBase = Mathf.RoundToInt (Random.Range (500f, 1000f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCost = Mathf.RoundToInt (Random.Range(350f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range(350f, 500f));
 				break;
 
 			}
 			boxRandom = true;
+			boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
 			Destroy (gameObject, 25f);
 
-		}
-		if (boxAmmo) {
+		} else if (boxAmmo) {
 
 			boxCrate = false;
-			boxCost = Mathf.RoundToInt (Random.Range(150f, 250f));
+			boxCost = Mathf.RoundToInt (Random.Range (150f, 250f));
 			boxLightInfo.color = Color.green;
 			Destroy (gameObject, 25f);
+
+		} else {
+
+			boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
 
 		}
 
@@ -117,13 +117,14 @@ public class BoxMystery : MonoBehaviour {
 						if (availableBuy && !availableGet) {
 							
 							if (playerInfo.playerPoint >= boxCost) {
-								
+
 								playerInfo.playerPoint -= boxCost;
 								playerInfo.TextUpdate ();
 								StartCoroutine (WeaponChoose ());
 								boxWeapon.SetActive (true);
 								boxLight.SetActive (true);
 								boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
+								if(!boxAmmo) playerInfo.boxOpen [(int)box]++;
 
 							} else
 								Debug.Log ("돈이 부족합니다");
@@ -175,6 +176,7 @@ public class BoxMystery : MonoBehaviour {
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
+							boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
 							boxWeapon.SetActive (false);
 							boxLight.SetActive (false);
 							availableGet = false;
@@ -204,6 +206,9 @@ public class BoxMystery : MonoBehaviour {
 				boxWeapon.SetActive (false);
 				boxLight.SetActive (false);
 				availableGet = false;
+
+				if (boxCrate || boxAmmo)
+					Destroy (gameObject);
 
 			}
 				

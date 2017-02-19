@@ -47,6 +47,10 @@ public class Player : MonoBehaviour {
 	public Text textPointTotal;
 	public Text textBox;
 
+	//
+
+	public int[] boxOpen;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake () {
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour {
 
 		componentRigidbody.freezeRotation = true;
 
+		boxOpen = new int[4];
 	}
 
 	void Start() {

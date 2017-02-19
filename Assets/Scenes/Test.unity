@@ -1371,6 +1371,7 @@ MonoBehaviour:
   textPoint: {fileID: 2123018492}
   textPointTotal: {fileID: 2126558811}
   textBox: {fileID: 1574646233}
+  boxOpen: 
 --- !u!23 &776392046
 MeshRenderer:
   m_ObjectHideFlags: 0
