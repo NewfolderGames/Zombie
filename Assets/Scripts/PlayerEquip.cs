@@ -97,7 +97,7 @@ public class PlayerEquip : MonoBehaviour {
 	// UI
 
 	public Text textBullet;
-	public Text textWeapon;
+	public Text[] textWeapon;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -318,7 +318,9 @@ public class PlayerEquip : MonoBehaviour {
 	public void TextUpdate(ItemWeapon weapon) {
 
 		textBullet.text = weapon.weaponBullet.ToString();
-		textWeapon.text = weapon.weaponName;
+		textWeapon[0].text = itemSlot[0].weaponName;
+		textWeapon[1].text = itemSlot[1].weaponName;
+		textWeapon[itemSlotNumber].text = "> " + itemSlot[itemSlotNumber].weaponName;
 
 		if (weapon.weaponBullet <= weapon.weaponClip / 5f)
 			textBullet.color = Color.red;
