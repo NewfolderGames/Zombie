@@ -565,6 +565,68 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cb267254fa98ac49b4c2c6b5923fddd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &207232712
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 954773448}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_Name
+      value: Player_Weapon_Shotgun_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a787a69a27ea56c498c8baf31ce69b69, type: 2}
+    - target: {fileID: 100002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &207232713 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+  m_PrefabInternal: {fileID: 207232712}
+--- !u!1 &207232714 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+  m_PrefabInternal: {fileID: 207232712}
 --- !u!1 &216343218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +2014,7 @@ Transform:
   - {fileID: 447382204}
   - {fileID: 178868851}
   - {fileID: 374492211}
+  - {fileID: 207232713}
   - {fileID: 1641965372}
   m_Father: {fileID: 776392049}
   m_RootOrder: 0
@@ -1983,6 +2046,7 @@ MonoBehaviour:
   - SMG 3
   - GrenadeLauncher 1
   - RocketLauncher 1
+  - Shotgun 1
   weaponModel:
   - {fileID: 108132714}
   - {fileID: 411431063}
@@ -1993,7 +2057,8 @@ MonoBehaviour:
   - {fileID: 447382203}
   - {fileID: 178868850}
   - {fileID: 374492210}
-  weaponPallet: 010000000c00000001000000010000000100000001000000010000000100000001000000
+  - {fileID: 207232714}
+  weaponPallet: 010000000c000000010000000100000001000000010000000100000001000000010000000c000000
   weaponDamage:
   - 7.5
   - 2.5
@@ -2004,6 +2069,7 @@ MonoBehaviour:
   - 4
   - 25
   - 35
+  - 2
   weaponKnockback:
   - 1
   - 0.3
@@ -2014,6 +2080,7 @@ MonoBehaviour:
   - 1
   - 200
   - 250
+  - 0.35
   weaponRecoil:
   - 0.5
   - 0.3
@@ -2024,6 +2091,7 @@ MonoBehaviour:
   - 0.75
   - 10
   - 15
+  - 0.25
   weaponClip:
   - 150
   - 40
@@ -2034,6 +2102,7 @@ MonoBehaviour:
   - 350
   - 10
   - 5
+  - 60
   weaponRange:
   - 0
   - 0
@@ -2043,6 +2112,7 @@ MonoBehaviour:
   - 0
   - 0
   - 3
+  - 5
   - 5
   weaponSpreadMin:
   - 0.1
@@ -2054,6 +2124,7 @@ MonoBehaviour:
   - 0.25
   - 0.1
   - 0.1
+  - 0.5
   weaponSpreadMax:
   - 1
   - 7.5
@@ -2064,6 +2135,7 @@ MonoBehaviour:
   - 2.5
   - 0.5
   - 0.5
+  - 7.5
   weaponSpeed:
   - 0.05
   - 0.5
@@ -2074,9 +2146,10 @@ MonoBehaviour:
   - 0.05
   - 2
   - 2
-  weaponProjectile: 000000000000000000000000000000000000000000000000000000000100000002000000
-  weaponShell: 000000000100000002000000020000000200000000000000020000000000000000000000
-  weaponSemi: 000101000001000101
+  - 0.125
+  weaponProjectile: 00000000000000000000000000000000000000000000000000000000010000000200000000000000
+  weaponShell: 00000000010000000200000002000000020000000000000002000000000000000000000001000000
+  weaponSemi: 00010100000100010100
   weaponPosition:
   - {x: 0, y: -0.4, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -2087,6 +2160,7 @@ MonoBehaviour:
   - {x: 0, y: -0.45, z: 0}
   - {x: 0, y: -0.25, z: 0}
   - {x: 0, y: -0.4, z: -0.3}
+  - {x: 0, y: -0.45, z: 0}
   weaponBarrelPosition:
   - {x: 0, y: 0, z: 0.9}
   - {x: 0, y: 0.025, z: 1}
@@ -2097,6 +2171,7 @@ MonoBehaviour:
   - {x: 0, y: -0.015, z: 0.6}
   - {x: 0, y: 0, z: 0.405}
   - {x: -0.0125, y: 0.125, z: 1.05}
+  - {x: -0.025, y: -0.055, z: 0.95}
   player: {fileID: 776392043}
   playerInfo: {fileID: 776392045}
   bulletObject:
@@ -2800,7 +2875,7 @@ Transform:
   - {fileID: 220212470}
   - {fileID: 365400105}
   m_Father: {fileID: 954773448}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1656688637 stripped
 MonoBehaviour:
