@@ -1603,7 +1603,7 @@ MonoBehaviour:
   textPoint: {fileID: 2123018492}
   textPointTotal: {fileID: 2126558811}
   textBox: {fileID: 1574646233}
-  boxOpen: 
+  boxGet: 
 --- !u!23 &776392046
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2105,16 +2105,16 @@ MonoBehaviour:
   - 15
   - 0.25
   weaponClip:
-  - 150
-  - 40
+  - 180
+  - 48
   - 120
-  - 250
+  - 270
   - 300
-  - 60
-  - 350
+  - 120
+  - 360
   - 10
   - 5
-  - 50
+  - 66
   weaponRange:
   - 0
   - 0
