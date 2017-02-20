@@ -34,6 +34,7 @@ public class Zombie : MonoBehaviour {
 	public float enemyAttackChargeRangeMax;
 	public bool enemyAttackChargeAvailable;
 
+	public bool enemyBoss;
 
 	public bool damageExplosive = false;
 
@@ -84,7 +85,7 @@ public class Zombie : MonoBehaviour {
 		else {
 
 			enemyNavigation.Stop ();
-			if (enemyRigidbody.velocity.x == 0f && enemyRigidbody.velocity.z == 0f) {
+			if (enemyRigidbody.velocity == Vector3.zero) {
 
 				enemyNavigation.Resume ();
 				enemyKnockback = false;
@@ -141,8 +142,18 @@ public class Zombie : MonoBehaviour {
 			if (enemyHealth <= 0) {
 			
 				enemyDead = true;
-				spawnerSystem.waveZombieNumberCurrent++;
-				spawnerSystem.TextUpdate ();
+				if (!enemyBoss) {
+					
+					spawnerSystem.waveZombieNumberCurrent++;
+					spawnerSystem.TextUpdate ();
+
+				} else {
+
+					spawnerSystem.waveBossDead = true;
+					playerInfo.playerPoint += 100;
+					playerInfo.playerPointTotal += 100;
+
+				}
 				Destroy (gameObject);
 
 			}

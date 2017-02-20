@@ -143,6 +143,7 @@ MonoBehaviour:
   enemyAttackChargeRangeMin: 0
   enemyAttackChargeRangeMax: 0
   enemyAttackChargeAvailable: 0
+  enemyBoss: 0
   damageExplosive: 0
 --- !u!195 &195161331126901382
 NavMeshAgent:
@@ -161,6 +162,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.45
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

@@ -27,6 +27,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public bool waveBoss;
 	public bool waveBossDead;
+	public bool waveBossActive;
 
 	public Spanwer[] spawners;
 
@@ -61,13 +62,18 @@ public class SpawnerSystem : MonoBehaviour {
 
 			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0) {
 
-				if (waveBossDead) {
+				if (waveBossDead || !waveBoss) {
 					
 					for (int i = 0; i < boxAmount; i++) {
 						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
 						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
 					}
 					WaveNext ();
+
+				} else if(!waveBossActive && waveBoss) {
+
+					waveBossActive = true;
+					spawners [Mathf.FloorToInt (Random.Range (0f, spawners.Length))].SpawnEnemy (1,true);
 
 				}
 
@@ -118,10 +124,13 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public void WaveCalculate(int wave) {
 
-		if (wave % 10 == 0)
+		if ((wave + 1) % 10 == 0)
 			waveBoss = true;
 		else
 			waveBoss = false;
+
+		waveBossActive = false;
+		waveBossDead = false;
 
 		waveZombie = Mathf.FloorToInt (10f + wave);
 		waveZombieHealth = 10f + (wave * 2);
@@ -162,7 +171,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 						number--;
 						waveZombieNumberLeft--;
-						spawners [i].SpawnEnemy ();
+						spawners [i].SpawnEnemy (0,false);
 						if (waveZombieNumberLeft == 0 || number == 0)
 							break;
 

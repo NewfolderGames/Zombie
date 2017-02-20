@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534681904421468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.263568, y: 1.25, z: 8.411762}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   enemyAttackChargeRangeMin: 2
   enemyAttackChargeRangeMax: 10
   enemyAttackChargeAvailable: 1
+  enemyBoss: 0
   damageExplosive: 0
 --- !u!195 &195733168979155202
 NavMeshAgent:
@@ -161,6 +162,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.45
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

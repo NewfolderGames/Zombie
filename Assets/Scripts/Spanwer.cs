@@ -21,13 +21,15 @@ public class Spanwer : MonoBehaviour {
 		
 	}
 
-	public void SpawnEnemy(){
+	public void SpawnEnemy(int number, bool boss){
 
-		GameObject enemy = Instantiate (spawnerEnemy[0], transform.position, transform.rotation);
+		GameObject enemy = Instantiate (spawnerEnemy[number], transform.position, transform.rotation);
 		Zombie enemyInfo = enemy.GetComponent<Zombie> ();
 
 		enemyInfo.enemyHealth = spawnerSystem.waveZombieHealth;
 		enemyInfo.enemySpeed = spawnerSystem.waveZombieSpeed;
+		if (boss)
+			enemyInfo.enemyBoss = true;
 
 	}
 
