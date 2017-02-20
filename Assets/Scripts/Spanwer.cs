@@ -8,7 +8,7 @@ public class Spanwer : MonoBehaviour {
 
 	public SpawnerSystem spawnerSystem;
 
-	public GameObject spawnerEnemy;
+	public GameObject[] spawnerEnemy;
 
 	void Start () {
 
@@ -23,7 +23,7 @@ public class Spanwer : MonoBehaviour {
 
 	public void SpawnEnemy(){
 
-		GameObject enemy = Instantiate (spawnerEnemy, transform.position, transform.rotation);
+		GameObject enemy = Instantiate (spawnerEnemy[0], transform.position, transform.rotation);
 		Zombie enemyInfo = enemy.GetComponent<Zombie> ();
 
 		enemyInfo.enemyHealth = spawnerSystem.waveZombieHealth;

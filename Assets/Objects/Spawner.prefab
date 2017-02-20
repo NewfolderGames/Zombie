@@ -92,5 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerSystem: {fileID: 0}
-  spawnerEnemy: {fileID: 1877140077697038, guid: 3c3d03f9918392e42a70bcedf6dc0738,
-    type: 2}
+  spawnerEnemy:
+  - {fileID: 1877140077697038, guid: 3c3d03f9918392e42a70bcedf6dc0738, type: 2}
+  - {fileID: 1534681904421468, guid: 89bb8d2ee5e230e4782f2a873a754852, type: 2}

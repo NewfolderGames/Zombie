@@ -25,6 +25,9 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public float waveDay;
 
+	public bool waveBoss;
+	public bool waveBossDead;
+
 	public Spanwer[] spawners;
 
 	public Text textWave;
@@ -58,11 +61,15 @@ public class SpawnerSystem : MonoBehaviour {
 
 			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0) {
 
-				for (int i = 0; i < boxAmount; i++) {
-					Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
-					Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
+				if (waveBossDead) {
+					
+					for (int i = 0; i < boxAmount; i++) {
+						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
+						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
+					}
+					WaveNext ();
+
 				}
-				WaveNext ();
 
 			}
 
@@ -110,6 +117,11 @@ public class SpawnerSystem : MonoBehaviour {
 	}
 
 	public void WaveCalculate(int wave) {
+
+		if (wave % 10 == 0)
+			waveBoss = true;
+		else
+			waveBoss = false;
 
 		waveZombie = Mathf.FloorToInt (10f + wave);
 		waveZombieHealth = 10f + (wave * 2);

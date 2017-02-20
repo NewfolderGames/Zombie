@@ -13,16 +13,27 @@ public class Zombie : MonoBehaviour {
 	public SpawnerSystem spawnerSystem;
 
 	public float enemyHealth;
+	public float enemyHealthMulti;
 	public float enemySpeed;
 	public float enemyDamage;
 	public bool enemyDead;
 
 	public bool enemyKnockback;
 
-	public bool enemyAttack;
 	public float enemyAttackTime;
-	public float enemyAttackRange;
 	public bool enemyAttackAvailable = true;
+
+	public bool enemyAttackCharge;
+	public float enemyAttackChargeTime;
+	public float enemyAttackChargeEndTime;
+	public float enemyAttackChargeDelay;
+	public float enemyAttackChargeSpeed;
+	public float enemyAttackChargeDamage;
+	public float enemyAttackChargeKnockback;
+	public float enemyAttackChargeRangeMin;
+	public float enemyAttackChargeRangeMax;
+	public bool enemyAttackChargeAvailable;
+
 
 	public bool damageExplosive = false;
 
@@ -38,6 +49,8 @@ public class Zombie : MonoBehaviour {
 
 		enemyNavigation.speed = enemySpeed;
 
+		enemyHealth *= enemyHealthMulti;
+
 		player = GameObject.Find ("Player");
 
 	}
@@ -46,29 +59,32 @@ public class Zombie : MonoBehaviour {
 
 		if (!enemyKnockback) {
 
-			if (Vector3.Distance (player.transform.position, transform.position) <= enemyAttackRange) {
+			if(enemyAttackChargeAvailable && Vector3.Distance (player.transform.position, transform.position) <= enemyAttackChargeRangeMax && Vector3.Distance (player.transform.position, transform.position) >= enemyAttackChargeRangeMin) {
 
-				if (enemyAttackAvailable && !enemyAttack) {
+				if (!enemyAttackCharge) {
 
-					enemyAttack = true;
-					enemyAttackAvailable = false;
-					StartCoroutine (AttackWait (enemyAttackTime));
+					enemyAttackCharge = true;
+					enemyAttackChargeAvailable = false;
+					StartCoroutine (AttackCharge (enemyAttackChargeTime));
 
 				}
 
 			} else {
 
-				enemyNavigation.Resume ();
-				enemyNavigation.SetDestination (player.transform.position);
+				if (!enemyAttackCharge) {
+					
+					enemyNavigation.Resume ();
+					enemyNavigation.SetDestination (player.transform.position);
+
+				}
 
 			}
 
 		}
 		else {
 
-			enemyAttack = false;
 			enemyNavigation.Stop ();
-			if (enemyRigidbody.velocity == Vector3.zero) {
+			if (enemyRigidbody.velocity.x == 0f && enemyRigidbody.velocity.z == 0f) {
 
 				enemyNavigation.Resume ();
 				enemyKnockback = false;
@@ -77,6 +93,29 @@ public class Zombie : MonoBehaviour {
 
 		}
 
+	}
+
+	void OnCollisionEnter(Collision other){
+
+		if (other.gameObject.tag == player.tag) {
+			
+			if (enemyAttackAvailable && !enemyAttackCharge) {
+
+				enemyAttackAvailable = false;
+				Player playerInfo = player.GetComponent<Player> ();
+				playerInfo.ChangeHealth (enemyDamage);
+				StartCoroutine (AttackMeleeDelay (enemyAttackTime));
+
+			}
+			if (enemyAttackCharge) {
+
+				player.GetComponent<Player> ().ChangeHealth (enemyAttackChargeDamage);
+				player.GetComponent<Rigidbody> ().AddForce (transform.rotation * Vector3.forward * enemyAttackChargeKnockback, ForceMode.Impulse);
+
+			}
+				
+		}
+		
 	}
 
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
@@ -112,22 +151,46 @@ public class Zombie : MonoBehaviour {
 
 	}
 
-	IEnumerator AttackWait(float time) {
+	IEnumerator AttackMeleeDelay(float time) {
+
+		yield return new WaitForSeconds (time);
+
+		enemyAttackAvailable = true;
+
+	}
+
+	IEnumerator AttackCharge(float time) {
 
 		enemyNavigation.Stop ();
 
 		yield return new WaitForSeconds (time);
 
-		if (Vector3.Distance (player.transform.position, transform.position) <= enemyAttackRange && !enemyKnockback && enemyAttack) {
+		if (enemyAttackCharge) {
 
-			Player playerInfo = player.GetComponent<Player> ();
-			playerInfo.ChangeHealth (enemyDamage);
+			Quaternion rotation = Quaternion.LookRotation (player.transform.position - transform.position);
+			transform.rotation = rotation;
+			enemyRigidbody.AddForce (rotation * Vector3.forward * enemyAttackChargeSpeed, ForceMode.Impulse);
+			StartCoroutine(AttackChargeEnd (enemyAttackChargeEndTime));
+
+		} else {
+
+			StartCoroutine(AttackChargeDelay (enemyAttackChargeDelay));
+			enemyAttackCharge = false;
 
 		}
 
-		enemyAttackAvailable = true;
-		enemyNavigation.Resume ();
-		enemyAttack = false;
+	}
+	IEnumerator AttackChargeEnd(float time) {
+
+		yield return new WaitForSeconds (time);
+		enemyAttackCharge = false;
+		StartCoroutine(AttackChargeDelay (enemyAttackChargeDelay));
+
+	}
+	IEnumerator AttackChargeDelay(float time) {
+
+		yield return new WaitForSeconds (time);
+		enemyAttackChargeAvailable = true;
 
 	}
 

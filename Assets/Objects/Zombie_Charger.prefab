@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1877140077697038}
+  m_RootGameObject: {fileID: 1534681904421468}
   m_IsPrefabParent: 1
---- !u!1 &1877140077697038
+--- !u!1 &1534681904421468
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4011437817282904}
-  - component: {fileID: 33925694941693280}
-  - component: {fileID: 65194167565814246}
-  - component: {fileID: 23278635218052116}
-  - component: {fileID: 195161331126901382}
-  - component: {fileID: 114784730124327016}
-  - component: {fileID: 54558146242804158}
+  - component: {fileID: 4816238222550500}
+  - component: {fileID: 33816674738913950}
+  - component: {fileID: 65184141597109066}
+  - component: {fileID: 23212627888307580}
+  - component: {fileID: 195733168979155202}
+  - component: {fileID: 114944462018472792}
+  - component: {fileID: 54753508736636328}
   m_Layer: 12
-  m_Name: Zombie
+  m_Name: Zombie_Charger
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4011437817282904
+--- !u!4 &4816238222550500
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.263568, y: 1.25, z: 8.411762}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23278635218052116
+--- !u!23 &23212627888307580
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -76,19 +76,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33925694941693280
+--- !u!33 &33816674738913950
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54558146242804158
+--- !u!54 &54753508736636328
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 0
@@ -98,58 +98,58 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65194167565814246
+--- !u!65 &65184141597109066
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114784730124327016
+--- !u!114 &114944462018472792
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b230af073e32c3428ed84cf247d85d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1814253474114064, guid: c931b5897206d3741a7185c822addf9a, type: 2}
+  player: {fileID: 0}
   enemyNavigation: {fileID: 0}
   enemyRigidbody: {fileID: 0}
   spawnerSystem: {fileID: 0}
   enemyHealth: 25
-  enemyHealthMulti: 1
+  enemyHealthMulti: 5
   enemySpeed: 2.5
-  enemyDamage: 5
+  enemyDamage: 10
   enemyDead: 0
   enemyKnockback: 0
   enemyAttackTime: 1
   enemyAttackAvailable: 1
   enemyAttackCharge: 0
-  enemyAttackChargeTime: 0
-  enemyAttackChargeEndTime: 0
-  enemyAttackChargeDelay: 0
-  enemyAttackChargeSpeed: 0
-  enemyAttackChargeDamage: 0
-  enemyAttackChargeKnockback: 0
-  enemyAttackChargeRangeMin: 0
-  enemyAttackChargeRangeMax: 0
-  enemyAttackChargeAvailable: 0
+  enemyAttackChargeTime: 1
+  enemyAttackChargeEndTime: 2
+  enemyAttackChargeDelay: 5
+  enemyAttackChargeSpeed: 250
+  enemyAttackChargeDamage: 20
+  enemyAttackChargeKnockback: 100
+  enemyAttackChargeRangeMin: 2
+  enemyAttackChargeRangeMax: 10
+  enemyAttackChargeAvailable: 1
   damageExplosive: 0
---- !u!195 &195161331126901382
+--- !u!195 &195733168979155202
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877140077697038}
+  m_GameObject: {fileID: 1534681904421468}
   m_Enabled: 1
   m_Radius: 0.5
   m_Speed: 3
