@@ -19,6 +19,7 @@ public class Zombie : MonoBehaviour {
 	public bool enemyDead;
 
 	public bool enemyKnockback;
+	public float enemyKnockbackMulti;
 
 	public float enemyAttackTime;
 	public bool enemyAttackAvailable = true;

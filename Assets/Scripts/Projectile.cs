@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour {
 					otherZombie.damageExplosive = false;
 					otherZombie.EnemyChangeHealth (damage);
 					otherZombie.enemyKnockback = true;
-					otherRigidbody.AddForce (transform.rotation * Vector3.forward * knockback, ForceMode.Impulse);
+					otherRigidbody.AddForce (transform.rotation * Vector3.forward * knockback * otherZombie.enemyKnockbackMulti, ForceMode.Impulse);
 
 				}
 				Destroy (gameObject);

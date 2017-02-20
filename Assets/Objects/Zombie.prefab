@@ -131,6 +131,7 @@ MonoBehaviour:
   enemyDamage: 5
   enemyDead: 0
   enemyKnockback: 0
+  enemyKnockbackMulti: 1
   enemyAttackTime: 1
   enemyAttackAvailable: 1
   enemyAttackCharge: 0
