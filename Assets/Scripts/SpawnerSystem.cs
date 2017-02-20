@@ -65,14 +65,15 @@ public class SpawnerSystem : MonoBehaviour {
 				if (waveBossDead || !waveBoss) {
 					
 					for (int i = 0; i < boxAmount; i++) {
-						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
-						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-2.5f, 2.5f), 20f, Random.Range (-2.5f, 2.5f)), player.transform.rotation);
+						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
 					}
 					WaveNext ();
 
 				} else if(!waveBossActive && waveBoss) {
-
+					
 					waveBossActive = true;
+					TextUpdate ();
 					spawners [Mathf.FloorToInt (Random.Range (0f, spawners.Length))].SpawnEnemy (1,true);
 
 				}
@@ -199,8 +200,19 @@ public class SpawnerSystem : MonoBehaviour {
 	public void TextUpdate() {
 
 		textWave.text = "WAVE : " + wave.ToString ();
-		if (!waveWait)
-			textWaveZombie.text = waveZombieNumberCurrent.ToString () + " / " + waveZombieNumber.ToString ();
+		textWaveZombie.color = Color.white;
+		if (!waveWait) {
+
+			if (waveBossActive) {
+				
+				textWaveZombie.text = "BOSS";
+				textWaveZombie.color = Color.red;
+
+			}
+			else
+				textWaveZombie.text = waveZombieNumberCurrent.ToString () + " / " + waveZombieNumber.ToString ();
+
+		}
 		else
 			textWaveZombie.text = "INCOMING";
 

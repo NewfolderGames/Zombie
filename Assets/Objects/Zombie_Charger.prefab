@@ -126,7 +126,7 @@ MonoBehaviour:
   enemyRigidbody: {fileID: 0}
   spawnerSystem: {fileID: 0}
   enemyHealth: 25
-  enemyHealthMulti: 5
+  enemyHealthMulti: 15
   enemySpeed: 2.5
   enemyDamage: 10
   enemyDead: 0
@@ -138,11 +138,11 @@ MonoBehaviour:
   enemyAttackChargeTime: 1
   enemyAttackChargeEndTime: 2
   enemyAttackChargeDelay: 5
-  enemyAttackChargeSpeed: 250
+  enemyAttackChargeSpeed: 275
   enemyAttackChargeDamage: 20
   enemyAttackChargeKnockback: 100
   enemyAttackChargeRangeMin: 2
-  enemyAttackChargeRangeMax: 10
+  enemyAttackChargeRangeMax: 15
   enemyAttackChargeAvailable: 1
   enemyBoss: 0
   damageExplosive: 0
