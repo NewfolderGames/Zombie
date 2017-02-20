@@ -340,7 +340,7 @@ public class PlayerEquip : MonoBehaviour {
 
 				case 7:
 				case 8:
-				if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + (weaponClipAdd [itemSlot [number].weaponNumber] * 2f));
+					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + (weaponClipAdd [itemSlot [number].weaponNumber] * 2f));
 					else itemSlot [number].weaponBullet += 2;
 					break;
 

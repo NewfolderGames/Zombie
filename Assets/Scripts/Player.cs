@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
 
 	//
 
-	public int[] boxOpen;
+	public int[] boxGet;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
 
 		componentRigidbody.freezeRotation = true;
 
-		boxOpen = new int[4];
+		boxGet = new int[4];
 	}
 
 	void Start() {

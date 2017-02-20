@@ -79,7 +79,7 @@ public class BoxMystery : MonoBehaviour {
 
 			}
 			boxRandom = true;
-			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
+			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
 			StartCoroutine (BoxDestroy (25f));
 
 		} else if (boxAmmo) {
@@ -91,7 +91,7 @@ public class BoxMystery : MonoBehaviour {
 
 		} else {
 
-			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
+			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
 
 		}
 
@@ -124,7 +124,6 @@ public class BoxMystery : MonoBehaviour {
 								boxWeapon.SetActive (true);
 								boxLight.SetActive (true);
 								boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
-								if(!boxAmmo) playerInfo.boxOpen [(int)box]++;
 
 							} else
 								Debug.Log ("돈이 부족합니다");
@@ -176,11 +175,12 @@ public class BoxMystery : MonoBehaviour {
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-							boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
+							boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
 							boxWeapon.SetActive (false);
 							boxLight.SetActive (false);
 							availableGet = false;
 
+							if(!boxAmmo) playerInfo.boxGet [(int)box]++;
 							if (boxCrate || boxAmmo) {
 								Destroy (gameObject);
 							}
