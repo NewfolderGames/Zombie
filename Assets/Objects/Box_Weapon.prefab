@@ -300,7 +300,7 @@ MonoBehaviour:
   availableGet: 0
   box: 0
   boxCost: 0
-  boxCostBase: 750
+  boxCostBase: 500
   boxCrate: 0
   boxAmmo: 0
   boxRandom: 1

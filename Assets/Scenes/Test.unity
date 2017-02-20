@@ -616,6 +616,18 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_TagString
+      value: PlayerWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184e44ed41ad4bf4fbb673c0ba48612f, type: 3}
   m_IsPrefabParent: 0
@@ -2046,7 +2058,7 @@ MonoBehaviour:
   - SMG 3
   - GrenadeLauncher 1
   - RocketLauncher 1
-  - Shotgun 1
+  - Shotgun 2
   weaponModel:
   - {fileID: 108132714}
   - {fileID: 411431063}

@@ -62,24 +62,24 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCostBase = Mathf.RoundToInt (Random.Range (500f, 1000f));
+				boxCostBase = Mathf.RoundToInt(Random.Range (500f, 1000f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-				boxCostBase = Mathf.RoundToInt (Random.Range(200f, 300f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 300f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-				boxCostBase = Mathf.RoundToInt (Random.Range(200f, 300f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 300f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCostBase = Mathf.RoundToInt (Random.Range(75f, 175f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(75f, 175f));
 				break;
 
 			}
 			boxRandom = true;
-			boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
+			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
 			StartCoroutine (BoxDestroy (25f));
 
 		} else if (boxAmmo) {
@@ -91,7 +91,7 @@ public class BoxMystery : MonoBehaviour {
 
 		} else {
 
-			boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
+			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
 
 		}
 
@@ -176,7 +176,7 @@ public class BoxMystery : MonoBehaviour {
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-							boxCost = boxCostBase * (playerInfo.boxOpen [(int)box] + 1);
+							boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxOpen [(int)box]));
 							boxWeapon.SetActive (false);
 							boxLight.SetActive (false);
 							availableGet = false;
