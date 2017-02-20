@@ -320,9 +320,9 @@ public class PlayerEquip : MonoBehaviour {
 		textBullet.text = weapon.weaponBullet.ToString();
 		textWeapon.text = weapon.weaponName;
 
-		if (weapon.weaponBullet <= weapon.weaponClip / 5)
+		if (weapon.weaponBullet <= weapon.weaponClip / 5f)
 			textBullet.color = Color.red;
-		else if(weapon.weaponBullet <= weapon.weaponClip / 3)
+		else if(weapon.weaponBullet <= weapon.weaponClip / 3f)
 			textBullet.color = Color.yellow;
 		else
 			textBullet.color = Color.white;
@@ -338,13 +338,13 @@ public class PlayerEquip : MonoBehaviour {
 
 				case 7:
 				case 8:
-				if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + weaponClipAdd [itemSlot [number].weaponNumber]);
-					else itemSlot [number].weaponBullet += 1;
+				if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + (weaponClipAdd [itemSlot [number].weaponNumber] * 2f));
+					else itemSlot [number].weaponBullet += 2;
 					break;
 
 				default:
-					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber] / 5f));
-					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] / 5f);
+					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber] / 4f));
+					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] / 4f);
 					break;
 				
 			}
