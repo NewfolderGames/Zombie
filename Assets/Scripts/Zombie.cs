@@ -87,11 +87,17 @@ public class Zombie : MonoBehaviour {
 			
 			enemyHealth -= damage;
 			Player playerInfo = player.GetComponent<Player> ();
-			playerInfo.playerPointTotal += damage;
-			if (damageExplosive)
-				playerInfo.playerPoint += damage / 5f;
-			else
+			if (damageExplosive) {
+				
+				playerInfo.playerPoint += damage / 2f;
+				playerInfo.playerPointTotal += damage / 2f;
+
+			} else {
+				
 				playerInfo.playerPoint += damage;
+				playerInfo.playerPointTotal += damage;
+
+			}
 			playerInfo.TextUpdate ();
 			if (enemyHealth <= 0) {
 			
