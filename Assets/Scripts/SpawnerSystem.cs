@@ -33,6 +33,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public Text textWave;
 	public Text textWaveZombie;
+	public Text textWaveSkip;
 
 	public GameObject lightObject;
 	public Light lightInfo;
@@ -65,8 +66,14 @@ public class SpawnerSystem : MonoBehaviour {
 				if (waveBossDead || !waveBoss) {
 					
 					for (int i = 0; i < boxAmount; i++) {
+						
 						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
 						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+						if (waveBossDead) {
+							Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+							Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
+						}
+
 					}
 					WaveNext ();
 
@@ -81,13 +88,9 @@ public class SpawnerSystem : MonoBehaviour {
 			}
 
 		} else {
-			/*
-			lightObject.transform.rotation = Quaternion.Lerp(lightObject.transform.rotation, lightNext, Time.deltaTime);
-			RenderSettings.ambientIntensity = Mathf.Lerp (RenderSettings.ambientIntensity, lightAmbientIntensityNext, Time.deltaTime);
-			RenderSettings.reflectionIntensity = Mathf.Lerp (RenderSettings.reflectionIntensity, lightReflectionIntensityNext, Time.deltaTime);
-			lightInfo.intensity = Mathf.Lerp (lightInfo.intensity, lightIntensityNext, Time.deltaTime);
-			*/
 
+			if (Input.GetKeyDown (KeyCode.Space))
+				WaveWaitFinish ();
 
 		}
 
@@ -113,13 +116,8 @@ public class SpawnerSystem : MonoBehaviour {
 
 		yield return new WaitForSeconds (waveWaitTime);
 
-		waveWait = false;
-		StartCoroutine (WaveSpawn ());
-		lightObject.transform.rotation = lightNext;
-		RenderSettings.ambientIntensity = lightAmbientIntensityNext;
-		RenderSettings.reflectionIntensity = lightReflectionIntensityNext;
-		lightInfo.intensity = lightIntensityNext;
-		TextUpdate ();
+		if (waveWait)
+			WaveWaitFinish ();
 
 	}
 
@@ -197,25 +195,40 @@ public class SpawnerSystem : MonoBehaviour {
 
 	}
 
+	public void WaveWaitFinish() {
+
+		waveWait = false;
+		StartCoroutine (WaveSpawn ());
+		lightObject.transform.rotation = lightNext;
+		RenderSettings.ambientIntensity = lightAmbientIntensityNext;
+		RenderSettings.reflectionIntensity = lightReflectionIntensityNext;
+		lightInfo.intensity = lightIntensityNext;
+		TextUpdate ();
+
+	}
+
 	public void TextUpdate() {
 
 		textWave.text = "WAVE : " + wave.ToString ();
 		textWaveZombie.color = Color.white;
 		if (!waveWait) {
 
+			textWaveSkip.gameObject.SetActive (false);
 			if (waveBossActive) {
 				
 				textWaveZombie.text = "BOSS";
 				textWaveZombie.color = Color.red;
 
-			}
-			else
+			} else
 				textWaveZombie.text = waveZombieNumberCurrent.ToString () + " / " + waveZombieNumber.ToString ();
 
-		}
-		else
+		} else {
+			
 			textWaveZombie.text = "INCOMING";
+			textWaveSkip.gameObject.SetActive (true);
 
+		}
+	
 	}
 
 }

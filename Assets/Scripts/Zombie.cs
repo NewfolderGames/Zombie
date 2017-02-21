@@ -151,8 +151,8 @@ public class Zombie : MonoBehaviour {
 				} else {
 
 					spawnerSystem.waveBossDead = true;
-					playerInfo.playerPoint += 100;
-					playerInfo.playerPointTotal += 100;
+					playerInfo.playerPoint += 250;
+					playerInfo.playerPointTotal += 250;
 
 				}
 				Destroy (gameObject);
