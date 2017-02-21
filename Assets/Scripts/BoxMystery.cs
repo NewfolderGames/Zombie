@@ -62,7 +62,7 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCostBase = Mathf.RoundToInt(Random.Range (500f, 1000f));
+				boxCostBase = Mathf.RoundToInt(Random.Range (400f, 600f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
