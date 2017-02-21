@@ -79,7 +79,7 @@ public class BoxMystery : MonoBehaviour {
 
 			}
 			boxRandom = true;
-			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+			UpadteCost ();
 			StartCoroutine (BoxDestroy (25f));
 
 		} else if (boxAmmo) {
@@ -91,7 +91,7 @@ public class BoxMystery : MonoBehaviour {
 
 		} else {
 
-			boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+			UpadteCost ();
 
 		}
 
@@ -175,12 +175,33 @@ public class BoxMystery : MonoBehaviour {
 
 							}
 							playerWeapon.TextUpdate (playerWeapon.itemSlot [playerWeapon.itemSlotNumber]);
-							boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
 							boxWeapon.SetActive (false);
 							boxLight.SetActive (false);
 							availableGet = false;
 
-							if(!boxAmmo) playerInfo.boxGet [(int)box]++;
+							if (!boxAmmo) {
+								
+								playerInfo.boxGet [(int)box]++;
+								UpadteCost ();
+								switch ((int)box) {
+
+								case 0:
+									GameObject.Find ("Box_Weapon_Core").GetComponent<BoxMystery> ().UpadteCost ();
+									break;
+								case 1:
+									GameObject.Find ("Box_Damage_Core").GetComponent<BoxMystery> ().UpadteCost ();
+									break;
+								case 2:
+									GameObject.Find ("Box_Clip_Core").GetComponent<BoxMystery> ().UpadteCost ();
+									break;
+								case 3:
+									GameObject.Find ("Box_Laser_Core").GetComponent<BoxMystery> ().UpadteCost ();
+									break;
+
+								}
+
+							}
+
 							if (boxCrate || boxAmmo) {
 								Destroy (gameObject);
 							}
@@ -250,6 +271,10 @@ public class BoxMystery : MonoBehaviour {
 		if (!availableGet && availableBuy)
 			Destroy (gameObject);
 
+	}
+
+	public void UpadteCost() {
+		boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
 	}
 		
 }
