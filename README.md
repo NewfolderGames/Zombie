@@ -33,12 +33,14 @@
 ![Alt text](/Images/Image_SMG_1.png)
 ![Alt text](/Images/Image_SMG_2.png)
 ![Alt text](/Images/Image_SMG_3.png)
+![Alt text](/Images/Image_SMG_4.png)
 
 | 무기 이름 | 데미지 | 넉백 | 반동 | 총알 | 폭발 범위 | 최소 퍼짐 | 최대 퍼짐 | 속도 | 반자동 |
 |:---------:|:------:|:----:|:----:|:----:|:---------:|:---------:|:---------:|:----:|:------:|
 |   SMG_1   |   5.5  |  1.5 |  0.5 |  300 |           |    0.25   |     2     | 0.11 |        |
 |   SMG_2   |    5   |   1  | 0.75 |  330 |           |    0.1    |    1.5    | 0.06 |        |
 |   SMG_3   |    4   |   1  | 0.75 |  390 |           |    0.25   |    2.5    | 0.05 |        |
+|   SMG_4   |  3.75  | 0.75 |  0.5 |  420 |           |    0.25   |     2     | 0.03 |        |
 
 ![Alt text](/Images/Image_Shotgun_1.png)
 ![Alt text](/Images/Image_Shotgun_2.png)
