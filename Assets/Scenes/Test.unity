@@ -504,15 +504,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4668128391840890, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4668128391840890, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4668128391840890, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4668128391840890, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -558,6 +558,30 @@ Prefab:
         type: 2}
       propertyPath: m_RenderingPath
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.23911765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.3696438
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.09904577
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.89239913
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392073757876626, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0e1632b6ab9d3844ab5eeb613d86e1b, type: 2}
@@ -1735,6 +1759,9 @@ MonoBehaviour:
   playerCameraOffsetX: -25
   playerCameraOffsetY: 20
   playerCameraOffsetZ: -25
+  offsetX: 0
+  offsetY: 0
+  offsetZ: 0
   playerCameraShake: 0
   playerCameraShakeLimit: 100
   playerCameraShakeMultiply: 1
@@ -2271,7 +2298,8 @@ MonoBehaviour:
   - {x: -0.025, y: -0.03, z: 1.05}
   - {x: 0, y: -0.125, z: 0.6625}
   - {x: 0, y: -0.12, z: 1.105}
-  weaponZooming: 0
+  viewZoom: 0
+  viewTop: 0
   player: {fileID: 776392043}
   playerInfo: {fileID: 776392045}
   bulletObject:

@@ -13,6 +13,9 @@ public class PlayerCamera : MonoBehaviour {
 	public float playerCameraOffsetX;
 	public float playerCameraOffsetY;
 	public float playerCameraOffsetZ;
+	public float offsetX;
+	public float offsetY;
+	public float offsetZ;
 
 	public float playerCameraShake = 0;
 	public float playerCameraShakeLimit;
@@ -25,13 +28,16 @@ public class PlayerCamera : MonoBehaviour {
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		// CAMERA POSITION
 
 		playerCameraPosition.x = transform.position.x + playerCameraOffsetX;
 		playerCameraPosition.y = transform.position.y + playerCameraOffsetY;
 		playerCameraPosition.z = transform.position.z + playerCameraOffsetZ;
+		offsetX = playerCameraOffsetX;
+		offsetY = playerCameraOffsetY;
+		offsetZ = playerCameraOffsetZ;
 
 		playerCamera.transform.position = playerCameraPosition;
 
@@ -55,8 +61,32 @@ public class PlayerCamera : MonoBehaviour {
 
 	}
 
-	public void SetZoom(float zoom) {
-		playerCameraMain.orthographicSize = zoom;
+	public void View(bool top) {
+
+		if (top) {
+
+			playerCameraOffsetX = 0f;
+			playerCameraOffsetY = 20f;
+			playerCameraOffsetZ = 0f;
+			playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCamera.transform.position = playerCameraPosition;
+			playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (90, 45, 0));
+
+		} else {
+
+			playerCameraOffsetX = offsetX;
+			playerCameraOffsetY = offsetY;
+			playerCameraOffsetZ = offsetZ;
+			playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range(-playerCameraShake, playerCameraShake);
+			playerCamera.transform.position = playerCameraPosition;
+			playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (30, 45, 0));
+
+		}
+
 	}
 		
 }

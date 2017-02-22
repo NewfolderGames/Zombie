@@ -67,7 +67,10 @@ public class PlayerEquip : MonoBehaviour {
 
 	}
 
-	public bool weaponZooming;
+	// VIEW
+
+	public bool viewZoom;
+	public bool viewTop;
 
 	// PLAYER INFO 
 
@@ -179,12 +182,20 @@ public class PlayerEquip : MonoBehaviour {
 		if (itemSlot [itemSlotNumber].weaponZoom) {
 
 			if (Input.GetMouseButtonDown (1)) {
-				
-				weaponZooming = !weaponZooming;
-				if(weaponZooming) playerCameraInfo.SetZoom (12.5f);
-				if(!weaponZooming) playerCameraInfo.SetZoom (7.5f);
+
+				viewZoom = !viewZoom;
+				if (viewZoom) playerCameraInfo.playerCameraMain.orthographicSize = 12.5f;
+				else playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
 
 			}
+
+		}
+
+		if (Input.GetMouseButtonDown (2)) {
+
+			viewTop = !viewTop;
+			if (viewTop) playerCameraInfo.View (true);
+			else playerCameraInfo.View (false);
 
 		}
 
@@ -203,8 +214,10 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.SetActive (true);
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
-		if(!weapon.weaponZoom) playerCameraInfo.SetZoom (7.5f);
-		weaponZooming = false;
+		if (viewZoom) {
+			viewZoom = false;
+			playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
+		}
 
 		TextUpdate (itemSlot [itemSlotNumber]);
 
