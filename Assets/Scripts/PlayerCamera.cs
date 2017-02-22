@@ -54,5 +54,9 @@ public class PlayerCamera : MonoBehaviour {
 		playerCameraShake = Mathf.Lerp (playerCameraShake, 0f, 0.1f);
 
 	}
+
+	public void SetZoom(float zoom) {
+		playerCameraMain.orthographicSize = zoom;
+	}
 		
 }

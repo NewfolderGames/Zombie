@@ -48,6 +48,7 @@ public class PlayerEquip : MonoBehaviour {
 	public weaponProjectileList[] weaponProjectile;
 	public weaponShellList[] weaponShell;
 	public bool[] weaponSemi;
+	public bool[] weaponZoom;
 	public Vector3[] weaponPosition;
 	public Vector3[] weaponBarrelPosition;
 
@@ -65,6 +66,8 @@ public class PlayerEquip : MonoBehaviour {
 		ShellPistol
 
 	}
+
+	public bool weaponZooming;
 
 	// PLAYER INFO 
 
@@ -139,7 +142,7 @@ public class PlayerEquip : MonoBehaviour {
 		mousePosition.y = 0f;
 		transform.rotation = Quaternion.LookRotation (mousePosition);
 
-		if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0))||((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
+		if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0)) || ((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
 
 			WeaponAttack (itemSlot [itemSlotNumber]);
 
@@ -157,9 +160,9 @@ public class PlayerEquip : MonoBehaviour {
 			
 		if (weaponLaserpoint == null)
 			WeaponLaserpoint ();
-		else{
+		else {
 
-			if (itemSlot[itemSlotNumber].weaponLaserpoint) {
+			if (itemSlot [itemSlotNumber].weaponLaserpoint) {
 					
 				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
 				weaponLaserpoint.SetPosition (1, WeaponRotation ());
@@ -168,6 +171,18 @@ public class PlayerEquip : MonoBehaviour {
 					
 				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
 				weaponLaserpoint.SetPosition (1, weaponLaserpoint.transform.position);
+
+			}
+
+		}
+
+		if (itemSlot [itemSlotNumber].weaponZoom) {
+
+			if (Input.GetMouseButtonDown (1)) {
+				
+				weaponZooming = !weaponZooming;
+				if(weaponZooming) playerCameraInfo.SetZoom (12.5f);
+				if(!weaponZooming) playerCameraInfo.SetZoom (7.5f);
 
 			}
 
@@ -188,6 +203,8 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.SetActive (true);
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
+		if(!weapon.weaponZoom) playerCameraInfo.SetZoom (7.5f);
+		weaponZooming = false;
 
 		TextUpdate (itemSlot [itemSlotNumber]);
 
@@ -357,7 +374,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	public ItemWeapon WeaponChange(int number) {
 
-		return new ItemWeapon (number, weaponName [number], weaponModel [number], weaponPallet [number], weaponDamage [number], weaponKnockback [number], weaponRecoil [number], weaponClip [number], weaponRange [number],	weaponSpreadMin [number], weaponSpreadMax [number], weaponSpeed [number], (int)weaponProjectile [number], (int)weaponShell [number], weaponSemi [number], weaponLaserAdd [number], weaponPosition [number], weaponBarrelPosition [number]); 
+		return new ItemWeapon (number, weaponName [number], weaponModel [number], weaponPallet [number], weaponDamage [number], weaponKnockback [number], weaponRecoil [number], weaponClip [number], weaponRange [number],	weaponSpreadMin [number], weaponSpreadMax [number], weaponSpeed [number], (int)weaponProjectile [number], (int)weaponShell [number], weaponSemi [number], weaponZoom[number], weaponLaserAdd [number], weaponPosition [number], weaponBarrelPosition [number]); 
 
 	}
 
