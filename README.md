@@ -4,6 +4,8 @@
 ## 목록
 [GIF](https://github.com/Newfoldergames/Zombie#gif)
 
+[조작키](https://github.com/Newfoldergames/Zombie#조작키)
+
 [무기](https://github.com/Newfoldergames/Zombie#무기)
 
 [상자](https://github.com/Newfoldergames/Zombie#상자)
@@ -19,6 +21,21 @@
 ![Alt text](/Images/Image_6.gif)
 ![Alt text](/Images/Image_7.gif)
 ![Alt text](/Images/Image_8.gif)
+
+=======================================
+
+### 조작키
+
+W A S D : 이동
+F : 손전등
+E : 상자 열기 / 무기 가져가기
+스페이스 바 : 웨이브 스킵
+
+마우스 왼쪽 : 무기 발사
+마우스 오른쪽 : 스코프 무기 줌
+마우스 휠 버튼 : 탑뷰 모드 켜기 / 끄기
+마우스 휠 스크롤 : 무기 바꾸기
+
 
 =======================================
 
