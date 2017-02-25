@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -40,16 +41,22 @@ public class Player : MonoBehaviour {
 
 	public GameObject playerCameraMain;
 
-	// TEXT
+	// UI
 
 	public Text textHealth;
 	public Text textPoint;
 	public Text textPointTotal;
 	public Text textBox;
+	public Text textGameover;
+	public Image screenRed;
 
 	//
 
 	public int[] boxGet;
+
+	//
+
+	public PlayerEquip playerInfo;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -74,13 +81,20 @@ public class Player : MonoBehaviour {
 		inputHorizontal = Input.GetAxisRaw ("Horizontal");
 		inputVertical = Input.GetAxisRaw ("Vertical");
 
-		MouseRotation ();
+		if (!playerDead)
+			MouseRotation ();
+		else {
+
+			screenRed.color = Color.Lerp (screenRed.color, Color.black, Time.deltaTime);
+			textGameover.color = Color.Lerp (textGameover.color, Color.white, Time.deltaTime);
+
+		}
 
 	}
 
 	void FixedUpdate() {
 
-		PlayerMove (inputHorizontal, inputVertical);
+		if(!playerDead) PlayerMove (inputHorizontal, inputVertical);
 
 	}
 
@@ -186,15 +200,26 @@ public class Player : MonoBehaviour {
 		if (!playerDead) {
 
 			playerHealth -= damage;
+			screenRed.color = new Color( 1f, 0f, 0f, ( 1f / 4f ) - ( (playerHealth / 100f) / 4f ) );
 			componentCamera.playerCameraShake += 2.5f * componentCamera.playerCameraShakeMultiply;
 			TextUpdate ();
 			if (playerHealth <= 0) {
 
 				playerDead = true;
+				playerInfo.playerDead = true;
+				StartCoroutine (Gameover());
+
 
 			}
 
 		}
+
+	}
+
+	IEnumerator Gameover() {
+
+		yield return new WaitForSeconds (5f);
+		SceneManager.LoadScene ("Menu");
 
 	}
 

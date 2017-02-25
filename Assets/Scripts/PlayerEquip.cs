@@ -77,6 +77,8 @@ public class PlayerEquip : MonoBehaviour {
 	public GameObject player;
 	public Player playerInfo;
 
+	public bool playerDead;
+
 	// MOUSE INFO
 
 	Vector3 mousePosition;
@@ -139,67 +141,75 @@ public class PlayerEquip : MonoBehaviour {
 
 	void Update() {
 
-		// MOUSE
+		if (!playerDead) {
 
-		mousePosition = playerInfo.mousePosition - transform.position;
-		mousePosition.y = 0f;
-		transform.rotation = Quaternion.LookRotation (mousePosition);
+			// MOUSE
 
-		if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0)) || ((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
+			mousePosition = playerInfo.mousePosition - transform.position;
+			mousePosition.y = 0f;
+			transform.rotation = Quaternion.LookRotation (mousePosition);
 
-			WeaponAttack (itemSlot [itemSlotNumber]);
+			if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0)) || ((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
 
-		}
+				WeaponAttack (itemSlot [itemSlotNumber]);
 
-		WeaponScroll ();
+			}
+
+			WeaponScroll ();
 
 
-		if (Input.GetKeyDown (KeyCode.F)) {
+			if (Input.GetKeyDown (KeyCode.F)) {
 
-			weaponFlashlightOn = !weaponFlashlightOn;
-			weaponFlashlight.SetActive (weaponFlashlightOn);
+				weaponFlashlightOn = !weaponFlashlightOn;
+				weaponFlashlight.SetActive (weaponFlashlightOn);
 
-		}
+			}
 			
-		if (weaponLaserpoint == null)
-			WeaponLaserpoint ();
-		else {
+			if (weaponLaserpoint == null)
+				WeaponLaserpoint ();
+			else {
 
-			if (itemSlot [itemSlotNumber].weaponLaserpoint) {
+				if (itemSlot [itemSlotNumber].weaponLaserpoint) {
 					
-				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
-				weaponLaserpoint.SetPosition (1, WeaponRotation ());
+					weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
+					weaponLaserpoint.SetPosition (1, WeaponRotation ());
 
-			} else {
+				} else {
 					
-				weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
-				weaponLaserpoint.SetPosition (1, weaponLaserpoint.transform.position);
+					weaponLaserpoint.SetPosition (0, weaponLaserpoint.transform.position);
+					weaponLaserpoint.SetPosition (1, weaponLaserpoint.transform.position);
+
+				}
 
 			}
 
-		}
+			if (itemSlot [itemSlotNumber].weaponZoom) {
 
-		if (itemSlot [itemSlotNumber].weaponZoom) {
+				if (Input.GetMouseButtonDown (1)) {
 
-			if (Input.GetMouseButtonDown (1)) {
+					viewZoom = !viewZoom;
+					if (viewZoom)
+						playerCameraInfo.playerCameraMain.orthographicSize = 12.5f;
+					else
+						playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
 
-				viewZoom = !viewZoom;
-				if (viewZoom) playerCameraInfo.playerCameraMain.orthographicSize = 12.5f;
-				else playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
+				}
 
 			}
 
+			if (Input.GetMouseButtonDown (2)) {
+
+				viewTop = !viewTop;
+				if (viewTop)
+					playerCameraInfo.View (true);
+				else
+					playerCameraInfo.View (false);
+
+			}
+
+			WeaponHeal (itemSlot [itemSlotNumber]);
+
 		}
-
-		if (Input.GetMouseButtonDown (2)) {
-
-			viewTop = !viewTop;
-			if (viewTop) playerCameraInfo.View (true);
-			else playerCameraInfo.View (false);
-
-		}
-
-		WeaponHeal (itemSlot[itemSlotNumber]);
 
 	}
 
