@@ -17,31 +17,19 @@ Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\
 Loading C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
+- Completed reload, in  0.029 seconds
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 5.986123 ms
+UnloadTime: 5.485217 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2008 -> priority: 1 
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 17.240290 ms
+  Thread -> id: 236c -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.062391 ms
 
-Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 719.
-Total: 0.448425 ms (FindLiveObjects: 0.059733 ms CreateObjectMapping: 0.034559 ms MarkObjects: 0.304639 ms  DeleteObjects: 0.030293 ms)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 12.430058 ms
-
-Unloading 179 unused Assets to reduce memory usage. Loaded Objects now: 290.
-Total: 1.364477 ms (FindLiveObjects: 0.125866 ms CreateObjectMapping: 0.064426 ms MarkObjects: 0.619945 ms  DeleteObjects: 0.552532 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.765543 ms
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 720.
-Total: 0.628905 ms (FindLiveObjects: 0.094719 ms CreateObjectMapping: 0.041386 ms MarkObjects: 0.452692 ms  DeleteObjects: 0.038826 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 697.
+Total: 0.394665 ms (FindLiveObjects: 0.047359 ms CreateObjectMapping: 0.023893 ms MarkObjects: 0.253012 ms  DeleteObjects: 0.047359 ms)
 
