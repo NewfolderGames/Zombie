@@ -47,8 +47,6 @@ public class SpawnerSystem : MonoBehaviour {
 	public GameObject boxRandom;
 	public GameObject boxAmmo;
 
-	public int boxAmount;
-
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Start() {
@@ -65,14 +63,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 				if (waveBossDead || !waveBoss) {
 					
-					for (int i = 0; i < boxAmount; i++) {
-						
-						if (waveBossDead)
-							DropCrate (2);
-						else
-							DropCrate (1);
-
-					}
+					DropCrate (1 + wave / 10);
 					WaveNext ();
 
 				} else if(!waveBossActive && waveBoss) {
@@ -130,7 +121,7 @@ public class SpawnerSystem : MonoBehaviour {
 		waveBossDead = false;
 
 		waveZombie = Mathf.FloorToInt (10f + wave);
-		waveZombieHealth = 10f + (wave * 1.5f);
+		waveZombieHealth = Mathf.Min( 50f, 10f + (wave * 1.5f));
 		waveZombieSpeed = Mathf.Min(10f, 2f + (wave * 0.05f));
 
 		waveSpawnDelay = Mathf.Max (1f, 2f - (wave * 0.025f));
