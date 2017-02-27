@@ -61,8 +61,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "-- Command --\nNext Wave 1\nAdd Point 2\nAdd Bullet 3\nRandom Weapon 4\nDrop
-    Crate 5\n\n\r-- Weapon --\nOperation Metro in a Nutshell 8\nFully Automatic\r
-    Machine Shotgun 9\nApocalypse Launcher 0"
+    Crate 5\nHeal Player 6\n\n\r-- Weapon --\nOperation Metro in a Nutshell 8\nFully
+    Automatic\r Machine Shotgun 9\nApocalypse Launcher 0"
 --- !u!222 &222680524789055352
 CanvasRenderer:
   m_ObjectHideFlags: 1

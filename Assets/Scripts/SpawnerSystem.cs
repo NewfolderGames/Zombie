@@ -61,7 +61,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 		if (!waveWait) {
 
-			if (waveZombieNumberCurrent == waveZombie && waveZombieNumberLeft == 0) {
+			if (waveZombieNumberCurrent >= waveZombie && waveZombieNumberLeft <= 0) {
 
 				if (waveBossDead || !waveBoss) {
 					

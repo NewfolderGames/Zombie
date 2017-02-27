@@ -62,6 +62,12 @@ public class Developer : MonoBehaviour {
 
 			}
 
+			if(Input.GetKeyDown(KeyCode.Alpha6)) { 
+
+				player.ChangeHealth (-100);
+
+			}
+
 			if (Input.GetKeyDown (KeyCode.Alpha8)) {
 
 				var weapon = playerEquip.itemSlot [playerEquip.itemSlotNumber];
