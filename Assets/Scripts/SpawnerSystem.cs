@@ -67,12 +67,10 @@ public class SpawnerSystem : MonoBehaviour {
 					
 					for (int i = 0; i < boxAmount; i++) {
 						
-						Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-						Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-						if (waveBossDead) {
-							Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-							Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
-						}
+						if (waveBossDead)
+							DropCrate (2);
+						else
+							DropCrate (1);
 
 					}
 					WaveNext ();
@@ -186,7 +184,7 @@ public class SpawnerSystem : MonoBehaviour {
 			
 		}
 
-		if (waveZombieNumberLeft > 0) {
+		if (waveZombieNumberLeft > 0 && !waveWait) {
 			
 			waveSpawnAvailable = true;
 			StartCoroutine (WaveSpawn ());
@@ -229,6 +227,15 @@ public class SpawnerSystem : MonoBehaviour {
 
 		}
 	
+	}
+
+	public void DropCrate(int number) {
+
+		for (int i = 0; i < number; i++) {
+			Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+			Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
+		}
+
 	}
 
 }

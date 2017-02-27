@@ -242,9 +242,9 @@ public class BoxMystery : MonoBehaviour {
 		availableBuy = false;
 		boxLightInfo.intensity = 2f;
 		if (boxRandom)
-			weaponNumber = (int)Random.Range (0f, playerWeapon.weaponModel.Length);
+			weaponNumber = Random.Range (0, playerWeapon.weaponModel.Length);
 		else
-			weaponNumber = playerWeapon.itemSlot[Mathf.RoundToInt (Random.Range (0f, playerWeapon.itemSlot.Length - 1))].weaponNumber;
+			weaponNumber = playerWeapon.itemSlot[Random.Range(0,playerWeapon.itemSlot.Length)].weaponNumber;
 
 		mesh.mesh = modelWeapon [weaponNumber];
 		meshRenderer.material = materialWeapon [weaponNumber];

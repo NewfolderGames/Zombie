@@ -144,9 +144,13 @@ public class Zombie : MonoBehaviour {
 			
 				enemyDead = true;
 				if (!enemyBoss) {
-					
-					spawnerSystem.waveZombieNumberCurrent++;
-					spawnerSystem.TextUpdate ();
+
+					if (!spawnerSystem.waveWait) {
+						
+						spawnerSystem.waveZombieNumberCurrent++;
+						spawnerSystem.TextUpdate ();
+
+					}
 
 				} else {
 

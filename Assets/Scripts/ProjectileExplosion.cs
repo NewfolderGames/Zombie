@@ -23,7 +23,6 @@ public class ProjectileExplosion : MonoBehaviour {
 			enemyInfo.damageExplosive = true;
 			enemyInfo.EnemyChangeHealth (damage);
 			enemyInfo.enemyKnockback = true;
-			//enemyInfo.enemyRigidbody.AddForce (Quaternion.LookRotation (enemyInfo.transform.position - transform.position) * Vector3.forward * knockback, ForceMode.Impulse);
 			enemyInfo.enemyRigidbody.AddExplosionForce (knockback * enemyInfo.enemyKnockbackMulti, transform.position, range);
 
 		}
