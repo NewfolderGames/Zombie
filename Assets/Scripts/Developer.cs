@@ -8,6 +8,7 @@ public class Developer : MonoBehaviour {
 	public SpawnerSystem spawner;
 	public PlayerEquip playerEquip;
 	public Player player;
+	public GameObject airstrike;
 
 	public Text devText;
 	public Text devDesc;
@@ -65,6 +66,16 @@ public class Developer : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Alpha6)) { 
 
 				player.ChangeHealth (-100);
+
+			}
+
+			if(Input.GetKeyDown(KeyCode.Alpha7)) { 
+
+				Projectile rocket = Instantiate (airstrike, player.mousePosition + Vector3.up * 50f, Quaternion.Euler(90f, 0f, 0f)).GetComponent<Projectile> ();
+				rocket.damage = 25f;
+				rocket.knockback = 250f;
+				rocket.range = 7.5f;
+				rocket.GetComponent<Rigidbody> ().AddForce (Vector3.down * 100f, ForceMode.Impulse);
 
 			}
 

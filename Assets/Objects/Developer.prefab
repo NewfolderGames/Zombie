@@ -54,6 +54,7 @@ MonoBehaviour:
   spawner: {fileID: 0}
   playerEquip: {fileID: 0}
   player: {fileID: 0}
+  airstrike: {fileID: 1788418171260220, guid: 9634d534e64e9484c93a2b75fab375c8, type: 2}
   devText: {fileID: 0}
   devDesc: {fileID: 0}
   devmode: 0
