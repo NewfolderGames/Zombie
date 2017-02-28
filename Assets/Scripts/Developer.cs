@@ -89,6 +89,7 @@ public class Developer : MonoBehaviour {
 				weapon.weaponKnockback = 250f;
 				weapon.weaponLaserpoint = true;
 				weapon.weaponModel = playerEquip.weaponModel [7];
+				weapon.weaponSound = playerEquip.weaponSound [7];
 				weapon.weaponPoint = new Vector3 (0f, 0f, 0.405f);
 				weapon.weaponPosition = new Vector3 (0f, -0.25f, 0f);
 				weapon.weaponZoom = true;
@@ -113,6 +114,7 @@ public class Developer : MonoBehaviour {
 				weapon.weaponKnockback = 1f;
 				weapon.weaponLaserpoint = true;
 				weapon.weaponModel = playerEquip.weaponModel [9];
+				weapon.weaponSound = playerEquip.weaponSound [9];
 				weapon.weaponPoint = new Vector3 (-0.025f, -0.055f, 0.95f);
 				weapon.weaponPosition = new Vector3 (0f, -0.45f, 0f);
 				weapon.weaponZoom = true;
@@ -137,6 +139,7 @@ public class Developer : MonoBehaviour {
 				weapon.weaponKnockback = 1000f;
 				weapon.weaponLaserpoint = true;
 				weapon.weaponModel = playerEquip.weaponModel [8];
+				weapon.weaponSound = playerEquip.weaponSound [8];
 				weapon.weaponPoint = new Vector3 (-0.0125f, 0.125f, 1.05f);
 				weapon.weaponPosition = new Vector3 (0f, -0.4f, -0.3f);
 				weapon.weaponZoom = true;
