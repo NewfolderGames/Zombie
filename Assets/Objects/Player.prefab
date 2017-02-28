@@ -2156,7 +2156,9 @@ MonoBehaviour:
   textWeapon:
   - {fileID: 0}
   - {fileID: 0}
-  weaponSwitch: {fileID: 8300000, guid: 8e7409d75cb5bff40940999e898da7ea, type: 3}
+  weaponSoundSwitch: {fileID: 8300000, guid: 8e7409d75cb5bff40940999e898da7ea, type: 3}
+  weaponSoundFlashlight: {fileID: 8300000, guid: 85d0caef05f2a2a4faffc8eebb4b1401,
+    type: 3}
 --- !u!120 &120284260371412142
 LineRenderer:
   m_ObjectHideFlags: 1

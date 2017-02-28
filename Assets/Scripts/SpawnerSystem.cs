@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SpawnerSystem : MonoBehaviour {
 
@@ -47,6 +48,9 @@ public class SpawnerSystem : MonoBehaviour {
 	public GameObject boxRandom;
 	public GameObject boxAmmo;
 
+	public AudioSource waveSound;
+	public AudioClip waveSoundFinish;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Start() {
@@ -91,6 +95,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 		WaveCalculate (wave++);
 		StartCoroutine (WaveWait());
+		waveSound.PlayOneShot (waveSoundFinish);
 
 	}
 	IEnumerator WaveWait() {

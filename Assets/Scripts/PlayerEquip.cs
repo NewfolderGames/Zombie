@@ -112,7 +112,8 @@ public class PlayerEquip : MonoBehaviour {
 
 	// other Sound
 
-	public AudioClip weaponSwitch;
+	public AudioClip weaponSoundSwitch;
+	public AudioClip weaponSoundFlashlight;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -169,6 +170,7 @@ public class PlayerEquip : MonoBehaviour {
 
 				weaponFlashlightOn = !weaponFlashlightOn;
 				weaponFlashlight.SetActive (weaponFlashlightOn);
+				playerSound.PlayOneShot (weaponSoundFlashlight);
 
 			}
 			
@@ -231,8 +233,7 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.SetActive (true);
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
-		playerSound.PlayOneShot (weaponSwitch);
-		//playerSound.clip = weapon.weaponSound;
+		playerSound.PlayOneShot (weaponSoundSwitch);
 		if (viewZoom) {
 			viewZoom = false;
 			playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
