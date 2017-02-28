@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class PlayerEquip : MonoBehaviour {
 
 	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
 
-	// CAMRTA
+	// Component
 
 	public PlayerCamera playerCameraInfo;
+	public AudioSource playerSound;
 
 	// WEAPON LIST
 
@@ -51,6 +53,7 @@ public class PlayerEquip : MonoBehaviour {
 	public bool[] weaponZoom;
 	public Vector3[] weaponPosition;
 	public Vector3[] weaponBarrelPosition;
+	public AudioClip[] weaponSound;
 
 	public enum weaponProjectileList {
 
@@ -106,6 +109,10 @@ public class PlayerEquip : MonoBehaviour {
 
 	public Text textBullet;
 	public Text[] textWeapon;
+
+	// other Sound
+
+	public AudioClip weaponSwitch;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -224,6 +231,8 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.SetActive (true);
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
+		playerSound.PlayOneShot (weaponSwitch);
+		//playerSound.clip = weapon.weaponSound;
 		if (viewZoom) {
 			viewZoom = false;
 			playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
@@ -292,7 +301,8 @@ public class PlayerEquip : MonoBehaviour {
 			playerCameraInfo.playerCameraShake += weapon.weaponRecoil * playerCameraInfo.playerCameraShakeMultiply;
 
 		}
-			
+
+		playerSound.PlayOneShot (weapon.weaponSound);
 		weapon.weaponBullet--;
 
 		TextUpdate (itemSlot [itemSlotNumber]);
@@ -397,7 +407,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	public ItemWeapon WeaponChange(int number) {
 
-		return new ItemWeapon (number, weaponName [number], weaponModel [number], weaponPallet [number], weaponDamage [number], weaponKnockback [number], weaponRecoil [number], weaponClip [number], weaponRange [number],	weaponSpreadMin [number], weaponSpreadMax [number], weaponSpeed [number], (int)weaponProjectile [number], (int)weaponShell [number], weaponSemi [number], weaponZoom[number], weaponLaserAdd [number], weaponPosition [number], weaponBarrelPosition [number]); 
+		return new ItemWeapon (number, weaponName [number], weaponModel [number], weaponPallet [number], weaponDamage [number], weaponKnockback [number], weaponRecoil [number], weaponClip [number], weaponRange [number],	weaponSpreadMin [number], weaponSpreadMax [number], weaponSpeed [number], (int)weaponProjectile [number], (int)weaponShell [number], weaponSemi [number], weaponZoom[number], weaponLaserAdd [number], weaponPosition [number], weaponBarrelPosition [number], weaponSound[number]); 
 
 	}
 

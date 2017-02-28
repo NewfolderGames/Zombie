@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BoxMystery : MonoBehaviour {
 
@@ -23,8 +24,8 @@ public class BoxMystery : MonoBehaviour {
 	public bool availableGet = false;
 
 	int changeNumber = 0;
-	int changeNumberMax = 25;
-	float changeNumberTime = 2.5f;
+	int changeNumberMax = 40;
+	float changeNumberTime = 4f;
 
 	float weaponVanish = 10f;
 	float weaponVanishCurrent = 0;
@@ -47,6 +48,9 @@ public class BoxMystery : MonoBehaviour {
 	public bool boxCrate;
 	public bool boxAmmo;
 	public bool boxRandom;
+
+	public AudioSource boxSource;
+	public AudioClip boxSound;
 
 	void Start() {
 
@@ -120,6 +124,7 @@ public class BoxMystery : MonoBehaviour {
 
 								playerInfo.playerPoint -= boxCost;
 								playerInfo.TextUpdate ();
+								boxSource.PlayOneShot (boxSound);
 								StartCoroutine (WeaponChoose ());
 								boxWeapon.SetActive (true);
 								boxLight.SetActive (true);

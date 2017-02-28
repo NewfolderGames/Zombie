@@ -42,9 +42,11 @@ public class ItemWeapon {
 	public Vector3 weaponPosition;
 	public Vector3 weaponPoint;
 
+	public AudioClip weaponSound;
+
 	// ========== ========== ========== CONSTRUCTOR ========== ========== ========== \\
 
-	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, float recoil, float clip, float range, float spreadMin, float spreadMax, float timeAttack, int projectile, int shell, bool semiauto, bool zoom, bool laserpoint, Vector3 position, Vector3 point ) {
+	public ItemWeapon ( int number, string name, GameObject model, int pallet, float damage, float knockback, float recoil, float clip, float range, float spreadMin, float spreadMax, float timeAttack, int projectile, int shell, bool semiauto, bool zoom, bool laserpoint, Vector3 position, Vector3 point, AudioClip sound ) {
 
 		weaponNumber = number;
 		weaponName = name;
@@ -80,6 +82,8 @@ public class ItemWeapon {
 
 		weaponPosition = position;
 		weaponPoint = point;
+
+		weaponSound = sound;
 
 	}
 
