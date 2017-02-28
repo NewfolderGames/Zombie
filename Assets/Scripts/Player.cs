@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour {
 
@@ -57,6 +58,11 @@ public class Player : MonoBehaviour {
 	//
 
 	public PlayerEquip playerInfo;
+
+	// sound
+
+	public AudioSource playerAudio;
+	public AudioClip playerSoundHit;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -203,12 +209,12 @@ public class Player : MonoBehaviour {
 			screenRed.color = new Color( 1f, 0f, 0f, ( 1f / 4f ) - ( (playerHealth / 100f) / 4f ) );
 			componentCamera.playerCameraShake += 2.5f * componentCamera.playerCameraShakeMultiply;
 			TextUpdate ();
+			playerAudio.PlayOneShot (playerSoundHit);
 			if (playerHealth <= 0) {
 
 				playerDead = true;
 				playerInfo.playerDead = true;
 				StartCoroutine (Gameover());
-
 
 			}
 

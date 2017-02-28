@@ -301,8 +301,8 @@ public class PlayerEquip : MonoBehaviour {
 			playerCameraInfo.playerCameraShake += weapon.weaponRecoil * playerCameraInfo.playerCameraShakeMultiply;
 
 		}
-
-		playerSound.PlayOneShot (weapon.weaponSound);
+			
+		playerSound.PlayOneShot (weapon.weaponSound,1f);
 		weapon.weaponBullet--;
 
 		TextUpdate (itemSlot [itemSlotNumber]);
