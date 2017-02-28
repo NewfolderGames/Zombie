@@ -132,8 +132,8 @@ public class PlayerEquip : MonoBehaviour {
 
 		}
 			
-		itemSlot [0] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
-		itemSlot [1] = WeaponChange((int)Random.Range (0f, weaponModel.Length));
+		itemSlot [0] = WeaponChange(2);
+		itemSlot [1] = WeaponChange(2);
 
 		WeaponSelect (itemSlot [itemSlotNumber]);
 		WeaponUpdate (0, true, true, false);
