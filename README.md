@@ -3,7 +3,9 @@
 ![Alt text](/Images/Image_Title_1.png)
 
 Sound
-- Sonniss.com - GDC 2016- Game Audio Bundle - Pole Position Production
+- Sonniss.com - GDC 2016 - Game Audio Bundle - Pole Position Production
+- Sonniss.com - GDC 2016 - Game Audio Bundle - Fascinated Sound
+- Sonniss.com - GDC 2017 - Game Audio Bundle - Gamemaster Sound
 - Call of Duty
 
 =======================================

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ProjectileExplosion : MonoBehaviour {
 
@@ -8,6 +9,9 @@ public class ProjectileExplosion : MonoBehaviour {
 	public float knockback;
 	public float range;
 	public float off = 0f;
+
+	public AudioSource audioSource;
+	public AudioClip sound;
 
 	public Light exp;
 
@@ -26,12 +30,13 @@ public class ProjectileExplosion : MonoBehaviour {
 			enemyInfo.enemyRigidbody.AddExplosionForce (knockback * enemyInfo.enemyKnockbackMulti, transform.position, range);
 
 		}
+		audioSource.PlayOneShot (sound);
 
 	}
 
 	void Update() {
 
-		off += Time.deltaTime;
+		off += Time.deltaTime * 0.75f;
 		exp.intensity = Mathf.Lerp(8, 0, off);
 		if (off >= 1f)
 			Destroy (gameObject);
