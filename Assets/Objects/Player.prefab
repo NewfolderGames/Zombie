@@ -2119,7 +2119,7 @@ MonoBehaviour:
   - {x: -0.0085, y: -0.105, z: 1.105}
   weaponSound:
   - {fileID: 8300000, guid: 3aad7c96d2715b44c9a71a04c3af698a, type: 3}
-  - {fileID: 8300000, guid: 60f8f053fc416774797672558e1ede85, type: 3}
+  - {fileID: 8300000, guid: d005fda0499eb7a43a1fd3410fd757b1, type: 3}
   - {fileID: 8300000, guid: 2974a7ddac1e086418e48e441b238d25, type: 3}
   - {fileID: 8300000, guid: 0943bd7b75ae31d4e9b51129050dfc18, type: 3}
   - {fileID: 8300000, guid: 66f30a09254166646818de4261ee1de2, type: 3}
