@@ -149,7 +149,7 @@ Sound
 ![Alt text](/Images/Image_Crate_1.png)
 ![Alt text](/Images/Image_Crate_2.png)
 
-웨이브가 끝나면 플레이어 근처로 떨어지는 상자입니다
+웨이브가 끝나면 맵 중앙에 떨어지는 상자입니다
 
 상자와 같이 e를 구입을 할수 있습니다
 

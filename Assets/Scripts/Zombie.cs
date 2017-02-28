@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class Zombie : MonoBehaviour {
 
@@ -38,6 +39,9 @@ public class Zombie : MonoBehaviour {
 	public bool enemyBoss;
 
 	public bool damageExplosive = false;
+
+	public AudioSource enemySound;
+	public AudioClip enemySoundHit;
 
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
@@ -127,6 +131,7 @@ public class Zombie : MonoBehaviour {
 		if (!enemyDead) {
 			
 			enemyHealth -= damage;
+			enemySound.PlayOneShot (enemySoundHit);
 			Player playerInfo = player.GetComponent<Player> ();
 			if (damageExplosive) {
 				

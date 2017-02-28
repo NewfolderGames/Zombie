@@ -228,8 +228,8 @@ public class SpawnerSystem : MonoBehaviour {
 	public void DropCrate(int number) {
 
 		for (int i = 0; i < number; i++) {
-			Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-			Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
+			Instantiate (boxRandom, new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+			Instantiate (boxAmmo, new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
 		}
 
 	}
