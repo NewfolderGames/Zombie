@@ -9,6 +9,7 @@ Sound
 - Sonniss.com - GDC 2017 - Game Audio Bundle - Gamemaster Sound
 - Sonniss.com - GDC 2017 - Game Audio Bundle - SoundBits
 - Call of Duty
+- flare - https://www.freesound.org/people/frankelmedico/sounds/348767/
 
 =======================================
 

@@ -47,6 +47,7 @@ public class SpawnerSystem : MonoBehaviour {
 	public GameObject player;
 	public GameObject boxRandom;
 	public GameObject boxAmmo;
+	public GameObject boxFlare;
 
 	public AudioSource waveSound;
 	public AudioClip waveSoundFinish;
@@ -66,7 +67,9 @@ public class SpawnerSystem : MonoBehaviour {
 			if (waveZombieNumberCurrent >= waveZombie && waveZombieNumberLeft <= 0) {
 
 				if (waveBossDead || !waveBoss) {
-					
+
+					boxFlare.transform.position = player.transform.position;
+					boxFlare.SetActive (true);
 					DropCrate (1 + wave / 10);
 					WaveNext ();
 
@@ -197,6 +200,7 @@ public class SpawnerSystem : MonoBehaviour {
 		RenderSettings.ambientIntensity = lightAmbientIntensityNext;
 		RenderSettings.reflectionIntensity = lightReflectionIntensityNext;
 		lightInfo.intensity = lightIntensityNext;
+		boxFlare.SetActive (false);
 		TextUpdate ();
 
 	}
@@ -228,8 +232,8 @@ public class SpawnerSystem : MonoBehaviour {
 	public void DropCrate(int number) {
 
 		for (int i = 0; i < number; i++) {
-			Instantiate (boxRandom, new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-			Instantiate (boxAmmo, new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
+			Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+			Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
 		}
 
 	}
