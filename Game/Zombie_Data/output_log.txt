@@ -17,19 +17,19 @@ Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\
 Loading C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
+- Completed reload, in  0.029 seconds
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\NewfolderGames\Documents\Unity Projects\Zombie\Game\Zombie_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 5.989109 ms
+UnloadTime: 6.187512 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 9fc -> priority: 1 
+  Thread -> id: 91c -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.226657 ms
+UnloadTime: 5.117433 ms
 
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 780.
-Total: 0.431359 ms (FindLiveObjects: 0.051199 ms CreateObjectMapping: 0.023466 ms MarkObjects: 0.305066 ms  DeleteObjects: 0.045226 ms)
+Total: 0.434772 ms (FindLiveObjects: 0.085759 ms CreateObjectMapping: 0.036693 ms MarkObjects: 0.267092 ms  DeleteObjects: 0.024319 ms)
 

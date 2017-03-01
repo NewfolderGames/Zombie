@@ -33,6 +33,8 @@ Sound
 ![Alt text](/Images/Image_6.gif)
 ![Alt text](/Images/Image_7.gif)
 ![Alt text](/Images/Image_8.gif)
+![Alt text](/Images/Image_9.gif)
+![Alt text](/Images/Image_10.gif)
 
 =======================================
 
