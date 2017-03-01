@@ -206,6 +206,7 @@ public class Player : MonoBehaviour {
 		if (!playerDead) {
 
 			playerHealth -= damage;
+			playerHealth = Mathf.Clamp (playerHealth, 0f, 100f);
 			screenRed.color = new Color( 1f, 0f, 0f, ( 1f / 4f ) - ( (playerHealth / 100f) / 4f ) );
 			componentCamera.playerCameraShake += 2.5f * componentCamera.playerCameraShakeMultiply;
 			TextUpdate ();

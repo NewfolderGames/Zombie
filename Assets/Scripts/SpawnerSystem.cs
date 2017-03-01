@@ -100,6 +100,11 @@ public class SpawnerSystem : MonoBehaviour {
 		StartCoroutine (WaveWait());
 		waveSound.PlayOneShot (waveSoundFinish);
 
+		Player playerInfo = player.GetComponent<Player> ();
+		playerInfo.playerHealth += 5f;
+		playerInfo.playerHealth = Mathf.Clamp (playerInfo.playerHealth, 0f, 100f);
+		playerInfo.TextUpdate ();
+
 	}
 	IEnumerator WaveWait() {
 
