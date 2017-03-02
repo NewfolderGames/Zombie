@@ -163,5 +163,6 @@ MonoBehaviour:
   boxRandom: {fileID: 0}
   boxAmmo: {fileID: 0}
   boxFlare: {fileID: 1465474954034460, guid: ad8b6ac96d45ddc49be6c7b837c8651a, type: 2}
+  boxSound: {fileID: 8300000, guid: 635849fb70d3e78419c374e24214e3e4, type: 3}
   waveSound: {fileID: 82031774585954966}
   waveSoundFinish: {fileID: 8300000, guid: 1e24d068f58c698408c28e6c1501bcb2, type: 3}

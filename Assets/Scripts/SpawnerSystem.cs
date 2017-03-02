@@ -22,7 +22,7 @@ public class SpawnerSystem : MonoBehaviour {
 	public bool waveSpawnAvailable = true;
 
 	public bool waveWait = true;
-	public float waveWaitTime = 15f;
+	public float waveWaitTime = 20f;
 
 	public float waveDay;
 
@@ -48,6 +48,7 @@ public class SpawnerSystem : MonoBehaviour {
 	public GameObject boxRandom;
 	public GameObject boxAmmo;
 	public GameObject boxFlare;
+	public AudioClip boxSound;
 
 	public AudioSource waveSound;
 	public AudioClip waveSoundFinish;
@@ -236,9 +237,10 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public void DropCrate(int number) {
 
+		waveSound.PlayOneShot (boxSound);
 		for (int i = 0; i < number; i++) {
-			Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
-			Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 20f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
+			Instantiate (boxRandom, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 50f, Random.Range (-5f, 5f)), Quaternion.Euler(Vector3.zero));
+			Instantiate (boxAmmo, player.transform.position + new Vector3 (Random.Range (-5f, 5f), 50f, Random.Range (-5f, 5f)), Quaternion.Euler (Vector3.zero));
 		}
 
 	}

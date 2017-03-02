@@ -2,6 +2,10 @@
 
 ![Alt text](/Images/Image_Title_1.png)
 
+=======================================
+
+## 소리 출처
+
 Sound
 - Sonniss.com - GDC 2016 - Game Audio Bundle - Pole Position Production
 - Sonniss.com - GDC 2016 - Game Audio Bundle - Fascinated Sound
@@ -11,6 +15,7 @@ Sound
 - Call of Duty
 - flare - https://www.freesound.org/people/frankelmedico/sounds/348767/
 - jet - https://freesound.org/people/qubodup/sounds/189446/
+- plane - https://freesound.org/people/cliftonmcarlson/sounds/251971/
 
 =======================================
 
