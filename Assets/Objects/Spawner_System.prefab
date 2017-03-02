@@ -143,7 +143,7 @@ MonoBehaviour:
   waveSpawnNumber: 1
   waveSpawnAvailable: 1
   waveWait: 1
-  waveWaitTime: 10
+  waveWaitTime: 20
   waveDay: 0
   waveBoss: 0
   waveBossDead: 0
