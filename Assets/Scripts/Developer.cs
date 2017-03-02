@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class Developer : MonoBehaviour {
 
+	public AudioSource audioSource;
+
 	public SpawnerSystem spawner;
 	public PlayerEquip playerEquip;
 	public Player player;
+
 	public GameObject airstrike;
+	public AudioClip airstrikeSound;
 
 	public Text devText;
 	public Text devDesc;
@@ -71,11 +75,9 @@ public class Developer : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.Alpha7)) { 
 
-				Projectile rocket = Instantiate (airstrike, player.mousePosition + Vector3.up * 50f, Quaternion.Euler(90f, 0f, 0f)).GetComponent<Projectile> ();
-				rocket.damage = 25f;
-				rocket.knockback = 250f;
-				rocket.range = 7.5f;
-				rocket.GetComponent<Rigidbody> ().AddForce (Vector3.down * 100f, ForceMode.Impulse);
+				audioSource.PlayOneShot (airstrikeSound);
+				StartCoroutine (spawnAirstrike (5));
+
 
 			}
 
@@ -153,6 +155,21 @@ public class Developer : MonoBehaviour {
 				weapon.weaponRecoil = 7.5f;
 
 			}
+
+		}
+
+	}
+
+	IEnumerator spawnAirstrike(int amount) {
+
+		yield return new WaitForSeconds (5f);
+		for (int i = 0; i < amount; i++) {
+
+			Projectile rocket = Instantiate (airstrike, player.mousePosition + new Vector3(Random.Range(-10f,10f),Random.Range(75f,125f), Random.Range(-10f,10f)), Quaternion.Euler (90f, 0f, 0f)).GetComponent<Projectile> ();
+			rocket.damage = 25f;
+			rocket.knockback = 250f;
+			rocket.range = 12.5f;
+			rocket.GetComponent<Rigidbody> ().AddForce (Vector3.down * Random.Range(75f,100f), ForceMode.Impulse);
 
 		}
 
