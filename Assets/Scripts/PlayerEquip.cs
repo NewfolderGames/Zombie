@@ -129,6 +129,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			weaponDamageAdd [i] = 0f;
 			weaponClipAdd [i] = 0f;
+			//weaponLaserAdd[i] = true;
 
 		}
 			
@@ -352,8 +353,8 @@ public class PlayerEquip : MonoBehaviour {
 
 		weaponLaserpoint = GameObject.Find("Player_Weapon_Laserpoint").GetComponent<LineRenderer> ();
 		weaponLaserpoint.numPositions = 2;
-		weaponLaserpoint.startWidth = 0.02f;
-		weaponLaserpoint.endWidth = 0.02f;
+		weaponLaserpoint.startWidth = 0.0375f;
+		weaponLaserpoint.endWidth = 0.0375f;
 		weaponLaserpoint.startColor = Color.white;
 		weaponLaserpoint.endColor = Color.white;
 		weaponLaserpoint.material = weaponLaserpointMaterial;
