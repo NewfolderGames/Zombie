@@ -52,6 +52,8 @@ public class BoxMystery : MonoBehaviour {
 	public AudioSource boxSource;
 	public AudioClip boxSound;
 
+	public bool helpmode;
+
 	void Start() {
 
 		player = GameObject.Find ("Player");
@@ -105,12 +107,12 @@ public class BoxMystery : MonoBehaviour {
 
 		if (Input.GetKeyUp (KeyCode.E)) {
 
-			if (Vector3.Distance (player.transform.position, transform.position) <= 5) {
+			if (Vector3.Distance (player.transform.position, transform.position) <= 5 || helpmode) {
 
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit rayHit;
 
-				float rayLenght = 500f;
+				float rayLenght = 1500f;
 
 				int layerMask = LayerMask.GetMask ("Box");
 
@@ -120,7 +122,7 @@ public class BoxMystery : MonoBehaviour {
 						
 						if (availableBuy && !availableGet) {
 							
-							if (playerInfo.playerPoint >= boxCost) {
+							if (playerInfo.playerPoint >= boxCost || helpmode) {
 
 								playerInfo.playerPoint -= boxCost;
 								playerInfo.TextUpdate ();
@@ -279,7 +281,9 @@ public class BoxMystery : MonoBehaviour {
 	}
 
 	public void UpadteCost() {
-		boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+		
+		if(!helpmode) boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+
 	}
 		
 }

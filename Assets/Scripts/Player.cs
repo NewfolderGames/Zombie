@@ -64,6 +64,11 @@ public class Player : MonoBehaviour {
 	public AudioSource playerAudio;
 	public AudioClip playerSoundHit;
 
+	// ect
+
+	public bool helpmode;
+	public bool helpmodeDisableMove;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake () {
@@ -107,11 +112,15 @@ public class Player : MonoBehaviour {
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
 	void PlayerMove ( float h, float v ) {
+		
+		if (!helpmodeDisableMove) {
+			
+			playerMovment.Set (h + v, 0, v - h);
+			playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;
 
-		playerMovment.Set (h + v, 0, v - h);
-		playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;
+			componentRigidbody.MovePosition (transform.position + playerMovment);
 
-		componentRigidbody.MovePosition (transform.position + playerMovment);
+		}
 
 	}
 
@@ -151,7 +160,7 @@ public class Player : MonoBehaviour {
 				mouseRotation = rotation;
 				componentRigidbody.MoveRotation (rotation);
 
-				if (collision.tag == "BoxMystery") {
+				if (collision.tag == "BoxMystery" && !helpmode) {
 
 					BoxMystery box = collision.GetComponent<BoxMystery> ();
 					if (!box.boxAmmo) {
@@ -185,7 +194,8 @@ public class Player : MonoBehaviour {
 					}
 
 				} else
-					textBox.text = "";
+					
+					if(!helpmode) textBox.text = "";
 
 			}
 
@@ -195,9 +205,13 @@ public class Player : MonoBehaviour {
 
 	public void TextUpdate() {
 
-		textHealth.text = "HEALTH : " + playerHealth.ToString ();
-		textPointTotal.text = Mathf.Floor(playerPointTotal).ToString ();
-		textPoint.text = Mathf.Floor(playerPoint).ToString ();
+		if (!helpmode) {
+			
+			textHealth.text = "HEALTH : " + playerHealth.ToString ();
+			textPointTotal.text = Mathf.Floor (playerPointTotal).ToString ();
+			textPoint.text = Mathf.Floor (playerPoint).ToString ();
+
+		}
 
 	}
 

@@ -115,6 +115,12 @@ public class PlayerEquip : MonoBehaviour {
 	public AudioClip weaponSoundSwitch;
 	public AudioClip weaponSoundFlashlight;
 
+	// ect
+
+	public bool helpmode;
+	public bool helpmodeDisableGun;
+	public bool helpmodeDisableFlash;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake() {
@@ -158,16 +164,19 @@ public class PlayerEquip : MonoBehaviour {
 			mousePosition.y = 0f;
 			transform.rotation = Quaternion.LookRotation (mousePosition);
 
-			if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0)) || ((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
+			if (!helpmodeDisableGun) {
 
-				WeaponAttack (itemSlot [itemSlotNumber]);
+				if ((itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButtonDown (0)) || ((!itemSlot [itemSlotNumber].weaponSemiauto && Input.GetMouseButton (0)))) {
+
+					WeaponAttack (itemSlot [itemSlotNumber]);
+
+				}
+
+				WeaponScroll ();
 
 			}
 
-			WeaponScroll ();
-
-
-			if (Input.GetKeyDown (KeyCode.F)) {
+			if (Input.GetKeyDown (KeyCode.F) && !helpmodeDisableFlash) {
 
 				weaponFlashlightOn = !weaponFlashlightOn;
 				weaponFlashlight.SetActive (weaponFlashlightOn);
@@ -193,7 +202,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			}
 
-			if (itemSlot [itemSlotNumber].weaponZoom) {
+			if (itemSlot [itemSlotNumber].weaponZoom && !helpmode) {
 
 				if (Input.GetMouseButtonDown (1)) {
 
@@ -207,7 +216,7 @@ public class PlayerEquip : MonoBehaviour {
 
 			}
 
-			if (Input.GetMouseButtonDown (2)) {
+			if (Input.GetMouseButtonDown (2) && !helpmode) {
 
 				viewTop = !viewTop;
 				if (viewTop)
@@ -235,7 +244,7 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
 		playerSound.PlayOneShot (weaponSoundSwitch);
-		if (viewZoom) {
+		if (viewZoom && !helpmode) {
 			viewZoom = false;
 			playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
 		}
@@ -369,17 +378,21 @@ public class PlayerEquip : MonoBehaviour {
 
 	public void TextUpdate(ItemWeapon weapon) {
 
-		textBullet.text = weapon.weaponBullet.ToString();
-		textWeapon[0].text = itemSlot[0].weaponName;
-		textWeapon[1].text = itemSlot[1].weaponName;
-		textWeapon[itemSlotNumber].text = "> " + itemSlot[itemSlotNumber].weaponName;
+		if (!helpmode) {
+			
+			textBullet.text = weapon.weaponBullet.ToString ();
+			textWeapon [0].text = itemSlot [0].weaponName;
+			textWeapon [1].text = itemSlot [1].weaponName;
+			textWeapon [itemSlotNumber].text = "> " + itemSlot [itemSlotNumber].weaponName;
 
-		if (weapon.weaponBullet <= weapon.weaponClip / 5f)
-			textBullet.color = Color.red;
-		else if(weapon.weaponBullet <= weapon.weaponClip / 3f)
-			textBullet.color = Color.yellow;
-		else
-			textBullet.color = Color.white;
+			if (weapon.weaponBullet <= weapon.weaponClip / 5f)
+				textBullet.color = Color.red;
+			else if (weapon.weaponBullet <= weapon.weaponClip / 3f)
+				textBullet.color = Color.yellow;
+			else
+				textBullet.color = Color.white;
+
+		}
 
 	}
 

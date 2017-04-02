@@ -25,25 +25,31 @@ public class PlayerCamera : MonoBehaviour {
 
 	public float playerCameraZoom;
 
+	public bool helpmode;
+
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	// Use this for initialization
 	void Awake () {
 
-		// CAMERA POSITION
+		if (!helpmode) {
+			
+			// CAMERA POSITION
 
-		playerCameraPosition.x = transform.position.x + playerCameraOffsetX;
-		playerCameraPosition.y = transform.position.y + playerCameraOffsetY;
-		playerCameraPosition.z = transform.position.z + playerCameraOffsetZ;
-		offsetX = playerCameraOffsetX;
-		offsetY = playerCameraOffsetY;
-		offsetZ = playerCameraOffsetZ;
+			playerCameraPosition.x = transform.position.x + playerCameraOffsetX;
+			playerCameraPosition.y = transform.position.y + playerCameraOffsetY;
+			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ;
+			offsetX = playerCameraOffsetX;
+			offsetY = playerCameraOffsetY;
+			offsetZ = playerCameraOffsetZ;
 
-		playerCamera.transform.position = playerCameraPosition;
+			playerCamera.transform.position = playerCameraPosition;
 
-		// CAMERA ZOOM
+			// CAMERA ZOOM
 
-		playerCameraMain.orthographicSize = playerCameraZoom;
+			playerCameraMain.orthographicSize = playerCameraZoom;
+
+		}
 		
 	}
 
@@ -63,27 +69,31 @@ public class PlayerCamera : MonoBehaviour {
 
 	public void View(bool top) {
 
-		if (top) {
+		if (!helpmode) {
 
-			playerCameraOffsetX = 0f;
-			playerCameraOffsetY = 20f;
-			playerCameraOffsetZ = 0f;
-			playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCamera.transform.position = playerCameraPosition;
-			playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (90, 45, 0));
+			if (top) {
 
-		} else {
+				playerCameraOffsetX = 0f;
+				playerCameraOffsetY = 20f;
+				playerCameraOffsetZ = 0f;
+				playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCamera.transform.position = playerCameraPosition;
+				playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (90, 45, 0));
 
-			playerCameraOffsetX = offsetX;
-			playerCameraOffsetY = offsetY;
-			playerCameraOffsetZ = offsetZ;
-			playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range(-playerCameraShake, playerCameraShake);
-			playerCamera.transform.position = playerCameraPosition;
-			playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (30, 45, 0));
+			} else {
+
+				playerCameraOffsetX = offsetX;
+				playerCameraOffsetY = offsetY;
+				playerCameraOffsetZ = offsetZ;
+				playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCamera.transform.position = playerCameraPosition;
+				playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (30, 45, 0));
+
+			}
 
 		}
 
