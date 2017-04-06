@@ -109,6 +109,8 @@ public class PlayerEquip : MonoBehaviour {
 
 	public Text textBullet;
 	public Text[] textWeapon;
+	public Text textClip;
+	public Text textDamage;
 
 	// other Sound
 
@@ -257,13 +259,13 @@ public class PlayerEquip : MonoBehaviour {
 
 		if (itemSlot[itemSlotNumber].weaponAvailableAttack) {
 			
-			if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+			if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 
 				itemSlotNumber--;
 				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
 				WeaponSelect (itemSlot[itemSlotNumber]);
 
-			} else if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+			} else if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
 
 				itemSlotNumber++;
 				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
@@ -391,6 +393,9 @@ public class PlayerEquip : MonoBehaviour {
 				textBullet.color = Color.yellow;
 			else
 				textBullet.color = Color.white;
+
+			textClip.text = "탄창 크기 증가 레벨 : " + weaponClipAdd [weapon.weaponNumber].ToString();
+			textDamage.text = "데미지 증가 레벨 : " + weaponDamageAdd [weapon.weaponNumber].ToString();
 
 		}
 

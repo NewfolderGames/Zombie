@@ -101,6 +101,8 @@ public class Player : MonoBehaviour {
 
 		}
 
+		if (Input.GetKeyDown (KeyCode.Escape)) SceneManager.LoadScene ("Menu");
+
 	}
 
 	void FixedUpdate() {

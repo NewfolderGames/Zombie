@@ -1027,6 +1027,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1456510239}
   m_Script: {fileID: 11500000, guid: 5016d6997eae95d43aae4c9ba556b499, type: 3}
+--- !u!114 &1113830764 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114623838279989812, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  m_PrefabInternal: {fileID: 499323954}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1127518775 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114987170360753900, guid: 3460e4663d8e249409877abc4bfc3f78,
@@ -1110,6 +1116,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: cd26ad202209ce14f9f6d4744ca46ed7, type: 3}
+--- !u!114 &1171485051 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114352938356214046, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  m_PrefabInternal: {fileID: 499323954}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1191776466 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114502777979033092, guid: 3729da5f70e64144f89bc62423191fcc,
@@ -1494,6 +1506,16 @@ Prefab:
       propertyPath: textWeapon.Array.data[1]
       value: 
       objectReference: {fileID: 1426090202}
+    - target: {fileID: 114954968771905590, guid: 893aa0fb27a774f4899a0400f0a5af3e,
+        type: 2}
+      propertyPath: textClip
+      value: 
+      objectReference: {fileID: 1113830764}
+    - target: {fileID: 114954968771905590, guid: 893aa0fb27a774f4899a0400f0a5af3e,
+        type: 2}
+      propertyPath: textDamage
+      value: 
+      objectReference: {fileID: 1171485051}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 893aa0fb27a774f4899a0400f0a5af3e, type: 2}
   m_IsPrefabParent: 0

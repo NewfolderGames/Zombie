@@ -2164,6 +2164,9 @@ MonoBehaviour:
   textWeapon:
   - {fileID: 114532974182433728, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
   - {fileID: 114152263031520872, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
+  textClip: {fileID: 114623838279989812, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
+  textDamage: {fileID: 114352938356214046, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
   weaponSoundSwitch: {fileID: 8300000, guid: 8e7409d75cb5bff40940999e898da7ea, type: 3}
   weaponSoundFlashlight: {fileID: 8300000, guid: 85d0caef05f2a2a4faffc8eebb4b1401,
     type: 3}
