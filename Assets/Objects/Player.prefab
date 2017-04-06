@@ -1891,6 +1891,8 @@ MonoBehaviour:
   playerInfo: {fileID: 114954968771905590}
   playerAudio: {fileID: 82587117581339982}
   playerSoundHit: {fileID: 8300000, guid: 93a08b612e22297468bc06449fbf366e, type: 3}
+  helpmode: 0
+  helpmodeDisableMove: 0
 --- !u!114 &114736095281504368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1915,6 +1917,7 @@ MonoBehaviour:
   playerCameraShakeMultiply: 1
   playerCameraSpeed: 2.5
   playerCameraZoom: 7.5
+  helpmode: 0
 --- !u!114 &114954968771905590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1964,19 +1967,19 @@ MonoBehaviour:
   - {fileID: 1312525034783780}
   weaponPallet: 010000000c000000010000000100000001000000010000000100000001000000010000000c00000001000000010000000100000001000000
   weaponDamage:
-  - 7.5
-  - 2.5
-  - 4.5
+  - 8
+  - 3
+  - 5.75
+  - 5.75
   - 5.5
-  - 5
-  - 15
-  - 4
+  - 16.25
+  - 4.25
   - 25
   - 35
   - 2
-  - 6.25
-  - 3.75
-  - 17.5
+  - 7
+  - 4
+  - 18
   - 15
   weaponKnockback:
   - 1
@@ -2009,20 +2012,20 @@ MonoBehaviour:
   - 2.5
   - 1.5
   weaponClip:
-  - 210
-  - 52
-  - 125
-  - 300
-  - 330
-  - 150
-  - 390
+  - 250
+  - 60
+  - 110
+  - 350
+  - 360
+  - 120
+  - 450
   - 12
   - 6
-  - 72
-  - 270
-  - 420
-  - 120
-  - 120
+  - 80
+  - 280
+  - 480
+  - 110
+  - 132
   weaponRange:
   - 0
   - 0
@@ -2159,6 +2162,9 @@ MonoBehaviour:
   weaponSoundSwitch: {fileID: 8300000, guid: 8e7409d75cb5bff40940999e898da7ea, type: 3}
   weaponSoundFlashlight: {fileID: 8300000, guid: 85d0caef05f2a2a4faffc8eebb4b1401,
     type: 3}
+  helpmode: 0
+  helpmodeDisableGun: 0
+  helpmodeDisableFlash: 0
 --- !u!120 &120284260371412142
 LineRenderer:
   m_ObjectHideFlags: 1
