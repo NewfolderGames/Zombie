@@ -133,17 +133,9 @@ public class Zombie : MonoBehaviour {
 			enemyHealth -= damage;
 			enemySound.PlayOneShot (enemySoundHit);
 			Player playerInfo = player.GetComponent<Player> ();
-			if (damageExplosive) {
-				
-				playerInfo.playerPoint += damage / 2f;
-				playerInfo.playerPointTotal += damage / 2f;
+			playerInfo.playerPoint += damage;
+			playerInfo.playerPointTotal += damage;
 
-			} else {
-				
-				playerInfo.playerPoint += damage;
-				playerInfo.playerPointTotal += damage;
-
-			}
 			playerInfo.TextUpdate ();
 			if (enemyHealth <= 0) {
 			
@@ -160,8 +152,8 @@ public class Zombie : MonoBehaviour {
 				} else {
 
 					spawnerSystem.waveBossDead = true;
-					playerInfo.playerPoint += 250;
-					playerInfo.playerPointTotal += 250;
+					playerInfo.playerPoint += 500;
+					playerInfo.playerPointTotal += 500;
 
 				}
 				Destroy (gameObject);
