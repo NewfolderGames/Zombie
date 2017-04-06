@@ -1881,12 +1881,17 @@ MonoBehaviour:
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   autoAim: 1
   playerCameraMain: {fileID: 0}
-  textHealth: {fileID: 0}
-  textPoint: {fileID: 0}
-  textPointTotal: {fileID: 0}
-  textBox: {fileID: 0}
-  textGameover: {fileID: 0}
-  screenRed: {fileID: 0}
+  textHealth: {fileID: 114817307028479454, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  textPoint: {fileID: 114354338430150632, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  textPointTotal: {fileID: 114222265005147688, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  textBox: {fileID: 114426951149660272, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
+  textGameover: {fileID: 114738876368271682, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
+  screenRed: {fileID: 114815533023337710, guid: 3460e4663d8e249409877abc4bfc3f78,
+    type: 2}
   boxGet: 
   playerInfo: {fileID: 114954968771905590}
   playerAudio: {fileID: 82587117581339982}
@@ -2157,8 +2162,8 @@ MonoBehaviour:
     type: 2}
   textBullet: {fileID: 0}
   textWeapon:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114532974182433728, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
+  - {fileID: 114152263031520872, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
   weaponSoundSwitch: {fileID: 8300000, guid: 8e7409d75cb5bff40940999e898da7ea, type: 3}
   weaponSoundFlashlight: {fileID: 8300000, guid: 85d0caef05f2a2a4faffc8eebb4b1401,
     type: 3}

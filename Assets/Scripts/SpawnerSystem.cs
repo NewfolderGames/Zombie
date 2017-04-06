@@ -213,14 +213,14 @@ public class SpawnerSystem : MonoBehaviour {
 
 	public void TextUpdate() {
 
-		textWave.text = "WAVE : " + wave.ToString ();
+		textWave.text = "웨이브 : " + wave.ToString ();
 		textWaveZombie.color = Color.white;
 		if (!waveWait) {
 
 			textWaveSkip.gameObject.SetActive (false);
 			if (waveBossActive) {
 				
-				textWaveZombie.text = "BOSS";
+				textWaveZombie.text = "보스 대결";
 				textWaveZombie.color = Color.red;
 
 			} else
@@ -228,7 +228,7 @@ public class SpawnerSystem : MonoBehaviour {
 
 		} else {
 			
-			textWaveZombie.text = "INCOMING";
+			textWaveZombie.text = "준비 시간";
 			textWaveSkip.gameObject.SetActive (true);
 
 		}

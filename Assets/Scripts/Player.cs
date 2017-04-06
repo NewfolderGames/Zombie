@@ -168,19 +168,19 @@ public class Player : MonoBehaviour {
 						switch ((int)box.box) {
 
 						case 0:
-							textBox.text = "WEAPON BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.text = "무기 구입 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
 							textBox.color = Color.yellow;
 							break;
 						case 1:
-							textBox.text = "DAMAGE INCREASE BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.text = "무기 데미지 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
 							textBox.color = new Color (1f, 1f / 2f, 0f);
 							break;
 						case 2:
-							textBox.text = "CLIP EXTEND BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.text = "무기 탄창 크기 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
 							textBox.color = new Color (0f, 3f / 4f, 1f);;
 							break;
 						case 3:
-							textBox.text = "LASER SIGHT BOX\n" + box.boxCost.ToString () + " POINT"; 
+							textBox.text = "무기 레이저사이트 추가 상자\n" + box.boxCost.ToString () + "포인트가 필요합니다"; 
 							textBox.color = Color.red;
 							break;
 
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour {
 
 					} else {
 
-						textBox.text = "AMMO BOX\n" + box.boxCost.ToString () + " POINT"; 
+						textBox.text = "탄약 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
 						textBox.color = Color.green;
 
 					}
@@ -208,8 +208,8 @@ public class Player : MonoBehaviour {
 		if (!helpmode) {
 			
 			textHealth.text = "HEALTH : " + playerHealth.ToString ();
-			textPointTotal.text = Mathf.Floor (playerPointTotal).ToString ();
-			textPoint.text = Mathf.Floor (playerPoint).ToString ();
+			textPointTotal.text = "포인트 합: " + Mathf.Floor (playerPointTotal).ToString ();
+			textPoint.text = "포인트 : " + Mathf.Floor (playerPoint).ToString ();
 
 		}
 

@@ -133,11 +133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82675951747537108}
-  spawner: {fileID: 0}
-  playerEquip: {fileID: 0}
-  player: {fileID: 0}
+  spawner: {fileID: 114080229606500908, guid: 6aa62df21b65f1645a7556d87b7ab9e3, type: 2}
+  playerEquip: {fileID: 114954968771905590, guid: 893aa0fb27a774f4899a0400f0a5af3e,
+    type: 2}
+  player: {fileID: 114208275357189464, guid: 893aa0fb27a774f4899a0400f0a5af3e, type: 2}
   airstrike: {fileID: 1788418171260220, guid: 9634d534e64e9484c93a2b75fab375c8, type: 2}
   airstrikeSound: {fileID: 8300000, guid: c0338296760ac5d41b61c75015406a48, type: 3}
-  devText: {fileID: 0}
-  devDesc: {fileID: 0}
+  devText: {fileID: 114741719610481906, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
+  devDesc: {fileID: 114108625009622450, guid: 3460e4663d8e249409877abc4bfc3f78, type: 2}
   devmode: 0

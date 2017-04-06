@@ -68,19 +68,19 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCostBase = Mathf.RoundToInt(Random.Range (400f, 600f));
+				boxCostBase = Mathf.RoundToInt(Random.Range (400f, 500f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
-				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 300f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 250f));
 				break;
 			case 2:
 				boxLightInfo.color = new Color (0f, 3f / 4f, 1f);
-				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 300f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(200f, 250f));
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCostBase = Mathf.RoundToInt(Random.Range(75f, 175f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(75f, 150f));
 				break;
 
 			}
@@ -250,7 +250,7 @@ public class BoxMystery : MonoBehaviour {
 		boxLightInfo.intensity = 2f;
 		if (boxRandom) {
 			weaponNumber = Random.Range (0, playerWeapon.weaponModel.Length);
-			while (weaponNumber != 2) weaponNumber = Random.Range (0, playerWeapon.weaponModel.Length);
+			while (weaponNumber == 2) weaponNumber = Random.Range (0, playerWeapon.weaponModel.Length);
 
 		} else
 			weaponNumber = playerWeapon.itemSlot[Random.Range(0,playerWeapon.itemSlot.Length)].weaponNumber;

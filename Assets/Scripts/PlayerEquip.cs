@@ -379,8 +379,8 @@ public class PlayerEquip : MonoBehaviour {
 	public void TextUpdate(ItemWeapon weapon) {
 
 		if (!helpmode) {
-			
-			textBullet.text = weapon.weaponBullet.ToString ();
+
+			textBullet.text = weapon.weaponBullet.ToString () + " / " + weapon.weaponClip;
 			textWeapon [0].text = itemSlot [0].weaponName;
 			textWeapon [1].text = itemSlot [1].weaponName;
 			textWeapon [itemSlotNumber].text = "> " + itemSlot [itemSlotNumber].weaponName;
@@ -405,12 +405,14 @@ public class PlayerEquip : MonoBehaviour {
 
 				case 7:
 				case 8:
-					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt(weaponClip [itemSlot [number].weaponNumber] + (weaponClipAdd [itemSlot [number].weaponNumber] * 2f));
+					if (!clipAdd) 
+						itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClipAdd [itemSlot [number].weaponNumber] * 2f));
 					else itemSlot [number].weaponBullet += 2;
 					break;
 
 				default:
-					if(!clipAdd) itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber] / 4f));
+					if (!clipAdd)
+						itemSlot [number].weaponBullet = Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] + (weaponClip [itemSlot [number].weaponNumber] * weaponClipAdd [itemSlot [number].weaponNumber] / 4f));
 					else itemSlot [number].weaponBullet += Mathf.RoundToInt (weaponClip [itemSlot [number].weaponNumber] / 4f);
 					break;
 				
