@@ -7,7 +7,7 @@ QualitySettings:
   m_CurrentQuality: 0
   m_QualitySettings:
   - serializedVersion: 2
-    name: "\uB0AE\uC74C (\uB799\uAC78\uB9B4\uB54C \uC0AC\uC6A9)"
+    name: LAG COMPUTER
     pixelLightCount: 1
     shadows: 1
     shadowResolution: 0
@@ -33,7 +33,7 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: "\uBCF4\uD1B5"
+    name: Normal
     pixelLightCount: 2
     shadows: 1
     shadowResolution: 1
@@ -59,7 +59,7 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: "\uC88B\uC74C"
+    name: Good
     pixelLightCount: 3
     shadows: 1
     shadowResolution: 2
@@ -85,7 +85,7 @@ QualitySettings:
     asyncUploadBufferSize: 4
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: "\uC81C\uC77C \uC88B\uC74C"
+    name: Very Good
     pixelLightCount: 4
     shadows: 1
     shadowResolution: 3
