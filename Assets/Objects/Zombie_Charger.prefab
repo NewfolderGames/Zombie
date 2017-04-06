@@ -218,7 +218,7 @@ MonoBehaviour:
   enemyAttackCharge: 0
   enemyAttackChargeTime: 1
   enemyAttackChargeEndTime: 2
-  enemyAttackChargeDelay: 5
+  enemyAttackChargeDelay: 2.5
   enemyAttackChargeSpeed: 275
   enemyAttackChargeDamage: 20
   enemyAttackChargeKnockback: 100

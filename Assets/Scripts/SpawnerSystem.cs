@@ -135,7 +135,7 @@ public class SpawnerSystem : MonoBehaviour {
 		waveBossDead = false;
 
 		waveZombie = Mathf.FloorToInt (10f + wave);
-		waveZombieHealth = Mathf.Min( 50f, 10f + (wave * 1.5f));
+		waveZombieHealth = 10f + (wave * 1.25f);
 		waveZombieSpeed = Mathf.Min(10f, 2f + (wave * 0.1f));
 
 		waveSpawnDelay = Mathf.Max (1f, 2f - (wave * 0.025f));

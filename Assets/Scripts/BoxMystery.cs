@@ -284,7 +284,17 @@ public class BoxMystery : MonoBehaviour {
 
 	public void UpadteCost() {
 		
-		if(!helpmode) boxCost = Mathf.RoundToInt(boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+		if(!helpmode) switch(box) {
+			
+				case boxType.Box_Weapon:
+					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 5f * playerInfo.boxGet [(int)box]));
+					break;
+
+				default :
+					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 7.5f * playerInfo.boxGet [(int)box]));
+					break;
+
+		}
 
 	}
 		

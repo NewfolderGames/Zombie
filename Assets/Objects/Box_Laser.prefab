@@ -395,3 +395,4 @@ MonoBehaviour:
   boxRandom: 1
   boxSource: {fileID: 82552001225252646}
   boxSound: {fileID: 8300000, guid: 2bb27d4d9145a6140882c10d57ee465d, type: 3}
+  helpmode: 0

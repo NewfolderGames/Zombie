@@ -168,19 +168,19 @@ public class Player : MonoBehaviour {
 						switch ((int)box.box) {
 
 						case 0:
-							textBox.text = "무기 구입 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
+							textBox.text = "무기 구입 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다\n결정된 무기로 들고 있는 무기를 교체합니다"; 
 							textBox.color = Color.yellow;
 							break;
 						case 1:
-							textBox.text = "무기 데미지 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
+							textBox.text = "무기 데미지 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다\n결정된 무기의 데미지를 증가시킵니다"; 
 							textBox.color = new Color (1f, 1f / 2f, 0f);
 							break;
 						case 2:
-							textBox.text = "무기 탄창 크기 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
+							textBox.text = "무기 탄창 크기 증가 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다\n결정된 무기의 탄창을 늘려줍니다"; 
 							textBox.color = new Color (0f, 3f / 4f, 1f);;
 							break;
 						case 3:
-							textBox.text = "무기 레이저사이트 추가 상자\n" + box.boxCost.ToString () + "포인트가 필요합니다"; 
+							textBox.text = "무기 레이저사이트 추가 상자\n" + box.boxCost.ToString () + "포인트가 필요합니다\n결정된 무기에 레이저사이트를 장착시킵니다"; 
 							textBox.color = Color.red;
 							break;
 
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour {
 
 					} else {
 
-						textBox.text = "탄약 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다"; 
+						textBox.text = "탄약 상자\n" + box.boxCost.ToString () + " 포인트가 필요합니다\n결정된 무기의 탄약을 추가합니다"; 
 						textBox.color = Color.green;
 
 					}
