@@ -862,8 +862,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 199.5, y: 37}
+  m_AnchoredPosition: {x: 220, y: 0}
+  m_SizeDelta: {x: 360, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491587432
 MonoBehaviour:
@@ -891,13 +891,14 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD0D1\uBDF0 \uBAA8\uB4DC : \uB9C8\uC6B0\uC2A4 \uC2A4\uD06C\uB864 \uBC84\uD2BC"
+  m_Text: "\uD0D1\uBDF0 \uBAA8\uB4DC   : \uB9C8\uC6B0\uC2A4 \uC2A4\uD06C\uB864 \uBC84\uD2BC\n\uAC1C\uBC1C\uC790
+    \uBAA8\uB4DC : `"
 --- !u!222 &491587433
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1182,8 +1183,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 199.5, y: 37}
+  m_AnchoredPosition: {x: -170, y: 0}
+  m_SizeDelta: {x: 300, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690989777
 MonoBehaviour:
@@ -1211,13 +1212,18 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC1C\uBC1C\uC790 \uBAA8\uB4DC : `"
+  m_Text: "\uB9CC\uC57D \uAC8C\uC784\uC774 \uB290\uB9AC\uBA74\n\n\uAC8C\uC784\uC744
+    \uB098\uAC04 \uB4A4 \uB2E4\uC2DC \uC2E4\uD589 \uD30C\uC77C\uC744 \uC5F4\uACE0\n\uC544\uB798\uC5D0
+    'Grapics quality'\uC5D0\uC11C\n'LAG COMPUTER'\uB97C \uC120\uD0DD\uD558\uACE0 \uC2E4\uD589\n\n'Good',
+    'Very Good'\uC740 \uADF8\uB9BC\uC790\uAC00 \uC798 \uBCF4\uC774\uACE0\n'Normal'\uC740
+    \uD0D1\uBDF0\uBAA8\uB4DC\uC5D0\uC11C \uADF8\uB9BC\uC790\uAC00 \uBCF4\uC774\uACE0\n'LAG
+    COMPUTER'\uB294 \uADF8\uB9BC\uC790\uAC00 \uC5C6\uC74C"
 --- !u!222 &690989778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1320,10 +1326,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: cabfda30c7432324da11b1aea7a4e3b0, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
