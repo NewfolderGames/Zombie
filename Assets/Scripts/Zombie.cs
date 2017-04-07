@@ -79,7 +79,7 @@ public class Zombie : MonoBehaviour {
 
 				if (!enemyAttackCharge) {
 					
-					enemyNavigation.Resume ();
+					enemyNavigation.isStopped = false;
 					enemyNavigation.SetDestination (player.transform.position);
 
 				}
@@ -89,10 +89,10 @@ public class Zombie : MonoBehaviour {
 		}
 		else {
 
-			enemyNavigation.Stop ();
+			enemyNavigation.isStopped = true;
 			if (enemyRigidbody.velocity == Vector3.zero) {
 
-				enemyNavigation.Resume ();
+				enemyNavigation.isStopped = false;
 				enemyKnockback = false;
 
 			}
@@ -174,7 +174,7 @@ public class Zombie : MonoBehaviour {
 
 	IEnumerator AttackCharge(float time) {
 
-		enemyNavigation.Stop ();
+		enemyNavigation.isStopped = true;
 
 		yield return new WaitForSeconds (time);
 

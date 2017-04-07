@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -25,6 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -41,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -53,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 4
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -66,14 +67,28 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000010, guid: 2996c1d590b766d41bcb9523450fb0c9,
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
+  m_LightingDataAsset: {fileID: 112000020, guid: 315c63c90da58f7498c60f9c6261001e,
     type: 2}
-  m_RuntimeCPUUsage: 25
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -90,6 +105,8 @@ NavMeshSettings:
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
     accuratePlacement: 1
   m_NavMeshData: {fileID: 23800000, guid: 4997d457b0a50f54a86ce393c67806d3, type: 2}
 --- !u!1 &846949
@@ -153,6 +170,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &846952
 BoxCollider:
@@ -612,6 +630,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114736095281504368, guid: 893aa0fb27a774f4899a0400f0a5af3e,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1587988811}
+    - target: {fileID: 114736095281504368, guid: 893aa0fb27a774f4899a0400f0a5af3e,
+        type: 2}
+      propertyPath: playerCameraMain
+      value: 
+      objectReference: {fileID: 1316679883}
     - target: {fileID: 114208275357189464, guid: 893aa0fb27a774f4899a0400f0a5af3e,
         type: 2}
       propertyPath: playerCameraMain
@@ -647,16 +675,6 @@ Prefab:
       propertyPath: screenRed
       value: 
       objectReference: {fileID: 1306554887}
-    - target: {fileID: 114736095281504368, guid: 893aa0fb27a774f4899a0400f0a5af3e,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1587988811}
-    - target: {fileID: 114736095281504368, guid: 893aa0fb27a774f4899a0400f0a5af3e,
-        type: 2}
-      propertyPath: playerCameraMain
-      value: 
-      objectReference: {fileID: 1316679883}
     - target: {fileID: 114954968771905590, guid: 893aa0fb27a774f4899a0400f0a5af3e,
         type: 2}
       propertyPath: textBullet
@@ -672,16 +690,6 @@ Prefab:
       propertyPath: textWeapon.Array.data[1]
       value: 
       objectReference: {fileID: 2093949412}
-    - target: {fileID: 120284260371412142, guid: 893aa0fb27a774f4899a0400f0a5af3e,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4606817aa2822f24685fea8aa459226f, type: 2}
-    - target: {fileID: 120284260371412142, guid: 893aa0fb27a774f4899a0400f0a5af3e,
-        type: 2}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114954968771905590, guid: 893aa0fb27a774f4899a0400f0a5af3e,
         type: 2}
       propertyPath: textClip
@@ -1042,6 +1050,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &901929880
 BoxCollider:
@@ -1475,6 +1484,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1510325490
 BoxCollider:
@@ -1679,6 +1689,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1740174626
 BoxCollider:
@@ -1766,6 +1777,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1784699306
 BoxCollider:
@@ -1985,7 +1997,7 @@ Light:
   m_PrefabInternal: {fileID: 797588033}
   m_GameObject: {fileID: 2078778354}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.69803923, g: 0.65882355, b: 0.13725491, a: 1}
   m_Intensity: 1
@@ -2010,6 +2022,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &2078778356
@@ -2099,6 +2113,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &2125087833
 BoxCollider:

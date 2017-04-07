@@ -284,7 +284,7 @@ public class PlayerEquip : MonoBehaviour {
 		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
-			StartCoroutine (WeaponSpawnLight (Time.deltaTime));
+			StartCoroutine (WeaponSpawnLight ());
 			WeaponSpawnShell (weapon.weaponShell);
 			transform.localPosition = new Vector3(0.75f,0f,0f);
 
@@ -327,10 +327,10 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponAvailableAttack = true;
 
 	}
-	IEnumerator WeaponSpawnLight(float time) {
+	IEnumerator WeaponSpawnLight() {
 
 		weaponFlash.SetActive (true);
-		yield return new WaitForSeconds (time);
+		yield return null;
 		weaponFlash.SetActive (false);
 
 	}
@@ -340,7 +340,6 @@ public class PlayerEquip : MonoBehaviour {
 		Rigidbody shellRigidbody = shell.GetComponent<Rigidbody> ();
 
 		shellRigidbody.AddForce (transform.right * Random.Range (0.5f, 0.75f), ForceMode.Impulse);
-
 
 	}
 
@@ -363,7 +362,7 @@ public class PlayerEquip : MonoBehaviour {
 	void WeaponLaserpoint() {
 
 		weaponLaserpoint = GameObject.Find("Player_Weapon_Laserpoint").GetComponent<LineRenderer> ();
-		weaponLaserpoint.numPositions = 2;
+		weaponLaserpoint.positionCount = 2;
 		weaponLaserpoint.startWidth = 0.0375f;
 		weaponLaserpoint.endWidth = 0.0375f;
 		weaponLaserpoint.startColor = Color.white;
