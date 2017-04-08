@@ -1925,9 +1925,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   playerCameraMain: {fileID: 0}
-  playerCameraOffsetX: -25
-  playerCameraOffsetY: 20
-  playerCameraOffsetZ: -25
+  playerCameraOffsetX: -10
+  playerCameraOffsetY: 8.25
+  playerCameraOffsetZ: -10
   offsetX: 0
   offsetY: 0
   offsetZ: 0
