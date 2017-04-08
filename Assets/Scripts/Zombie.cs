@@ -101,7 +101,7 @@ public class Zombie : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision other){
+	void OnCollisionStay(Collision other){
 
 		if (other.gameObject.tag == player.tag) {
 			
