@@ -1955,20 +1955,20 @@ MonoBehaviour:
   weaponClipAdd: []
   weaponLaserAdd: 
   weaponName:
-  - Rifle 1
-  - Shotgun 1
-  - Pistol 1
-  - SMG 1
-  - SMG 2
-  - Rifle 2
-  - SMG 3
-  - GrenadeLauncher 1
-  - RocketLauncher 1
-  - Shotgun 2
-  - LMG 1
-  - SMG 4
-  - SniperRifle 1
-  - SniperRifle 2
+  - "'\u0423\u0431\u0438\u0439\u0446\u0430' \uB3CC\uACA9\uC18C\uCD1D"
+  - "'Independence' \uC0B0\uD0C4\uCD1D"
+  - "'PeaShooter' \uAD8C\uCD1D"
+  - "'Hunter&Killer' \uAE30\uAD00\uB2E8\uCD1D"
+  - "'Classic' \uAE30\uAD00\uB2E8\uCD1D"
+  - "'Inferno' \uC9C0\uC815\uC0AC\uC218\uC18C\uCD1D"
+  - "'Spray' \uAE30\uAD00\uB2E8\uCD1D"
+  - "'FireCracker' \uC720\uD0C4\uBC1C\uC0AC\uAE30"
+  - "'MagicWand' \uB85C\uCF13\uBC1C\uC0AC\uAE30"
+  - "'Sweeper' \uC0B0\uD0C4\uCD1D"
+  - "'Heavy' \uACBD\uAE30\uAD00\uCD1D"
+  - "'BulletStorm' \uAE30\uAD00\uB2E8\uCD1D"
+  - "'QuickScoper' \uC800\uACA9\uC18C\uCD1D"
+  - "'Freedom' \uC9C0\uC815\uC0AC\uC218\uC18C\uCD1D"
   weaponModel:
   - {fileID: 1179923977412678}
   - {fileID: 1844740899095956}
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   - 5.75
   - 5.75
   - 5.5
-  - 16.25
+  - 16.5
   - 4.25
   - 25
   - 37.5
@@ -2006,7 +2006,7 @@ MonoBehaviour:
   - 1
   - 1.5
   - 1
-  - 2
+  - 4
   - 1
   - 200
   - 250
@@ -2021,7 +2021,7 @@ MonoBehaviour:
   - 1.5
   - 0.5
   - 0.75
-  - 2
+  - 1.5
   - 0.75
   - 10
   - 15
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   - 0.75
   - 0.5
   - 2.5
-  - 1.5
+  - 2
   weaponClip:
   - 250
   - 60
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   - 120
   - 450
   - 15
-  - 5
+  - 8
   - 80
   - 280
   - 480
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   - 1
   - 2
   - 1.5
-  - 0.375
+  - 0.5
   - 2.5
   - 0.5
   - 0.5
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   weaponProjectile: 0000000000000000000000000000000000000000000000000000000001000000020000000000000000000000000000000000000000000000
   weaponShell: 0000000001000000020000000200000002000000000000000200000000000000000000000100000000000000020000000000000000000000
   weaponSemi: 0001010000010001010000000100
-  weaponZoom: 0000000000000000000000000101
+  weaponZoom: 0000000000010000000000000101
   weaponPosition:
   - {x: 0, y: -0.4, z: 0}
   - {x: 0, y: 0, z: 0}
