@@ -37,14 +37,14 @@ public class PlayerCamera : MonoBehaviour {
 
 		playerCameraShake = Mathf.Lerp (playerCameraShake, 0f, 0.1f);
 
-		playerCameraMain.transform.rotation = viewMode? Quaternion.Slerp (playerCameraMain.transform.rotation, topQ, 3f * Time.deltaTime) : Quaternion.Slerp (playerCameraMain.transform.rotation, quaQ, 3f * Time.deltaTime);
+		playerCameraMain.transform.rotation = viewMode? Quaternion.Slerp (playerCameraMain.transform.rotation, topQ, 5f * Time.deltaTime) : Quaternion.Slerp (playerCameraMain.transform.rotation, quaQ, 5f * Time.deltaTime);
 
 	}
 
 	public void View(bool top) {
 		if (!helpmode) {
 			viewMode = top;
-			playerCamera.transform.position = playerCameraPosition;
+			// playerCamera.transform.position = playerCameraPosition;
 		}
 	}
 }

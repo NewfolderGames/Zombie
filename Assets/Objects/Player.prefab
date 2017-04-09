@@ -244,8 +244,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4375473186047946}
   - component: {fileID: 33620504284440588}
-  - component: {fileID: 65571873364381464}
   - component: {fileID: 23226081549733340}
+  - component: {fileID: 135381705890854036}
   - component: {fileID: 54391402846786182}
   - component: {fileID: 114208275357189464}
   - component: {fileID: 114736095281504368}
@@ -1630,24 +1630,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65571873364381464
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1313349525988970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82587117581339982
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1925,10 +1913,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   playerCameraMain: {fileID: 0}
-  playerCameraOffset: {x: -10, y: 8.25, z: -10}
-  offset: {x: 0, y: 0, z: 0}
+  playerCamQuaOffset: {x: -20, y: 25, z: -20}
+  playerCamTopOffset: {x: 0, y: 0, z: 0}
   playerCameraShake: 0
-  playerCameraShakeLimit: 100
+  playerCameraShakeLimit: 0.5
   playerCameraShakeMultiply: 1
   playerCameraSpeed: 2.5
   playerCameraZoom: 7.5
@@ -2267,3 +2255,15 @@ LineRenderer:
     textureMode: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!135 &135381705890854036
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313349525988970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 0}

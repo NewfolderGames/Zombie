@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
 
 	// MOVEMENT
 
-	Vector3 playerMovment;
 
 	public float playerSpeed;
 
@@ -72,7 +71,6 @@ public class Player : MonoBehaviour {
 	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
 
 	void Awake () {
-
 		componentRigidbody = GetComponent<Rigidbody> ();
 		componentCamera = GetComponent<PlayerCamera> ();
 
@@ -106,21 +104,18 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-
 		if(!playerDead) PlayerMove (inputHorizontal, inputVertical);
-
 	}
 
 	// ========== ========== ========== FUNCTION ========== ========== ========== \\
 
 	void PlayerMove ( float h, float v ) {
-		
+		Vector3 playerMovment;
 		if (!helpmodeDisableMove) {
-			
-			playerMovment.Set (h + v, 0, v - h);
-			playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;
-
-			componentRigidbody.MovePosition (transform.position + playerMovment);
+			playerMovment = new Vector3 (h + v, 0, v - h);
+			playerMovment = playerMovment.normalized * playerSpeed;
+			componentRigidbody.velocity = playerMovment;
+//			componentRigidbody.MovePosition (transform.position + playerMovment);
 
 		}
 
