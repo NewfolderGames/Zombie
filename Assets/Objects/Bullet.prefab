@@ -74,6 +74,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33516168476570732
 MeshFilter:
@@ -96,7 +97,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65727201848779636
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -126,3 +127,5 @@ MonoBehaviour:
   knockbackMultiply: 1
   range: 10
   speed: 7.5
+  explosive: 0
+  explosion: {fileID: 0}

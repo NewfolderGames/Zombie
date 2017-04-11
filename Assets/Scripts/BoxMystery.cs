@@ -284,7 +284,7 @@ public class BoxMystery : MonoBehaviour {
 					break;
 
 				default :
-					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 4f * playerInfo.boxGet [(int)box]));
+					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 2.5f * playerInfo.boxGet [(int)box]));
 					break;
 
 		}

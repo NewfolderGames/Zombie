@@ -1874,7 +1874,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cd26ad202209ce14f9f6d4744ca46ed7, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: cd26ad202209ce14f9f6d4744ca46ed7, type: 3}
       propertyPath: m_Layer

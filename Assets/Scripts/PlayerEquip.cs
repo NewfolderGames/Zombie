@@ -339,7 +339,7 @@ public class PlayerEquip : MonoBehaviour {
 
 		float rayLenght = 500f;
 
-		int layerMask = LayerMask.GetMask ("Map", "Enemy");
+		int layerMask = LayerMask.GetMask ("Map", "Enemy", "Wall");
 
 		if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask))
 			return rayHit.point;
