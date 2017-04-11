@@ -68,7 +68,7 @@ public class BoxMystery : MonoBehaviour {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCostBase = Mathf.RoundToInt(Random.Range (400f, 500f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(400f, 500f));
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
@@ -80,7 +80,7 @@ public class BoxMystery : MonoBehaviour {
 				break;
 			case 3:
 				boxLightInfo.color = Color.red;
-				boxCostBase = Mathf.RoundToInt(Random.Range(75f, 150f));
+				boxCostBase = Mathf.RoundToInt(Random.Range(50f, 75f));
 				break;
 
 			}
@@ -109,14 +109,8 @@ public class BoxMystery : MonoBehaviour {
 
 			if (Vector3.Distance (player.transform.position, transform.position) <= 5 || helpmode) {
 
-				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit rayHit;
-
-				float rayLenght = 1500f;
-
-				int layerMask = LayerMask.GetMask ("Box");
-
-				if (Physics.Raycast (ray, out rayHit, rayLenght, layerMask)) {
+				if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out rayHit, Mathf.Infinity, LayerMask.GetMask ("Box"))) {
 
 					if (rayHit.collider.gameObject.Equals (gameObject)) {
 						
@@ -132,8 +126,7 @@ public class BoxMystery : MonoBehaviour {
 								boxLight.SetActive (true);
 								boxWeapon.transform.localPosition = new Vector3 (0f, 1.5f, 0f);
 
-							} else
-								Debug.Log ("돈이 부족합니다");
+							}
 
 						} else if (availableGet) {
 
@@ -291,7 +284,7 @@ public class BoxMystery : MonoBehaviour {
 					break;
 
 				default :
-					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 7.5f * playerInfo.boxGet [(int)box]));
+					boxCost = Mathf.RoundToInt (boxCostBase + (boxCostBase / 4f * playerInfo.boxGet [(int)box]));
 					break;
 
 		}

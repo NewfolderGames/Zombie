@@ -123,8 +123,6 @@ public class PlayerEquip : MonoBehaviour {
 	public bool helpmodeDisableGun;
 	public bool helpmodeDisableFlash;
 
-	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
-
 	void Awake() {
 
 		playerInfo = player.GetComponent<Player> ();
@@ -159,8 +157,6 @@ public class PlayerEquip : MonoBehaviour {
 	void Update() {
 
 		if (!playerDead) {
-
-			// MOUSE
 
 			mousePosition = playerInfo.mousePosition - transform.position;
 			mousePosition.y = 0f;
@@ -245,7 +241,6 @@ public class PlayerEquip : MonoBehaviour {
 		weapon.weaponModel.SetActive (true);
 		weapon.weaponModel.transform.localPosition = weapon.weaponPosition;
 		weaponBarrel.transform.localPosition = weapon.weaponPoint;
-		playerSound.PlayOneShot (weaponSoundSwitch);
 		if (viewZoom && !helpmode) {
 			viewZoom = false;
 			playerCameraInfo.playerCameraMain.orthographicSize = playerCameraInfo.playerCameraZoom;
@@ -257,21 +252,15 @@ public class PlayerEquip : MonoBehaviour {
 
 	void WeaponScroll () {
 
-		if (itemSlot[itemSlotNumber].weaponAvailableAttack) {
-			
-			if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+		float wheel = Input.GetAxis ("Mouse ScrollWheel");
+		if (itemSlot[itemSlotNumber].weaponAvailableAttack && wheel != 0 ) {
 
-				itemSlotNumber--;
-				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
-				WeaponSelect (itemSlot[itemSlotNumber]);
+			if (wheel < 0) itemSlotNumber--;
+			else if (wheel > 0) itemSlotNumber++;
 
-			} else if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
-
-				itemSlotNumber++;
-				itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
-				WeaponSelect (itemSlot[itemSlotNumber]);
-
-			}
+			itemSlotNumber = Mathf.Clamp (itemSlotNumber, 0, itemSlot.Length - 1);
+			WeaponSelect (itemSlot[itemSlotNumber]);
+			playerSound.PlayOneShot (weaponSoundSwitch);
 
 		}
 
@@ -281,7 +270,7 @@ public class PlayerEquip : MonoBehaviour {
 
 	public void WeaponAttack(ItemWeapon weapon) {
 
-		if ( weapon.weaponAvailableAttack && weapon.weaponBullet-1 >= 0) {
+		if (weapon.weaponAvailableAttack && weapon.weaponBullet > 0) {
 
 			StartCoroutine (WeaponSpawnProjectile (weapon));
 			StartCoroutine (WeaponSpawnLight ());

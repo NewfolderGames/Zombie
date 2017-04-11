@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
 public class Player : MonoBehaviour {
-
-	// ========== ========== ========== VARIABLE SETTING ========== ========== ========== \\
-
+	
 	// PLAYER INFO
 
 	public float playerHealth = 100f;
@@ -35,8 +33,8 @@ public class Player : MonoBehaviour {
 
 	// COMPONENT
 
-	Rigidbody componentRigidbody;
-	PlayerCamera componentCamera;
+	private	Rigidbody componentRigidbody;
+	private	PlayerCamera componentCamera;
 
 	// CAMERA
 
@@ -69,8 +67,6 @@ public class Player : MonoBehaviour {
 	public bool helpmode;
 	public bool helpmodeDisableMove;
 
-	// ========== ========== ========== UNITY FUNCTION ========== ========== ========== \\
-
 	void Awake () {
 
 		componentRigidbody = GetComponent<Rigidbody> ();
@@ -79,6 +75,7 @@ public class Player : MonoBehaviour {
 		componentRigidbody.freezeRotation = true;
 
 		boxGet = new int[4];
+
 	}
 
 	void Start() {
@@ -111,8 +108,6 @@ public class Player : MonoBehaviour {
 
 	}
 
-	// ========== ========== ========== FUNCTION ========== ========== ========== \\
-
 	void PlayerMove ( float h, float v ) {
 		
 		if (!helpmodeDisableMove) {
@@ -130,44 +125,27 @@ public class Player : MonoBehaviour {
 
 	void MouseRotation () {
 
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit rayHit;
 
-		float rayLenght = 500f;
+		if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out rayHit, Mathf.Infinity, LayerMask.GetMask ("Enemy", "Map", "Box"))) {
 
-		int mask = LayerMask.GetMask ("Enemy","Map","Box");
-
-		if (Physics.Raycast (ray, out rayHit, rayLenght, mask)) {
-
+			Vector3 mouse;
 			GameObject collision = rayHit.collider.gameObject;
-			if (autoAim && collision.tag == "Enemy" ) {
 
-				Vector3 mouse = collision.transform.position - transform.position;
-				mouse.y = 0f;
+			if (autoAim && collision.CompareTag ("Enemy")) mousePosition = collision.transform.position;
+			else mousePosition = rayHit.point;
+			mouse = mousePosition - transform.position;
+			mouse.y = 0f;
 
-				Quaternion rotation = Quaternion.LookRotation (mouse);
+			componentRigidbody.MoveRotation (Quaternion.LookRotation (mouse));
 
-				mousePosition = collision.transform.position;
-				mouseRotation = rotation;
-				componentRigidbody.MoveRotation (rotation);
+			if (!collision.CompareTag ("BoxMystery")) textBox.text = ""; 
+			else if (!helpmode) {
 
-			} else {
-					
-				Vector3 mouse = rayHit.point - transform.position;
-				mouse.y = 0f;
-
-				Quaternion rotation = Quaternion.LookRotation (mouse);
-
-				mousePosition = rayHit.point;
-				mouseRotation = rotation;
-				componentRigidbody.MoveRotation (rotation);
-
-				if (collision.tag == "BoxMystery" && !helpmode) {
-
-					BoxMystery box = collision.GetComponent<BoxMystery> ();
-					if (!box.boxAmmo) {
+				BoxMystery box = collision.GetComponent<BoxMystery> ();
+				if (!box.boxAmmo) {
 						
-						switch ((int)box.box) {
+					switch ((int)box.box) {
 
 						case 0:
 							textBox.text = "무기 구입 상자\n$" + box.boxCost.ToString () + " 가 필요합니다\n결정된 무기로 들고 있는 무기를 교체합니다"; 
@@ -179,30 +157,27 @@ public class Player : MonoBehaviour {
 							break;
 						case 2:
 							textBox.text = "무기 탄창 크기 증가 상자\n$" + box.boxCost.ToString () + " 가 필요합니다\n결정된 무기의 탄창을 늘려줍니다"; 
-							textBox.color = new Color (0f, 3f / 4f, 1f);;
+							textBox.color = new Color (0f, 3f / 4f, 1f);
+							;
 							break;
 						case 3:
 							textBox.text = "무기 레이저사이트 추가 상자\n$" + box.boxCost.ToString () + "가 필요합니다\n결정된 무기에 레이저사이트를 장착시킵니다"; 
 							textBox.color = Color.red;
 							break;
 
-						}
-
-					} else {
-
-						textBox.text = "탄약 상자\n$" + box.boxCost.ToString () + " 가 필요합니다\n결정된 무기의 탄약을 추가합니다"; 
-						textBox.color = Color.green;
-
 					}
 
-				} else
-					
-					if(!helpmode) textBox.text = "";
+				} else {
+
+					textBox.text = "탄약 상자\n$" + box.boxCost.ToString () + " 가 필요합니다\n결정된 무기의 탄약을 추가합니다"; 
+					textBox.color = Color.green;
+
+				}
 
 			}
 
 		}
-			
+
 	}
 
 	public void TextUpdate() {
@@ -223,10 +198,11 @@ public class Player : MonoBehaviour {
 
 			playerHealth -= damage;
 			playerHealth = Mathf.Clamp (playerHealth, 0f, 100f);
-			screenRed.color = new Color( 1f, 0f, 0f, ( 1f / 4f ) - ( (playerHealth / 100f) / 4f ) );
+			screenRed.color = new Color( 1f, 0f, 0f, 0.25f - ( (playerHealth * 0.01f) * 0.25f ) );
 			componentCamera.playerCameraShake += 2.5f * componentCamera.playerCameraShakeMultiply;
-			TextUpdate ();
 			playerAudio.PlayOneShot (playerSoundHit);
+			TextUpdate ();
+
 			if (playerHealth <= 0) {
 
 				playerDead = true;
