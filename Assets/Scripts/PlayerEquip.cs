@@ -229,9 +229,7 @@ public class PlayerEquip : MonoBehaviour {
 		}
 
 	}
-
-	// ========== ========== ========== FUNCTION ========== ========== ========== \\
-
+		
 	// Weapon Info
 
 	public void WeaponSelect (ItemWeapon weapon) {  // Select Weapon
