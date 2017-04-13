@@ -106,6 +106,7 @@ public class Player : MonoBehaviour {
 
 		if(!playerDead) PlayerMove (inputHorizontal, inputVertical);
 
+
 	}
 
 	void PlayerMove ( float h, float v ) {

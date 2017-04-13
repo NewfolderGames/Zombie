@@ -165,6 +165,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23977900185210094
 MeshRenderer:
@@ -196,6 +197,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33328280590305166
 MeshFilter:
@@ -325,7 +327,7 @@ Light:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261741631076324}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_Intensity: 2
@@ -350,6 +352,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!114 &114113631990083406
@@ -408,6 +412,7 @@ MonoBehaviour:
   boxCostBase: 750
   boxCrate: 1
   boxAmmo: 0
-  boxRandom: 1
+  boxRandom: 0
   boxSource: {fileID: 82085163215643882}
   boxSound: {fileID: 8300000, guid: 2bb27d4d9145a6140882c10d57ee465d, type: 3}
+  helpmode: 0

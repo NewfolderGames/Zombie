@@ -64,11 +64,13 @@ public class BoxMystery : MonoBehaviour {
 
 			boxAmmo = false;
 			box = (boxType)Mathf.Floor (Random.Range(0f, 4f));
+			boxRandom = false;
 			switch ((int)box) {
 
 			case 0:
 				boxLightInfo.color = Color.yellow;
-				boxCostBase = Mathf.RoundToInt(Random.Range(400f, 500f));
+				boxCostBase = Mathf.RoundToInt (Random.Range (400f, 500f));
+				boxRandom = true;
 				break;
 			case 1:
 				boxLightInfo.color = new Color (1f, 1f / 2f, 0f);
@@ -84,7 +86,6 @@ public class BoxMystery : MonoBehaviour {
 				break;
 
 			}
-			boxRandom = true;
 			UpadteCost ();
 			StartCoroutine (BoxDestroy (25f));
 
