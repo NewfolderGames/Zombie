@@ -158,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b447ed0a0415cbd4d8e1149f1d7ea404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: Game1
+  help: 0
+  scene: Game1
 --- !u!114 &365598633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b447ed0a0415cbd4d8e1149f1d7ea404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: Help
+  help: 1
+  scene: Help
 --- !u!114 &1160164573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,7 +1007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b447ed0a0415cbd4d8e1149f1d7ea404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: Game2
+  help: 0
+  scene: Game2
 --- !u!114 &1833008073
 MonoBehaviour:
   m_ObjectHideFlags: 0

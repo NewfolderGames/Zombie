@@ -140,7 +140,7 @@ public class Player : MonoBehaviour {
 
 			componentRigidbody.MoveRotation (Quaternion.LookRotation (mouse));
 
-			if (!collision.CompareTag ("BoxMystery")) textBox.text = ""; 
+			if (!collision.CompareTag ("BoxMystery")) if(!helpmode) textBox.text = ""; 
 			else if (!helpmode) {
 
 				BoxMystery box = collision.GetComponent<BoxMystery> ();

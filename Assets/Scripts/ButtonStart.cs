@@ -2,13 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonStart : MonoBehaviour {
 
-	public string map;
+	public bool help;
+	public static bool helpRead;
+	public string scene;
+	Image image;
+
+	void Awake() {
+
+		image = GetComponent<Image> ();
+		if (!help && !helpRead) image.color = Color.gray;
+
+	}
 
 	public void StartGame() {
-		SceneManager.LoadScene (map);
+
+		if (helpRead || help) {
+			
+			SceneManager.LoadScene (scene);
+			helpRead = true;
+
+		}
+
 	}
 
 }

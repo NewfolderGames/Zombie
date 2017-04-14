@@ -409,7 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b447ed0a0415cbd4d8e1149f1d7ea404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: Menu
+  help: 0
+  scene: Menu
 --- !u!114 &368405593
 MonoBehaviour:
   m_ObjectHideFlags: 0
