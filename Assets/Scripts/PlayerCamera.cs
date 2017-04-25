@@ -9,13 +9,10 @@ public class PlayerCamera : MonoBehaviour {
 	public GameObject playerCamera;
 	public Camera playerCameraMain;
 
-	Vector3 playerCameraPosition;
-	public float playerCameraOffsetX;
-	public float playerCameraOffsetY;
-	public float playerCameraOffsetZ;
-	public float offsetX;
-	public float offsetY;
-	public float offsetZ;
+	public Vector3 playerCameraPosition;
+	public Vector3 playerCameraOffset;
+	public Vector3 shakeOffset;
+	public Vector3 offset;
 
 	public float playerCameraShake = 0;
 	public float playerCameraShakeLimit;
@@ -33,20 +30,10 @@ public class PlayerCamera : MonoBehaviour {
 	void Awake () {
 
 		if (!helpmode) {
-			
-			// CAMERA POSITION
 
-			playerCameraPosition.x = transform.position.x + playerCameraOffsetX;
-			playerCameraPosition.y = transform.position.y + playerCameraOffsetY;
-			playerCameraPosition.z = transform.position.z + playerCameraOffsetZ;
-			offsetX = playerCameraOffsetX;
-			offsetY = playerCameraOffsetY;
-			offsetZ = playerCameraOffsetZ;
-
+			playerCameraPosition = transform.position + playerCameraOffset;
+			offset = playerCameraOffset;
 			playerCamera.transform.position = playerCameraPosition;
-
-			// CAMERA ZOOM
-
 			playerCameraMain.orthographicSize = playerCameraZoom;
 
 		}
@@ -56,13 +43,9 @@ public class PlayerCamera : MonoBehaviour {
 	void LateUpdate() {
 
 		playerCameraShake = Mathf.Clamp (playerCameraShake, -playerCameraShake, playerCameraShakeLimit);
-
-		playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range(-playerCameraShake, playerCameraShake);
-		playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range(-playerCameraShake, playerCameraShake);
-		playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range(-playerCameraShake, playerCameraShake);
-
-		playerCamera.transform.position = Vector3.Lerp( playerCamera.transform.position, playerCameraPosition, playerCameraSpeed * Time.deltaTime );
-
+		shakeOffset.Set (Random.Range (-playerCameraShake, playerCameraShake), Random.Range (-playerCameraShake, playerCameraShake), Random.Range (-playerCameraShake, playerCameraShake));
+		playerCameraPosition = transform.position + playerCameraOffset + shakeOffset;
+		playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, playerCameraPosition, playerCameraSpeed * Time.deltaTime);
 		playerCameraShake = Mathf.Lerp (playerCameraShake, 0f, 0.1f);
 
 	}
@@ -73,23 +56,15 @@ public class PlayerCamera : MonoBehaviour {
 
 			if (top) {
 
-				playerCameraOffsetX = 0f;
-				playerCameraOffsetY = 20f;
-				playerCameraOffsetZ = 0f;
-				playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range (-playerCameraShake, playerCameraShake);
-				playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range (-playerCameraShake, playerCameraShake);
-				playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraOffset.Set (0f, 20f, 0f);
+				playerCameraPosition = transform.position + playerCameraOffset + shakeOffset;
 				playerCamera.transform.position = playerCameraPosition;
 				playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (90, 45, 0));
 
 			} else {
 
-				playerCameraOffsetX = offsetX;
-				playerCameraOffsetY = offsetY;
-				playerCameraOffsetZ = offsetZ;
-				playerCameraPosition.x = transform.position.x + playerCameraOffsetX + Random.Range (-playerCameraShake, playerCameraShake);
-				playerCameraPosition.y = transform.position.y + playerCameraOffsetY + Random.Range (-playerCameraShake, playerCameraShake);
-				playerCameraPosition.z = transform.position.z + playerCameraOffsetZ + Random.Range (-playerCameraShake, playerCameraShake);
+				playerCameraOffset = offset;
+				playerCameraPosition = transform.position + playerCameraOffset + shakeOffset;
 				playerCamera.transform.position = playerCameraPosition;
 				playerCameraMain.transform.rotation = Quaternion.Euler (new Vector3 (30, 45, 0));
 

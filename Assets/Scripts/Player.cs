@@ -115,8 +115,7 @@ public class Player : MonoBehaviour {
 			
 			playerMovment.Set (h + v, 0, v - h);
 			playerMovment = playerMovment.normalized * playerSpeed * Time.deltaTime;
-
-			componentRigidbody.MovePosition (transform.position + playerMovment);
+			componentRigidbody.velocity = playerMovment;
 
 		}
 

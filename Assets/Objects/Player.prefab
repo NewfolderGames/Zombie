@@ -1895,7 +1895,7 @@ MonoBehaviour:
   playerDead: 0
   playerPoint: 0
   playerPointTotal: 0
-  playerSpeed: 7.5
+  playerSpeed: 375
   mousePosition: {x: 0, y: 0, z: 0}
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   autoAim: 1
@@ -1925,12 +1925,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   playerCameraMain: {fileID: 0}
-  playerCameraOffsetX: -10
-  playerCameraOffsetY: 8.25
-  playerCameraOffsetZ: -10
-  offsetX: 0
-  offsetY: 0
-  offsetZ: 0
+  playerCameraPosition: {x: 0, y: 0, z: 0}
+  playerCameraOffset: {x: -10, y: 8.25, z: -10}
+  shakeOffset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   playerCameraShake: 0
   playerCameraShakeLimit: 100
   playerCameraShakeMultiply: 1
