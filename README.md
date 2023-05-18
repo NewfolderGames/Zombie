@@ -2,7 +2,7 @@
 
 ![Alt text](/Images/Image_Title_1.png)
 
-=======================================
+===
 
 ## 소리 출처
 
@@ -17,7 +17,7 @@ Sound
 - jet - https://freesound.org/people/qubodup/sounds/189446/
 - plane - https://freesound.org/people/cliftonmcarlson/sounds/251971/
 
-=======================================
+===
 
 ## 목록
 [GIF](https://github.com/Newfoldergames/Zombie#gif)
@@ -28,7 +28,7 @@ Sound
 
 [상자](https://github.com/Newfoldergames/Zombie#상자)
 
-=======================================
+===
 
 ### GIF
 ![Alt text](/Images/Image_1.gif)
@@ -42,7 +42,7 @@ Sound
 ![Alt text](/Images/Image_9.gif)
 ![Alt text](/Images/Image_10.gif)
 
-=======================================
+===
 
 ### 조작키
 
@@ -57,7 +57,7 @@ Sound
 - 마우스 휠 스크롤 : 무기 바꾸기
 
 
-=======================================
+===
 
 ### 무기
 
@@ -117,7 +117,7 @@ Sound
 | GrenadeLauncher_1 |   25   |  200 |  10  |  10  |     3     |    0.1    |    0.5    |   2  |    O   |        |
 |  RocketLauncher_1 |   35   |  250 |  15  |   5  |     5     |    0.1    |    0.5    |   2  |    O   |        |
 
-=======================================
+===
 
 ### 상자
 ![Alt text](/Images/Image_Box_1.png)
@@ -176,4 +176,4 @@ Sound
 - 탄창 증가 상자에서 업그레이드를 했으면 더 많이 줍니다
 - 가격 : 150 ~ 250
 
-=======================================
+===
